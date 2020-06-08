@@ -1,0 +1,22 @@
+{
+    "version": "1.0.0-beta.1",
+    "themeName": "Default",
+    "themeDescription": "The official default Reflect theme.",
+    "themeFolderName": "default",
+    "faviconUrl": "",
+    "logoUrl": "",
+    "mainContentSidePadding": "0",
+    "pageTitleDisplayOption": "1",
+    "homePageTitleDisplayOption": "4",
+    "postsPageTitleDisplayOption": "1",
+    "postTitleDisplayOption": "1",
+    "primaryMenuBgColour": "#222222",
+    "primaryMenuTextColour": "#EEEEEE",
+    "primaryMenuItemHoverAndActiveBgColour": "#444444",
+    "primaryMenuItemHoverAndActiveTextColour": "#FFFFFF",
+    "primaryMenuSubItemHoverAndActiveBgColour": "#444444",
+    "primaryMenuSubItemHoverAndActiveTextColour": "#FFFFFF",
+    "footerMenuBgColour": "#222222",
+    "footerMenuTextColour": "#EEEEEE",
+    "stickyFooter": "true"
+}

@@ -1,0 +1,19 @@
+{
+    "version": "1.0.0-beta.1",
+    "requiredProperties": "addonName, addonDescription, addonFolderName, runOnHomePage, fromName, fromEmailAddress, replyToName, replyToEmailAddress, recipientName, recipientEmailAddress, attachFormDataToEmail",
+    "addonName": "Reflect Form Mailer",
+    "addonDescription": "Reflect Form Mailer addon makes passive HTML forms on your Reflect site automatically submitable.",
+    "addonFolderName": "reflect-form-mailer",
+    "runOnHomePage": "true",
+    "slugsToRun": "",
+    "slugsToExclude": "",
+    "formNamesToTarget": "",
+    "formNamesToExclude": "",
+    "fromName": "",
+    "fromEmailAddress": "",
+    "replyToName": "",
+    "replyToEmailAddress": "",
+    "recipientName": "",
+    "recipientEmailAddress": "",
+    "attachFormDataToEmail": "true"
+}

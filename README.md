@@ -23,6 +23,8 @@
 
 - [Feedback](#feedback)
 
+<br><br>
+
 ## WHAT IS REFLECT
 
 Reflect is a front-end app developed to specifically pair with WordPress (which functions as the back-end) to create the ultimate decoupled architecture. 
@@ -32,6 +34,8 @@ Like WordPress, you can simply install Reflect on your server. No coding require
 Once installed, Reflect will fetch content from your WordPress site, render them on the server-side, and serve them on http requests. 
 
 You can also use Reflect to pre-fetch and pre-generate the content into static HTML files. Then simply turn on *static mode*, and your Reflect site will function like a static site.
+
+<br><br>
 
 ## INSTALLATION
 
@@ -46,6 +50,8 @@ You can also use Reflect to pre-fetch and pre-generate the content into static H
 > - WordPress v5.0 or later installed. 
 > 
 > - WordPress content should be created using either the standard Classic or Gutenberg editor.
+
+<br>
 
 ### Prepare your WordPress site for use with Reflect
 
@@ -72,6 +78,8 @@ On your WordPress site...
    **Note:** Do not assign the ***Under Maintenance*** page to any menu.
 
 7. Download the [WP Reflect Support plugin file](https://github.com/davidgoy/reflect/raw/master/WP%20Reflect%20Support%20Plugin/deploy/wpreflect.zip). Then install the plugin by uploading the file using WordPress'  ***Upload Plugin*** button. Proceed to activate the plugin on WordPress.
+
+<br>
 
 ### Install and setup your Reflect site
 
@@ -102,6 +110,8 @@ For illustration purpose, let's pretend that your Reflect site will be using the
    
    > **Note:** Reflect will only mirror WordPress page/post content as well as primary and footer menu items. Widget components (e.g. Archives, RSS, Tag Cloud, etc.) and theme-specific layout sections (e.g. Sidebar) will not be mirrored.
 
+<br>
+
 ### Deny public access to your WordPress site
 
 One of the key advantages of a decoupled architecture is that it allows the front-end of a website to be separated from its back-end.
@@ -126,6 +136,8 @@ You can easily accomplish this with a basic understanding of *htaccess*. You wil
 
 > **Warning:** This will replace the original *htaccess* file created by WordPress, so back up the original file first!
 
+<br><br>
+
 ## USAGE
 
 ### Authoring and publishing content (*hint...* *you don't use Reflect for that*)
@@ -136,11 +148,15 @@ After you have set up both your Reflect site and WordPress site, you can now use
 
 Your Reflect site will mirror the content of any published (but not draft or private) pages or posts.
 
+<br>
+
 ### Accessing Reflect site settings
 
 You can access your Reflect site's ***Settings* page** anytime by navigating to the following URL:
 
 `example.com/reflect-settings`
+
+<br>
 
 ### Accessing Reflect theme settings
 
@@ -153,6 +169,8 @@ Although you may have multiple themes, only one theme can be active at a time. Y
 Reflect comes with a default theme which is creatively named... *Default*. Therefore to access its settings, go to:
 
 `example.com/reflect-settings/themes/default`
+
+<br>
 
 ### Customising the look and feel of your Reflect site
 
@@ -179,9 +197,11 @@ You can then access your custom theme's settings page by navigating to:
 
 Of course, don't forget to set your Reflect site to use your new theme.
 
+<br>
+
 ### Making Bootstrap forms automatically submitable on your Reflect site
 
-###### *Reflect Form Mailer* addon
+##### *Reflect Form Mailer* addon
 
 Reflect comes with an addon called *Reflect Form Mailer* which you can enable on Reflect's ***Settings* page** (`example.com/reflect-settings`).
 
@@ -195,6 +215,8 @@ Assuming that you have already enabled the addon, you should now configure it by
 
 > **Tips:** You can use Chris Youderian's drag-and-drop [Bootstrap Form Builder](https://bootstrapformbuilder.com/) which allows you to visually put together a Bootstrap form and then generate the corresponding HTML code. You can then simply chuck the HTML code into your WordPress page or post.
 
+<br>
+
 ### Turn Reflect into a static site
 
 By default, your Reflect site will render (on the server-side) the content it fetches from your WordPress site and serve them on the fly.
@@ -207,6 +229,8 @@ To access the ***Static Files Management* page**, navigate to:
 
 Don't forget to turn on ***Static Mode***!
 
+<br><br>
+
 ## DEMO
 
 Check out our [demo Reflect site](https://examplereflect.com). 
@@ -214,6 +238,8 @@ Check out our [demo Reflect site](https://examplereflect.com).
 Also, take a look at the [example WordPress site](https://examplecms.com) that Reflect fetches its content from. 
 
 > **Note:** As mentioned earlier, it is recommended that you prevent your WordPress site (i.e. your back-end app) from being directly accessible by the general public. However, for the purpose of demonstration, we allow our example WordPress site here to be accessible so you can compare the content mirrored on the Reflect site. 
+
+<br><br>
 
 ## ACKNOWLEDGEMENTS
 
@@ -236,6 +262,8 @@ The following components are used in Reflect:
 - [underscores](https://underscores.me/)
 
 - [WordPress Plugin Boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate)  
+
+<br><br>
 
 ## FEEDBACK
 

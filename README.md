@@ -201,7 +201,7 @@ Of course, don't forget to set your Reflect site to use your new theme.
 
 ### Making Bootstrap forms automatically submitable on your Reflect site
 
-##### *Reflect Form Mailer* addon
+#### Using *Reflect Form Mailer* addon
 
 Reflect comes with an addon called *Reflect Form Mailer* which you can enable on Reflect's ***Settings* page** (`example.com/reflect-settings`).
 

@@ -126,7 +126,7 @@ You can easily accomplish this with a basic understanding of *htaccess*. You wil
 
 ## USAGE
 
-##### Authoring and publishing content (*hint...* *you don't use Reflect for that*)
+### Authoring and publishing content (*hint...* *you don't use Reflect for that*)
 
 This may be obvious to some, but for the sake of those who are unfamiliar with using a decoupled system, content creation and publishing is done on the back-end app. In this case, this is your WordPress site.
 
@@ -134,13 +134,13 @@ After you have set up both your Reflect site and WordPress site, you can now use
 
 Your Reflect site will mirror the content of any published (but not draft or private) pages or posts.
 
-##### Accessing your Reflect site settings
+### Accessing Reflect site settings
 
 You can access your Reflect site's ***Settings* page** anytime by navigating to the following URL:
 
 `example.com/reflect-settings`
 
-##### Accessing a Reflect theme settings
+### Accessing Reflect theme settings
 
 The look and feel of your Reflect site is controled by its theme. Each theme also has its own settings separate from the core app. 
 
@@ -152,7 +152,7 @@ Reflect comes with a default theme which is creatively named... *Default*. There
 
 `example.com/reflect-settings/themes/default`
 
-##### Customising the look and feel of your Reflect site
+### Customising the look and feel of your Reflect site
 
 The *Default* theme has a few properties which you can change via its settings page. 
 
@@ -177,7 +177,7 @@ You can then access your custom theme's settings page by navigating to:
 
 Of course, don't forget to set your Reflect site to use your new theme.
 
-##### Making Bootstrap forms automatically submitable on your Reflect site
+### Making Bootstrap forms automatically submitable on your Reflect site
 
 ###### *Reflect Form Mailer* addon
 
@@ -193,7 +193,7 @@ Assuming that you have already enabled the addon, you should now configure it by
 
 > **Tips:** You can use Chris Youderian's drag-and-drop [Bootstrap Form Builder](https://bootstrapformbuilder.com/) which allows you to visually put together a Bootstrap form and then generate the corresponding HTML code. You can then simply chuck the HTML code into your WordPress page or post.
 
-##### Generating static files and serving static content
+### Turn Reflect into a static site
 
 By default, your Reflect site will render (on the server-side) the content it fetches from your WordPress site and serve them on the fly.
 
@@ -202,6 +202,8 @@ However, Reflect can also be set to behave like a static site. You can use Refle
 To access the ***Static Files Management* page**, navigate to:
 
 `example.com/reflect-sfm`
+
+Don't forget to turn on ***Static Mode***!
 
 ## ACKNOWLEDGEMENTS
 

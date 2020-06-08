@@ -211,7 +211,7 @@ Don't forget to turn on ***Static Mode***!
 
 Check out our [demo Reflect site](https://examplereflect.com). 
 
-Also, take a look at the [example WordPress site](https://examplecms.com) that it fetches content from. 
+Also, take a look at the [example WordPress site](https://examplecms.com) that Reflect fetches its content from. 
 
 > **Note:** As mentioned earlier, it is recommended that you prevent your WordPress site (i.e. your back-end app) from being directly accessible by the general public. However, for the purpose of demonstration, we allow our example WordPress site here to be accessible so you can compare the content mirrored on the Reflect site. 
 

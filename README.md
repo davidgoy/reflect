@@ -23,7 +23,7 @@
 
 - [Feedback](#feedback)
 
-<br><br>
+<span><br><br></span>
 
 ## WHAT IS REFLECT
 
@@ -35,7 +35,7 @@ Once installed, Reflect will fetch content from your WordPress site, render them
 
 You can also use Reflect to pre-fetch and pre-generate the content into static HTML files. Then simply turn on *static mode*, and your Reflect site will function like a static site.
 
-<br><br>
+<span><br><br></span>
 
 ## INSTALLATION
 
@@ -136,7 +136,7 @@ You can easily accomplish this with a basic understanding of *htaccess*. You wil
 
 > **Warning:** This will replace the original *htaccess* file created by WordPress, so back up the original file first!
 
-<br><br>
+<span><br><br></span>
 
 ## USAGE
 
@@ -213,7 +213,7 @@ Assuming that you have already enabled the addon, you should now configure it by
 
 `example.com/reflect-settings/addons/reflect-form-mailer`
 
-> **Tips:** You can use Chris Youderian's drag-and-drop [Bootstrap Form Builder](https://bootstrapformbuilder.com/) which allows you to visually put together a Bootstrap form and then generate the corresponding HTML code. You can then simply chuck the HTML code into your WordPress page or post.
+> **Tips:** You can use Chris Youderian's drag-and-drop <a href="https://bootstrapformbuilder.com/" target="_blank">Bootstrap Form Builder</a> which allows you to visually put together a Bootstrap form and then generate the corresponding HTML code. You can then simply chuck the HTML code into your WordPress page or post.
 
 <br>
 
@@ -229,17 +229,17 @@ To access the ***Static Files Management* page**, navigate to:
 
 Don't forget to turn on ***Static Mode***!
 
-<br><br>
+<span><br><br></span>
 
 ## DEMO
 
-Check out our [demo Reflect site](https://examplereflect.com). 
+Check out our <a href="https://examplereflect.com" target="_blank">demo Reflect site</a>. 
 
-Also, take a look at the [example WordPress site](https://examplecms.com) that Reflect fetches its content from. 
+Also, take a look at the <a href="https://examplecms.com" target="_blank">example WordPress site</a> that Reflect fetches its content from. 
 
 > **Note:** As mentioned earlier, it is recommended that you prevent your WordPress site (i.e. your back-end app) from being directly accessible by the general public. However, for the purpose of demonstration, we allow our example WordPress site here to be accessible so you can compare the content mirrored on the Reflect site. 
 
-<br><br>
+<span><br><br></span>
 
 ## ACKNOWLEDGEMENTS
 
@@ -263,7 +263,7 @@ The following components are used in Reflect:
 
 - [WordPress Plugin Boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate)  
 
-<br><br>
+<span><br><br></span>
 
 ## FEEDBACK
 

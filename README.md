@@ -1,5 +1,6 @@
 <p align="center">
   <img src="https://github.com/davidgoy/reflect/blob/master/logo.png" width="350" alt="Reflect logo">
+
 </p>
 <br>
 <h3 align="center">INSTANT STATIC SITE FOR HEADLESS WORDPRESS CMS</h3>
@@ -185,10 +186,9 @@ If this is what you wish to do, then it is recommended that you duplicate the *D
 ```text
    example.com/
    ├─ reflect/
-      ├─ src/
-         ├─ themes/
-            ├─ default/
-            └─ (name of your custom theme)/
+      ├─ themes/
+         ├─ default/
+         └─ (name of your custom theme)/
 ```
 
 You can then access your custom theme's settings page by navigating to:
@@ -221,9 +221,9 @@ Assuming that you have already enabled the addon, you should now configure it by
 
 By default, your Reflect site will render (on the server-side) the content it fetches from your WordPress site and serve them on the fly.
 
-However, Reflect can also be set to behave like a static site. You can use Reflect's ***Static Files Management*** feature to pre-generate the static pages.
+However, Reflect can also be set to behave like a static site. You can use Reflect's ***Static Files Manager*** feature to pre-generate the static pages.
 
-To access the ***Static Files Management* page**, navigate to:
+To access the ***Static Files Manager* page**, navigate to:
 
 `example.com/reflect-sfm`
 
@@ -247,13 +247,17 @@ The following components are used in Reflect:
 
 - [Apache Server Configs](https://github.com/h5bp/server-configs-apache)
 
+- [Babel](https://babeljs.io/)
+
 - [Bootstrap](https://getbootstrap.com/)
 
 - [Composer](https://getcomposer.org/)
 
-- [Parcel](https://parceljs.org/)
+- [core-js](https://github.com/zloirock/core-js)
 
 - [RandomLib](https://github.com/ircmaxell/RandomLib)
+
+- [regenerator-runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js)
 
 - [sweetalert2](https://sweetalert2.github.io/)
 

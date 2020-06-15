@@ -78,7 +78,7 @@ On your WordPress site...
    
    **Note:** Do not assign the ***Under Maintenance*** page to any menu.
 
-7. Download the [WP Reflect Support plugin file](https://github.com/davidgoy/reflect/raw/master/WP%20Reflect%20Support%20Plugin/deploy/wpreflect.zip). Then install the plugin by uploading the file using WordPress'  ***Upload Plugin*** button. Proceed to activate the plugin on WordPress.
+7. Download the [WP Reflect Support plugin file](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip). Then install the plugin by uploading the file using WordPress'  ***Upload Plugin*** button. Proceed to activate the plugin on WordPress.
 
 <br>
 
@@ -86,7 +86,7 @@ On your WordPress site...
 
 For illustration purpose, let's pretend that your Reflect site will be using the domain name `example.com`.
 
-1. Download and extract the [Reflect App package](https://github.com/davidgoy/reflect/raw/master/Reflect%20App/deploy/reflect-app.zip). You will find two folders:
+1. Download and extract the [Reflect App package](https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip). You will find two folders:
    
    - `reflect`
    
@@ -133,7 +133,7 @@ You can easily accomplish this with a basic understanding of *htaccess*. You wil
 
 - Optional: IP addresses of users you approve
 
-[Download this sample *htaccess* file](https://raw.githubusercontent.com/davidgoy/reflect/master/WP%20Reflect%20Support%20Plugin/deploy/sample-wordpress.htaccess) and replace the dummy IP addresses with the real ones as per above. Rename the file to *.htaccess*, then upload it to the directory where your WordPress site is installed. 
+[Download this sample *htaccess* file](https://raw.githubusercontent.com/davidgoy/reflect/master/WP-Reflect-Support-Plugin/deploy/sample-wordpress.htaccess) and replace the dummy IP addresses with the real ones as per above. Rename the file to *.htaccess*, then upload it to the directory where your WordPress site is installed. 
 
 > **Warning:** This will replace the original *htaccess* file created by WordPress, so back up the original file first!
 

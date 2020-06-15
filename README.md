@@ -3,7 +3,7 @@
 
 </p>
 <br>
-<h3 align="center">INSTANT STATIC SITE FOR HEADLESS WORDPRESS CMS</h3>
+<h3 align="center">INSTANT STATIC SITE FOR HEADLESS WORDPRESS</h3>
 <p align="center">
   The ultimate fusion of <i>static site generator</i> and <i>server-side renderer</i>, Reflect is the perfect front-end app for those wishing to use WordPress as a headless CMS. <b>Ready to deploy out-of-the-box.</b>
 </p>

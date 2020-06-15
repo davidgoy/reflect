@@ -243,7 +243,7 @@ Also, take a look at the [example WordPress site](https://examplecms.com/) that 
 
 ## ACKNOWLEDGEMENTS
 
-The following components are used in Reflect:
+The following components are used in the Reflect project:
 
 - [Apache Server Configs](https://github.com/h5bp/server-configs-apache)
 

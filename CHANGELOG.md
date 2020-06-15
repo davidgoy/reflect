@@ -1,6 +1,6 @@
 # CHANGELOG
 
-Record of notable changes to the Reflect app project since v1.0.0-beta.1 (released on the 2020-06-08):
+A record of notable changes to the Reflect project since v1.0.0-beta.1 (released on the 2020-06-08):
 
 ## [Unreleased]
 

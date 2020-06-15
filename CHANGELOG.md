@@ -7,7 +7,7 @@ Record of notable changes to the Reflect app project since v1.0.0-beta.1 (releas
 - Add Reflect update feature.
 - Add *Download and use media locally* feature.
 
-## [1.0.0-beta.2] - 2020-06-DD
+## [1.0.0-beta.2] - 2020-06-15
 
 ### Added
 
@@ -30,5 +30,3 @@ Record of notable changes to the Reflect app project since v1.0.0-beta.1 (releas
 ### Fixed
 
 - Fix pagination appearing in *Static Files Manager*'s Pages list when published items are less than per page setting.
-
-

@@ -243,7 +243,7 @@ Also, take a look at the [example WordPress site](https://examplecms.com/) that 
 
 ## ACKNOWLEDGEMENTS
 
-The following components are used in the Reflect project:
+The following are used in the Reflect project:
 
 - [Apache Server Configs](https://github.com/h5bp/server-configs-apache)
 
@@ -264,6 +264,8 @@ The following components are used in the Reflect project:
 - [Transactional Email Templates](https://github.com/mailgun/transactional-email-templates)
 
 - [underscores](https://underscores.me/)
+
+- [WordPress](https://wordpress.org/)
 
 - [WordPress Plugin Boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate)  
 

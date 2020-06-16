@@ -5,7 +5,7 @@
 <br>
 <h3 align="center">INSTANT STATIC SITE FOR HEADLESS WORDPRESS</h3>
 <p align="center">
-  The ultimate fusion of <i>static site generator</i> and <i>server-side renderer</i>, Reflect is the perfect front-end app for those wishing to use WordPress as a headless CMS. <b>Ready to deploy out-of-the-box.</b>
+  The ultimate fusion of <i>static site generator</i> and <i>server-side renderer</i>, Reflect is the perfect front-end for those wishing to use WordPress as a headless CMS.<br><b>Deploy in minutes!</b>
 </p>
 <br>
 <br>
@@ -264,6 +264,8 @@ The following are used in the Reflect project:
 - [Transactional Email Templates](https://github.com/mailgun/transactional-email-templates)
 
 - [underscores](https://underscores.me/)
+
+- [unfetch](https://github.com/developit/unfetch)
 
 - [WordPress](https://wordpress.org/)
 

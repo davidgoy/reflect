@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0-beta.2",
+    "version": "1.0.0-beta.3",
     "requiredProperties": "runOnHomePage, fromName, fromEmailAddress, replyToName, replyToEmailAddress, recipientName, recipientEmailAddress, attachFormDataToEmail",
     "addonName": "Reflect Form Mailer",
     "addonDescription": "Make Bootstrap forms automatically submitable on your Reflect site.",

@@ -166,6 +166,7 @@
       <!-- Polyfill (will be removed in the future) -->
       <script src="/js/polyfill/core-js/minified.js"></script>
       <script src="/js/polyfill/regenerator-runtime/runtime.js"></script>
+      <script src="/js/polyfill/unfetch/index.js"></script>
 
     <?php endif; ?>
 

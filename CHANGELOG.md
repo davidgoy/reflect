@@ -7,6 +7,10 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 - Add Reflect update feature.
 - Add *Download and use media locally* feature.
 
+## [1.0.0-beta.3] - 2020-06-16
+
+- Add [unfetch](https://github.com/developit/unfetch) polyfill.
+
 ## [1.0.0-beta.2] - 2020-06-15
 
 ### Added

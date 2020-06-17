@@ -2,14 +2,28 @@
 
 A record of notable changes to the Reflect project since v1.0.0-beta.1 (released on the 2020-06-08):
 
+<br>
+
+<br>
+
 ## [Unreleased]
 
 - Add Reflect update feature.
 - Add *Download and use media locally* feature.
 
+<br><br>
+
 ## [1.0.0-beta.3] - 2020-06-16
 
+### Added
+
 - Add [unfetch](https://github.com/developit/unfetch) polyfill.
+
+### Fixed
+
+- Fix forms not submitting on Internet Explorer 11.  
+
+<br><br>
 
 ## [1.0.0-beta.2] - 2020-06-15
 

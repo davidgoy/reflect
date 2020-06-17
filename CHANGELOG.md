@@ -8,7 +8,7 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 ## [Unreleased]
 
-- Add Reflect update feature.
+- Add Reflect updater.
 - Add *Download and use media locally* feature.
 
 <br><br>

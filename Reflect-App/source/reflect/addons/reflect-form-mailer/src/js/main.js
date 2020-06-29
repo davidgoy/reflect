@@ -5,7 +5,7 @@
  * @link https://github.com/davidgoy/reflect-form-mailer
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -14,11 +14,14 @@ window.addEventListener('DOMContentLoaded', function() {
 
   (function reflectFormMailerAddon() {
 
+    const csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken;
+
     const addonFolderName = 'reflect-form-mailer';
     const addonConfigFormData = new FormData();
 
-    addonConfigFormData.append('doAddonXhr', addonFolderName);
-    addonConfigFormData.append('addonFunctionToRun', 'xhrGetAddonConfig');
+    addonConfigFormData.append('doAddonAsync', addonFolderName);
+    addonConfigFormData.append('addonFunctionToRun', 'asyncGetAddonConfig');
+    addonConfigFormData.append('csrfPreventionToken', csrfPreventionToken);
 
     // Get addon config
     apiGetData(addonConfigFormData).then(function(response) {
@@ -183,8 +186,9 @@ window.addEventListener('DOMContentLoaded', function() {
         const addonFolderName = 'reflect-form-mailer';
         let formData = new FormData(form);
 
-        formData.append('doAddonXhr', addonFolderName);
-        formData.append('addonFunctionToRun', 'xhrSendEmail');
+        formData.append('doAddonAsync', addonFolderName);
+        formData.append('addonFunctionToRun', 'asyncSendEmail');
+        formData.append('csrfPreventionToken', csrfPreventionToken);
 
         // Debug
         /*

@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect-form-mailer
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -52,7 +52,9 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
-  public function xhrGetAddonConfig() {
+  public function asyncGetAddonConfig() {
+
+    $this->authenticateCsrfPreventionToken();
 
     $processedFormData = $this->getProcessedFormData();
 
@@ -71,15 +73,39 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
-  public function xhrSendEmail() {
+  public function asyncSendEmail() {
+
+    $this->authenticateCsrfPreventionToken();
 
     $processedFormData = $this->getProcessedFormData();
+
+    unset($processedFormData['csrfPreventionToken']);
 
     $sentStatus = $this->sendEmail($processedFormData);
 
     echo json_encode($sentStatus);
 
     exit();
+  }
+
+
+  //----------------------------------------------------------------------------
+  /**
+   *
+   */
+  //----------------------------------------------------------------------------
+  private function authenticateCsrfPreventionToken() {
+
+    $processedFormData = $this->getProcessedFormData();
+
+    if(!isset($_SESSION['csrfPreventionToken']) || $_SESSION['csrfPreventionToken'] !== $processedFormData['csrfPreventionToken']) {
+
+      echo json_encode('false');
+
+      exit();
+    }
+
+    unset($processedFormData['csrfPreventionToken']);
   }
 
 

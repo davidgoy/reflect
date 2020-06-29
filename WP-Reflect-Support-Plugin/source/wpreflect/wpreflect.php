@@ -16,7 +16,7 @@
  * Plugin Name:       WP Reflect Support
  * Plugin URI:        https://github.com/davidgoy/reflect/
  * Description:       Enables your WordPress site to work with Reflect.
- * Version:           1.0.0-beta.3
+ * Version:           1.0.0-beta.4
  * Author:            Min Tat Goy
  * Author URI:        https://davidgoy.dev/
  * License:           GPL-2.0+

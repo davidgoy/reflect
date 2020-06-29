@@ -5,7 +5,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-beta.1
  */
 
@@ -13,6 +13,8 @@
 window.addEventListener('DOMContentLoaded', function() {
 
   (function defaultThemeSettings() {
+
+    const csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken;
 
 
     //--------------------------------------------------------------------------
@@ -56,8 +58,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
         const formData = new FormData(form);
 
-        formData.append('doXhr', 'saveThemeSettings');
+        formData.append('doAsync', 'saveThemeSettings');
         formData.append('themeFolderName', 'default');
+        formData.append('csrfPreventionToken', csrfPreventionToken);
 
         // Debug
         /*

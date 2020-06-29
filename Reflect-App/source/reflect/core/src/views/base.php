@@ -24,6 +24,10 @@
     <?php require_once __DIR__ . '/' . $mainContentFile; ?>
     <?php require_once __DIR__ . '/partials/footer.php'; ?>
 
+
+    <span id="csrfPreventionToken" data-csrf-prevention-token="<?php if(isset($_SESSION['csrfPreventionToken'])) { echo $_SESSION['csrfPreventionToken']; } ?>"></span>
+
+
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>
 
       <!-- Polyfill (will be removed in the future) -->

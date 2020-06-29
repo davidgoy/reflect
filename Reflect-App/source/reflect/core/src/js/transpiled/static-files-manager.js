@@ -9,12 +9,13 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 window.addEventListener('DOMContentLoaded', function () {
   (function reflectStaticFilesManager() {
-    // Hidden inputs
+    var csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken; // Hidden inputs
+
     var siteKey = document.querySelector('#siteKey').value;
     var sfmListItemsPerPage = document.querySelector('#sfmListItemsPerPage').value;
     var cmsBaseUrl = document.querySelector('#cmsBaseUrl').value;
@@ -49,7 +50,8 @@ window.addEventListener('DOMContentLoaded', function () {
       /* ---------------------------------------------------------------------- */
       sfmForm.addEventListener('submit', function (event) {
         var sfmFormData = new FormData(sfmForm);
-        sfmFormData.append('doXhr', 'saveSiteSettings'); // Debug
+        sfmFormData.append('doAsync', 'saveSiteSettings');
+        sfmFormData.append('csrfPreventionToken', csrfPreventionToken); // Debug
 
         /*
         for(let input of sfmFormData.entries()) {
@@ -274,11 +276,12 @@ window.addEventListener('DOMContentLoaded', function () {
       formData.append('siteKey', siteKey);
       formData.append('contentType', contentType);
       formData.append('items', items);
+      formData.append('csrfPreventionToken', csrfPreventionToken);
 
       if (action === 'generate') {
-        formData.append('doXhr', 'generateStaticFiles');
+        formData.append('doAsync', 'generateStaticFiles');
       } else if (action === 'delete') {
-        formData.append('doXhr', 'deleteStaticFiles');
+        formData.append('doAsync', 'deleteStaticFiles');
       }
 
       apiGetData(formData).then(function (totalProcessed) {
@@ -327,11 +330,12 @@ window.addEventListener('DOMContentLoaded', function () {
       formData.append('siteKey', siteKey);
       formData.append('contentType', contentType);
       formData.append('slug', slug);
+      formData.append('csrfPreventionToken', csrfPreventionToken);
 
       if (action === 'generate') {
-        formData.append('doXhr', 'generateStaticFiles');
+        formData.append('doAsync', 'generateStaticFiles');
       } else if (action === 'delete') {
-        formData.append('doXhr', 'deleteStaticFiles');
+        formData.append('doAsync', 'deleteStaticFiles');
       }
 
       apiGetData(formData).then(function (totalProcessed) {
@@ -400,13 +404,14 @@ window.addEventListener('DOMContentLoaded', function () {
           formData.append('siteKey', siteKey);
           formData.append('contentType', contentType);
           formData.append('items', items);
+          formData.append('csrfPreventionToken', csrfPreventionToken);
           var alertSuccessTitle = '';
           var alertErrorTitle = '';
 
           if (bulkAction === 'generate') {
-            formData.append('doXhr', 'generateStaticFiles');
+            formData.append('doAsync', 'generateStaticFiles');
           } else if (bulkAction === 'delete') {
-            formData.append('doXhr', 'deleteStaticFiles');
+            formData.append('doAsync', 'deleteStaticFiles');
           }
 
           apiGetData(formData).then(function (totalProcessed) {
@@ -491,16 +496,18 @@ window.addEventListener('DOMContentLoaded', function () {
 
       var formData = new FormData();
       formData.append('siteKey', siteKey);
-      formData.append('doXhr', 'getStaticFilesInfo');
+      formData.append('doAsync', 'getStaticFilesInfo');
       formData.append('contentType', 'menu');
+      formData.append('csrfPreventionToken', csrfPreventionToken);
       apiGetData(formData).then(function (staticFiles) {
         var menuSlugs = [primaryMenuSlug, footerMenuSlug]; // For each menu...
 
         var _loop = function _loop(i) {
           var formData = new FormData();
           formData.append('siteKey', siteKey);
-          formData.append('doXhr', 'getMenuItems');
+          formData.append('doAsync', 'getMenuItems');
           formData.append('menuSlug', menuSlugs[i]);
+          formData.append('csrfPreventionToken', csrfPreventionToken);
           apiGetData(formData).then(function (menuItems) {
             // Set UI
             loadingSpinner.classList.add('invisible'); // Hide loading spinner
@@ -564,7 +571,8 @@ window.addEventListener('DOMContentLoaded', function () {
       var listTableBody = document.querySelector('#listTableBody');
       var formData = new FormData();
       formData.append('siteKey', siteKey);
-      formData.append('doXhr', "get".concat(contentTypeFirstLetterCapped, "s"));
+      formData.append('doAsync', "get".concat(contentTypeFirstLetterCapped, "s"));
+      formData.append('csrfPreventionToken', csrfPreventionToken);
 
       if (params['perPage'] !== undefined) {
         formData.append('perPage', parseInt(params['perPage']));
@@ -594,9 +602,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
           _formData.append('siteKey', siteKey);
 
-          _formData.append('doXhr', 'getStaticFilesInfo');
+          _formData.append('doAsync', 'getStaticFilesInfo');
 
-          _formData.append('contentType', contentType); // Get all static files info (if available)
+          _formData.append('contentType', contentType);
+
+          _formData.append('csrfPreventionToken', csrfPreventionToken); // Get all static files info (if available)
 
 
           apiGetData(_formData).then(function (staticFiles) {
@@ -658,7 +668,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
       var formData = new FormData();
       formData.append('siteKey', siteKey);
-      formData.append('doXhr', "getTotal".concat(contentTypeFirstLetterCapped, "s")); // Get the total number of published items from CMS
+      formData.append('doAsync', "getTotal".concat(contentTypeFirstLetterCapped, "s"));
+      formData.append('csrfPreventionToken', csrfPreventionToken); // Get the total number of published items from CMS
 
       apiGetData(formData).then(function (response) {
         var totalPublishedItems = parseInt(response);

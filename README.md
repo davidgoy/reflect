@@ -4,6 +4,7 @@
 </p>
 <br>
 <h3 align="center">INSTANT STATIC SITE FOR HEADLESS WORDPRESS</h3>
+<p align="center"><small>v1.0.0-beta.4</small></p>
 <p align="center">
   The ultimate fusion of <i>static site generator</i> and <i>server-side renderer</i>, Reflect is the perfect front-end for those wishing to use WordPress as a headless CMS.<br><b>Deploy in minutes!</b>
 </p>
@@ -95,6 +96,14 @@ For illustration purpose, let's pretend that your Reflect site will be using the
 2. Upload the content of `public_html` into the root directory of your web server (also known as the *document root*).
    
    > **Note:** This may sound obvious, but please upload the folder's CONTENT ONLY, and not the entire `public_html`folder itself! 
+   
+   > **Optional:** It may be a good idea to ensure that your Reflect site content is served... 
+   > 
+   > - only from *https* rather than *http*
+   > 
+   > - either with or without the *www* prefix (and not both) 
+   > 
+   > If you know a bit of *htaccess*, you can edit this [sample *htaccess* file](https://raw.githubusercontent.com/davidgoy/reflect/master/Reflect-App/deploy/sample-reflect.htaccess). Then simply replace the existing *htaccess* file in the `public_html` folder with the new one. 
    
    Next, upload the entire `reflect` folder to a location just outside of the document root. Your web server's directory structure should look something like this:
    
@@ -259,7 +268,7 @@ The following are used in the Reflect project:
 
 - [regenerator-runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js)
 
-- [sweetalert2](https://sweetalert2.github.io/)
+- [SweetAlert2](https://sweetalert2.github.io/)
 
 - [Transactional Email Templates](https://github.com/mailgun/transactional-email-templates)
 

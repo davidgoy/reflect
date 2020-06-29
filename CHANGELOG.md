@@ -8,10 +8,20 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 ## [Unreleased]
 
-- Add Reflect updater.
-- Add *Download and use media locally* feature.
+- Add updater for Reflect (core, themes, addons).
+- Add ability to download media from WordPress and serve the media directly from Reflect site.
 
 <br><br>
+
+## [1.0.0-beta.4] - 2020-06-29
+
+### Added
+
+- Add CSRF prevention safeguard.
+
+### Changed
+
+- Update SweetAlert2 (dependency).
 
 ## [1.0.0-beta.3] - 2020-06-16
 

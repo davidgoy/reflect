@@ -5,13 +5,15 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 
 window.addEventListener('DOMContentLoaded', function() {
 
   (function reflectSetup() {
+
+    const csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken;
 
 
     //--------------------------------------------------------------------------
@@ -27,7 +29,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
         const formData = new FormData();
 
-        formData.append('doXhr', 'generateSiteKey');
+        formData.append('doAsync', 'generateSiteKey');
+        formData.append('csrfPreventionToken', csrfPreventionToken);
 
         // Debug
         /*
@@ -37,44 +40,20 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         */
 
-        const xhr = new XMLHttpRequest();
-        const xhrHandlerUrl = '/index.php';
+        apiGetData(formData).then(function(response) {
 
-        xhr.open('POST', xhrHandlerUrl);
+          if(response !== 'false') {
 
-        xhr.responseType = 'text';
+            const siteKeyInput = document.querySelector('#siteKey');
 
-        xhr.onload = function() {
-
-          if(xhr.readyState === XMLHttpRequest.DONE) {
-
-            if(xhr.status === 200) {
-
-              // Process response from server
-              if(xhr.responseText != '') {
-
-                const siteKeyInput = document.querySelector('#siteKey');
-
-                siteKeyInput.value = xhr.responseText;
-
-              }
-              else {
-
-                // Debug
-                //console.log(`Error: ${xhr.responseText}`);
-              }
-            }
+            siteKeyInput.value = response;
           }
-        }
+          else {
 
-        xhr.onerror = function() {
-
-          reject(xhr.statusText);
-        }
-
-        // Send form data to the server
-        xhr.send(formData);
-
+            // Debug
+            //console.log(`Error: ${response}`);
+          }
+        });
       });
     })();
 
@@ -92,7 +71,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
         const formData = new FormData(form);
 
-        formData.append('doXhr', 'saveSiteKey');
+        formData.append('doAsync', 'saveSiteKey');
+        formData.append('csrfPreventionToken', csrfPreventionToken);
 
         // Debug
         /*
@@ -102,78 +82,93 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         */
 
-        const xhr = new XMLHttpRequest();
-        const xhrHandlerUrl = '/index.php';
+        apiGetData(formData).then(function(response) {
 
-        xhr.open('POST', xhrHandlerUrl);
+          if(response === 'true') {
 
-        xhr.responseType = 'text';
+            Swal.fire({
+              title: 'SITE KEY SAVED',
+              text: 'Have you copied and stored the site key somewhere safe?',
+              icon: 'success',
+              showCancelButton: true,
+              confirmButtonText: 'YES',
+              cancelButtonText: 'NO',
+              reverseButtons: true
+            })
+            .then(function(userConfirmation) {
 
-        xhr.onload = function() {
+              if(userConfirmation.value) {
 
-          if(xhr.readyState === XMLHttpRequest.DONE) {
-
-            if(xhr.status === 200) {
-
-              // Process response from server
-              if(xhr.responseText === 'true') {
-
-                Swal.fire({
-                  title: 'SITE KEY SAVED',
-                  text: 'Have you copied and stored the site key somewhere safe?',
-                  icon: 'success',
-                  showCancelButton: true,
-                  confirmButtonText: 'YES',
-                  cancelButtonText: 'NO',
-                  reverseButtons: true
-                })
-                .then(function(userConfirmation) {
-
-                  if(userConfirmation.value) {
-
-                    // Reload the page
-                    location.reload();
-                  }
-
-                  else if(userConfirmation.dismiss === Swal.DismissReason.cancel) {
-
-                    // Do nothing
-                  }
-
-                });
+                // Reload the page
+                location.reload();
               }
-              else {
 
-                Swal.fire({
-                  title: 'ERROR',
-                  text: 'Site key may have already been saved. Otherwise check config.json for possible errors.',
-                  icon: 'error',
-                  confirmButtonText: 'OK'
-                }).then(function(userConfirmation) {
+              else if(userConfirmation.dismiss === Swal.DismissReason.cancel) {
 
-                  if(userConfirmation.value) {
-
-                    // Reload the page
-                    location.reload();
-                  }
-                });
+                // Do nothing
               }
-            }
+
+            });
           }
-        }
+          else {
 
-        xhr.onerror = function() {
+            Swal.fire({
+              title: 'ERROR',
+              text: 'Site key may have already been saved. Otherwise check config.json for possible errors.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            }).then(function(userConfirmation) {
 
-          reject(xhr.statusText);
-        }
+              if(userConfirmation.value) {
 
-        // Send form data to the server
-        xhr.send(formData);
+                // Reload the page
+                location.reload();
+              }
+            });
+          }
+        });
 
+        // Prevent the form from submitting in the usual way (which would trigger a http request)
         event.preventDefault();
-
       });
     })();
+
+
+    //--------------------------------------------------------------------------
+    /**
+     * @param FormData formData
+     * @return object data
+     */
+    //--------------------------------------------------------------------------
+    function apiGetData(formData) {
+
+      return fetch('/index.php', {
+        method: 'POST',
+        cache: 'no-cache',
+        body: formData
+      })
+      .then(function(response) {
+
+        if(response.ok) {
+
+          return response.json();
+        }
+        else {
+
+          // Do nothing
+        }
+
+      }).then(function(data) {
+
+        return data;
+      }).catch(function(error) {
+
+        // Debug
+        //console.log('Error: ' + error);
+
+      });
+
+    }
 
   })();
 });

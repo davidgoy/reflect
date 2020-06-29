@@ -7,17 +7,18 @@
  * @link https://github.com/davidgoy/reflect-form-mailer
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 window.addEventListener('DOMContentLoaded', function () {
   (function reflectFormMailerAddonSettings() {
-    //--------------------------------------------------------------------------
+    var csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken; //--------------------------------------------------------------------------
 
     /**
      *
      */
     //--------------------------------------------------------------------------
+
     (function initSwitches() {
       var switches = document.getElementsByClassName('switch');
 
@@ -45,8 +46,9 @@ window.addEventListener('DOMContentLoaded', function () {
       var form = document.querySelector('#reflectFormMailerAddonSettings');
       form.addEventListener('submit', function (event) {
         var formData = new FormData(form);
-        formData.append('doXhr', 'saveAddonSettings');
-        formData.append('addonFolderName', 'reflect-form-mailer'); // Debug
+        formData.append('doAsync', 'saveAddonSettings');
+        formData.append('addonFolderName', 'reflect-form-mailer');
+        formData.append('csrfPreventionToken', csrfPreventionToken); // Debug
 
         /*
         for(let input of formData.entries()) {

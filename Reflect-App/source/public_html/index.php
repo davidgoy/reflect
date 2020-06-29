@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -15,11 +15,13 @@ require_once __DIR__ . '/../reflect/core/src/Controller.php';
 
 $reflectController = new Reflect\Controller();
 
-// Handle addon-specific XHR (this will target the Controller in the addon's folder)
-if(isset($_POST['doAddonXhr'])) {
+$reflectController->setCSRFPreventionToken();
 
-  $addonFolderName = filter_var($_POST['doAddonXhr'], FILTER_SANITIZE_ENCODED); // Get folder name
-  unset($_POST['doAddonXhr']); // Then remove the element as we no longer need it
+// Handle addon-specific async request (this will target the Controller in the addon's folder)
+if(isset($_POST['doAddonAsync'])) {
+
+  $addonFolderName = filter_var($_POST['doAddonAsync'], FILTER_SANITIZE_ENCODED); // Get folder name
+  unset($_POST['doAddonAsync']); // Then remove the element as we no longer need it
 
   require_once __DIR__ . '/../reflect/addons/' . $addonFolderName . '/src/Controller.php';
 
@@ -41,13 +43,13 @@ if(isset($_POST['doAddonXhr'])) {
   }
 
 }
-// Handle site (including theme and addons Settings) XHR
-else if(isset($_POST['doXhr'])) {
+// Handle site (including theme and addons Settings) async request
+else if(isset($_POST['doAsync'])) {
 
-  $action = filter_var($_POST['doXhr'], FILTER_SANITIZE_ENCODED);
-  unset($_POST['doXhr']); // Then remove the element as we no longer need it
+  $action = filter_var($_POST['doAsync'], FILTER_SANITIZE_ENCODED);
+  unset($_POST['doAsync']); // Then remove the element as we no longer need it
 
-  $reflectController->handleXhr($action);
+  $reflectController->handleAsync($action);
 }
 // Load site as usual
 else {

@@ -7,8 +7,18 @@
       </div>
 
       <div class="col-sm-8">
+
         <h2 class="text-center m-5">SETTINGS</h2>
-        <p class="text-center">Core Reflect app settings.</p>
+
+        <div class="text-center">
+          <div id="updateSpinner" class="d-none spinner-border spinner-border-sm text-secondary" role="status"><span class="sr-only">Processing...</span></div>
+          <span id="checkingForUpdate" class="d-none">Checking for available update...</span>
+          <p id="upToDate" class="d-none">Reflect v<span id="currentVersion"><?php echo $config['version']; ?></span></p>
+          <p id="updateAvailable" class="d-none">Newer version of Reflect is available (v<span id="newerVersion"></span>) <a id="updateNow" class="btn btn-sm btn-primary" href="#">UPDATE NOW</a></p>
+          <span id="updating" class="d-none">Updating...</span>
+          <p id="updateCompleted" class="d-none">Update completed! Please <a href="//<?php echo $_SERVER['SERVER_NAME'] . '/' . $config['settingsPageSlug']; ?>">refresh this page now.</a></p>
+        </div>
+
       </div>
 
       <div class="col-sm-2">

@@ -5,7 +5,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -13,6 +13,18 @@
 window.addEventListener('DOMContentLoaded', function() {
 
   (function reflectSettings() {
+
+    const csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken;
+
+    // Update related
+    const checkingForUpdateText = document.querySelector('#checkingForUpdate');
+    const upToDateText = document.querySelector('#upToDate');
+    const updateAvailableText = document.querySelector('#updateAvailable');
+    const updatingText = document.querySelector('#updating');
+    const updateCompletedText = document.querySelector('#updateCompleted');
+    const currentVersion = document.querySelector('#currentVersion').innerHTML;
+    const newerVersion = document.querySelector('#newerVersion').innerHTML;
+    const updateSpinner = document.querySelector('#updateSpinner');
 
     // Hidden inputs
     const siteKey = document.querySelector('#siteKey').value;
@@ -27,7 +39,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
       const formData = new FormData(form);
 
-      formData.append('doXhr', 'saveSiteSettings');
+      formData.append('doAsync', 'saveSiteSettings');
+      formData.append('csrfPreventionToken', csrfPreventionToken);
 
       // Debug
       /*
@@ -76,7 +89,8 @@ window.addEventListener('DOMContentLoaded', function() {
         formData.append('siteKey', siteKey);
         formData.append('cmsProtocol', cmsProtocol);
         formData.append('cmsDomain', cmsDomain);
-        formData.append('doXhr', 'getWpApiInfo');
+        formData.append('doAsync', 'getWpApiInfo');
+        formData.append('csrfPreventionToken', csrfPreventionToken);
 
         apiGetData(formData).then(function(wpApiInfoJson) {
 
@@ -103,6 +117,20 @@ window.addEventListener('DOMContentLoaded', function() {
 
       event.preventDefault();
     });
+
+
+    //--------------------------------------------------------------------------
+    /**
+     *
+     */
+    //--------------------------------------------------------------------------
+    (function initUpdateComponents() {
+
+      // Check for available updates (but only if Reflect site has already been set up)
+
+
+
+    })();
 
 
     //----------------------------------------------------------------------------

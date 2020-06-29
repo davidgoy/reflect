@@ -5,7 +5,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -13,6 +13,8 @@
 window.addEventListener('DOMContentLoaded', function() {
 
   (function reflectStaticFilesManager() {
+
+    const csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken;
 
     // Hidden inputs
     const siteKey = document.querySelector('#siteKey').value;
@@ -61,7 +63,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
         const sfmFormData = new FormData(sfmForm);
 
-        sfmFormData.append('doXhr', 'saveSiteSettings');
+        sfmFormData.append('doAsync', 'saveSiteSettings');
+        sfmFormData.append('csrfPreventionToken', csrfPreventionToken);
 
         // Debug
         /*
@@ -367,15 +370,16 @@ window.addEventListener('DOMContentLoaded', function() {
       formData.append('siteKey', siteKey);
       formData.append('contentType', contentType);
       formData.append('items', items);
+      formData.append('csrfPreventionToken', csrfPreventionToken);
 
       if(action === 'generate') {
 
-        formData.append('doXhr', 'generateStaticFiles');
+        formData.append('doAsync', 'generateStaticFiles');
 
       }
       else if(action === 'delete') {
 
-        formData.append('doXhr', 'deleteStaticFiles');
+        formData.append('doAsync', 'deleteStaticFiles');
       }
 
       apiGetData(formData).then(function(totalProcessed) {
@@ -439,15 +443,16 @@ window.addEventListener('DOMContentLoaded', function() {
       formData.append('siteKey', siteKey);
       formData.append('contentType', contentType);
       formData.append('slug', slug);
+      formData.append('csrfPreventionToken', csrfPreventionToken);
 
       if(action === 'generate') {
 
-        formData.append('doXhr', 'generateStaticFiles');
+        formData.append('doAsync', 'generateStaticFiles');
 
       }
       else if(action === 'delete') {
 
-        formData.append('doXhr', 'deleteStaticFiles');
+        formData.append('doAsync', 'deleteStaticFiles');
       }
 
       apiGetData(formData).then(function(totalProcessed) {
@@ -537,17 +542,18 @@ window.addEventListener('DOMContentLoaded', function() {
           formData.append('siteKey', siteKey);
           formData.append('contentType', contentType);
           formData.append('items', items);
+          formData.append('csrfPreventionToken', csrfPreventionToken);
 
           let alertSuccessTitle = '';
           let alertErrorTitle = '';
 
           if(bulkAction === 'generate') {
 
-            formData.append('doXhr', 'generateStaticFiles');
+            formData.append('doAsync', 'generateStaticFiles');
           }
           else if(bulkAction === 'delete') {
 
-            formData.append('doXhr', 'deleteStaticFiles');
+            formData.append('doAsync', 'deleteStaticFiles');
           }
 
           apiGetData(formData).then(function(totalProcessed) {
@@ -645,8 +651,9 @@ window.addEventListener('DOMContentLoaded', function() {
       const formData = new FormData();
 
       formData.append('siteKey', siteKey);
-      formData.append('doXhr', 'getStaticFilesInfo');
+      formData.append('doAsync', 'getStaticFilesInfo');
       formData.append('contentType', 'menu');
+      formData.append('csrfPreventionToken', csrfPreventionToken);
 
       apiGetData(formData).then(function(staticFiles) {
 
@@ -658,8 +665,9 @@ window.addEventListener('DOMContentLoaded', function() {
           const formData = new FormData();
 
           formData.append('siteKey', siteKey);
-          formData.append('doXhr', 'getMenuItems');
+          formData.append('doAsync', 'getMenuItems');
           formData.append('menuSlug', menuSlugs[i]);
+          formData.append('csrfPreventionToken', csrfPreventionToken);
 
           apiGetData(formData).then(function(menuItems) {
 
@@ -739,7 +747,8 @@ window.addEventListener('DOMContentLoaded', function() {
       const formData = new FormData();
 
       formData.append('siteKey', siteKey);
-      formData.append('doXhr', `get${contentTypeFirstLetterCapped}s`);
+      formData.append('doAsync', `get${contentTypeFirstLetterCapped}s`);
+      formData.append('csrfPreventionToken', csrfPreventionToken);
 
       if(params['perPage'] !== undefined) {
 
@@ -778,8 +787,9 @@ window.addEventListener('DOMContentLoaded', function() {
           const formData = new FormData();
 
           formData.append('siteKey', siteKey);
-          formData.append('doXhr', 'getStaticFilesInfo');
+          formData.append('doAsync', 'getStaticFilesInfo');
           formData.append('contentType', contentType);
+          formData.append('csrfPreventionToken', csrfPreventionToken);
 
           // Get all static files info (if available)
           apiGetData(formData).then(function(staticFiles) {
@@ -872,7 +882,8 @@ window.addEventListener('DOMContentLoaded', function() {
       const formData = new FormData();
 
       formData.append('siteKey', siteKey);
-      formData.append('doXhr', `getTotal${contentTypeFirstLetterCapped}s`);
+      formData.append('doAsync', `getTotal${contentTypeFirstLetterCapped}s`);
+      formData.append('csrfPreventionToken', csrfPreventionToken);
 
       // Get the total number of published items from CMS
       apiGetData(formData).then(function(response) {

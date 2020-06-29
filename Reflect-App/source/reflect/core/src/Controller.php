@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -64,7 +64,9 @@ class Controller {
    * @param string $action
    */
   //----------------------------------------------------------------------------
-  public function handleXhr($action) {
+  public function handleAsync($action) {
+
+    $this->authenticateCsrfPreventionToken();
 
     switch($action) {
 
@@ -72,100 +74,136 @@ class Controller {
 
         $siteKey = $this->generateSiteKey();
 
-        echo $siteKey;
+        echo json_encode($siteKey);
 
         exit();
 
       case 'saveSiteKey':
 
-        $this->xhrSaveSiteKey();
+        $this->asyncSaveSiteKey();
 
         break;
 
       case 'authenticateSiteKey':
 
-        $this->xhrAuthenticateSiteKey();
+        $this->asyncAuthenticateSiteKey();
 
         break;
 
       case 'getWpApiInfo':
 
-        $this->xhrGetWpApiInfo();
+        $this->asyncGetWpApiInfo();
 
         break;
 
       case 'saveSiteSettings':
 
-        $this->xhrSaveSettings();
+        $this->asyncSaveSettings();
 
         break;
 
       case 'saveThemeSettings':
 
-        $this->xhrSaveSettings();
+        $this->asyncSaveSettings();
 
         break;
 
       case 'saveAddonSettings':
 
-        $this->xhrSaveSettings();
+        $this->asyncSaveSettings();
 
         break;
 
       case 'getStaticFilesInfo':
 
-        $this->xhrGetStaticFilesInfo();
+        $this->asyncGetStaticFilesInfo();
 
         break;
 
       case 'generateStaticFiles':
 
-        $this->xhrGenerateStaticFiles();
+        $this->asyncGenerateStaticFiles();
 
         break;
 
       case 'deleteStaticFiles':
 
-        $this->xhrDeleteStaticFiles();
+        $this->asyncDeleteStaticFiles();
 
         break;
 
       case 'getTotalPages':
 
-        $this->xhrGetTotalPagesOrPosts('pages');
+        $this->asyncGetTotalPagesOrPosts('pages');
 
         break;
 
       case 'getTotalPosts':
 
-        $this->xhrGetTotalPagesOrPosts('posts');
+        $this->asyncGetTotalPagesOrPosts('posts');
 
         break;
 
       case 'getPages':
 
-        $this->xhrGetPagesOrPosts('pages');
+        $this->asyncGetPagesOrPosts('pages');
 
         break;
 
       case 'getPosts':
 
-        $this->xhrGetPagesOrPosts('posts');
+        $this->asyncGetPagesOrPosts('posts');
 
         break;
 
       case 'getMenuItems':
 
-        $this->xhrGetMenuItems();
-
-        break;
-
-      case 'getAddonConfig':
-
-        $this->xhrGetAddonConfig();
+        $this->asyncGetMenuItems();
 
         break;
     }
+  }
+
+
+  //----------------------------------------------------------------------------
+  /**
+   *
+   */
+  //----------------------------------------------------------------------------
+  public function setCSRFPreventionToken() {
+
+    session_start();
+
+    if(!isset($_SESSION['csrfPreventionToken']) || empty($_SESSION['csrfPreventionToken'])) {
+
+      $factory = new Factory();
+      $generator = $factory->getLowStrengthGenerator();
+      $numOfCharacters = 8;
+      $possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
+      $csrfPreventionToken = $generator->generateString($numOfCharacters, $possibleCharacters);
+
+      $_SESSION['csrfPreventionToken'] = $csrfPreventionToken;
+    }
+  }
+
+
+  //----------------------------------------------------------------------------
+  /**
+   * 
+   */
+  //----------------------------------------------------------------------------
+  private function authenticateCsrfPreventionToken() {
+
+    $processedFormData = $this->getProcessedFormData();
+
+    if(!isset($_SESSION['csrfPreventionToken']) || $_SESSION['csrfPreventionToken'] !== $processedFormData['csrfPreventionToken']) {
+
+      echo json_encode('false');
+
+      exit();
+    }
+
+    unset($processedFormData['csrfPreventionToken']);
   }
 
 
@@ -249,7 +287,7 @@ class Controller {
     }
     else {
 
-      return false;
+      return 'false';
     }
 
   }
@@ -292,7 +330,7 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
-  private function xhrSaveSiteKey() {
+  private function asyncSaveSiteKey() {
 
     // For security, only allow site key to be saved if there is currently none (such as when setting up a new Reflect site)
     if(empty($this->config->reflectConfig['siteKey']) && isset($_POST['siteKey'])) {
@@ -308,11 +346,11 @@ class Controller {
       // Updated config.json successfully written
       if($configFileReplaced !== false) {
 
-        echo 'true';
+        echo json_encode('true');
       }
       else {
 
-        echo 'false';
+        echo json_encode('false');
       }
     }
 
@@ -325,7 +363,7 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
-  private function xhrSaveSettings() {
+  private function asyncSaveSettings() {
 
     $processedFormData = $this->getProcessedFormData();
 
@@ -405,7 +443,7 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
-  private function xhrAuthenticateSiteKey() {
+  private function asyncAuthenticateSiteKey() {
 
     if(isset($_POST['siteKey']) && isset($_POST['targetAction'])) {
 
@@ -433,24 +471,24 @@ class Controller {
             $document = $this->getSettingsPage();
           }
 
-          echo $document;
+          echo json_encode($document);
         }
         // Load Static Files Manager page
         else if($targetAction === 'load_static_files_manager') {
 
           $document = $this->getStaticFilesManagerPage();
 
-          echo $document;
+          echo json_encode($document);
         }
       }
       else {
 
-        echo 'false';
+        echo json_encode('false');
       }
     }
     else {
 
-      echo 'false';
+      echo json_encode('false');
     }
 
     exit();
@@ -463,7 +501,7 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
-  private function xhrGetWpApiInfo() {
+  private function asyncGetWpApiInfo() {
 
     $processedFormData = $this->getProcessedFormData();
 
@@ -480,12 +518,12 @@ class Controller {
       }
       else {
 
-        echo 'false';
+        echo json_encode('false');
       }
     }
     else {
 
-      echo 'false';
+      echo json_encode('false');
     }
 
     exit();
@@ -497,7 +535,7 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
-  private function xhrGetStaticFilesInfo() {
+  private function asyncGetStaticFilesInfo() {
 
     $processedFormData = $this->getProcessedFormData();
 
@@ -587,7 +625,7 @@ class Controller {
     }
     else {
 
-      echo 'false';
+      echo json_encode('false');
     }
 
     exit();
@@ -599,7 +637,7 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
-  private function xhrGenerateStaticFiles() {
+  private function asyncGenerateStaticFiles() {
 
     $processedFormData = $this->getProcessedFormData();
 
@@ -695,13 +733,13 @@ class Controller {
       }
       else {
 
-        echo 'false';
+        echo json_encode('false');
       }
 
     }
     else {
 
-      echo 'false';
+      echo json_encode('false');
     }
 
     exit();
@@ -713,7 +751,7 @@ class Controller {
    * @param string $contentType
    */
   //----------------------------------------------------------------------------
-  private function xhrGetTotalPagesOrPosts($contentType) {
+  private function asyncGetTotalPagesOrPosts($contentType) {
 
     $processedFormData = $this->getProcessedFormData();
 
@@ -741,12 +779,12 @@ class Controller {
       }
       else {
 
-        echo 'false';
+        echo json_encode('false');
       }
     }
     else {
 
-      echo 'false';
+      echo json_encode('false');
     }
   }
 
@@ -756,7 +794,7 @@ class Controller {
    * @param string $contentType
    */
   //----------------------------------------------------------------------------
-  private function xhrGetPagesOrPosts($contentType) {
+  private function asyncGetPagesOrPosts($contentType) {
 
     $processedFormData = $this->getProcessedFormData();
 
@@ -771,7 +809,7 @@ class Controller {
     }
     else {
 
-      echo 'false';
+      echo json_encode('false');
     }
 
     exit();
@@ -783,7 +821,7 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
-  private function xhrGetMenuItems() {
+  private function asyncGetMenuItems() {
 
     $processedFormData = $this->getProcessedFormData();
 
@@ -807,7 +845,7 @@ class Controller {
     }
     else {
 
-      echo 'false';
+      echo json_encode('false');
     }
 
     exit();
@@ -819,7 +857,7 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
-  private function xhrDeleteStaticFiles() {
+  private function asyncDeleteStaticFiles() {
 
     $processedFormData = $this->getProcessedFormData();
 
@@ -921,7 +959,7 @@ class Controller {
         }
         else {
 
-          echo 'false';
+          echo json_encode('false');
         }
       }
       // If type is menu
@@ -937,63 +975,16 @@ class Controller {
           }
           else {
 
-            echo 'false';
+            echo json_encode('false');
           }
         }
       }
     }
     else {
 
-      echo 'false';
+      echo json_encode('false');
     }
 
-    exit();
-  }
-
-
-  //----------------------------------------------------------------------------
-  /**
-   *
-   */
-  //----------------------------------------------------------------------------
-  private function xhrGetAddonConfig() {
-
-    $processedFormData = $this->getProcessedFormData();
-
-    if(isset($processedFormData['addonFolderName']) && !empty($processedFormData['addonFolderName'])) {
-
-      // Get addon config
-      $addonConfigJson = file_get_contents(__DIR__ . "/../../addons/{$processedFormData['addonFolderName']}/config.json");
-      $addonConfig = json_decode($addonConfigJson, true);
-
-      // Make sure that all the required addon properties are set...
-
-      $requiredProperties = explode(',', str_replace(' ', '', trim($addonConfig['requiredProperties'])));
-
-      if(count($requiredProperties) > 0 && !empty($requiredProperties[0])) {
-
-        for ($i = 0; $i < count($requiredProperties); $i++) {
-
-          $property = $requiredProperties[$i];
-
-          if(!isset($addonConfig[$property]) || empty($addonConfig[$property])) {
-
-            // Debug
-            //echo json_encode($property);
-
-            echo 'false';
-
-            exit();
-          }
-        }
-      }
-
-      echo json_encode($addonConfig);
-    }
-    else {
-
-      echo 'false';
-    }
     exit();
   }
 
@@ -1211,7 +1202,7 @@ class Controller {
 
     $siteKey = $this->generateSiteKey();
 
-    if($siteKey !== false) {
+    if($siteKey !== 'false') {
 
       $pageTitle = 'Setup';
       $mainContentFile = 'setup.php';

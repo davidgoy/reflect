@@ -7,11 +7,12 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 window.addEventListener('DOMContentLoaded', function () {
   (function reflectAuthentication() {
+    var csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken;
     var siteKeyInput = document.querySelector('#siteKey');
     siteKeyInput.value = ''; //--------------------------------------------------------------------------
 
@@ -26,7 +27,8 @@ window.addEventListener('DOMContentLoaded', function () {
       var targetAction = targetActionInput.value;
       form.addEventListener('submit', function (event) {
         var formData = new FormData(form);
-        formData.append('doXhr', 'authenticateSiteKey'); // Debug
+        formData.append('doAsync', 'authenticateSiteKey');
+        formData.append('csrfPreventionToken', csrfPreventionToken); // Debug
 
         /*
         for(let input of formData.entries()) {
@@ -34,51 +36,58 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         */
 
-        var xhr = new XMLHttpRequest();
-        var xhrHandlerUrl = '/index.php';
-        xhr.open('POST', xhrHandlerUrl);
-        xhr.responseType = 'text';
+        apiGetData(formData).then(function (response) {
+          if (response !== 'false') {
+            Swal.fire({
+              title: 'SITE KEY AUTHENTICATED',
+              text: 'Access granted.',
+              icon: 'success',
+              confirmButtonText: 'PROCEED'
+            }).then(function (userConfirmation) {
+              if (userConfirmation.value) {
+                var documentHtml = response; // Debug
+                //console.log(documentHtml);
 
-        xhr.onload = function () {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-              // Process response from server
-              if (xhr.responseText !== 'false') {
-                Swal.fire({
-                  title: 'SITE KEY AUTHENTICATED',
-                  text: 'Access granted.',
-                  icon: 'success',
-                  confirmButtonText: 'PROCEED'
-                }).then(function (userConfirmation) {
-                  if (userConfirmation.value) {
-                    var documentHtml = xhr.responseText; // Debug
-                    //console.log(documentHtml);
-
-                    document.open();
-                    document.write(documentHtml);
-                    document.close();
-                  }
-                });
-              } else {
-                Swal.fire({
-                  title: 'SITE KEY INCORRECT',
-                  text: 'Access denied.',
-                  icon: 'error',
-                  confirmButtonText: 'OK'
-                });
+                document.open();
+                document.write(documentHtml);
+                document.close();
               }
-            }
+            });
+          } else {
+            Swal.fire({
+              title: 'SITE KEY INCORRECT',
+              text: 'Access denied.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
           }
-        };
-
-        xhr.onerror = function () {
-          reject(xhr.statusText);
-        }; // Send form data to the server
-
-
-        xhr.send(formData);
+        });
         event.preventDefault();
       });
-    })();
+    })(); //--------------------------------------------------------------------------
+
+    /**
+     * @param FormData formData
+     * @return object data
+     */
+    //--------------------------------------------------------------------------
+
+
+    function apiGetData(formData) {
+      return fetch('/index.php', {
+        method: 'POST',
+        cache: 'no-cache',
+        body: formData
+      }).then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {// Do nothing
+        }
+      }).then(function (data) {
+        return data;
+      })["catch"](function (error) {// Debug
+        //console.log('Error: ' + error);
+      });
+    }
   })();
 });

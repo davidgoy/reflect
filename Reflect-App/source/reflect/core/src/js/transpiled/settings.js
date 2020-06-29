@@ -7,12 +7,22 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 window.addEventListener('DOMContentLoaded', function () {
   (function reflectSettings() {
-    // Hidden inputs
+    var csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken; // Update related
+
+    var checkingForUpdateText = document.querySelector('#checkingForUpdate');
+    var upToDateText = document.querySelector('#upToDate');
+    var updateAvailableText = document.querySelector('#updateAvailable');
+    var updatingText = document.querySelector('#updating');
+    var updateCompletedText = document.querySelector('#updateCompleted');
+    var currentVersion = document.querySelector('#currentVersion').innerHTML;
+    var newerVersion = document.querySelector('#newerVersion').innerHTML;
+    var updateSpinner = document.querySelector('#updateSpinner'); // Hidden inputs
+
     var siteKey = document.querySelector('#siteKey').value;
     var form = document.querySelector('#settings');
     var addonCheckboxes = form.querySelectorAll('input[name="addonsToLoad[]"]');
@@ -21,7 +31,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function (event) {
       var formData = new FormData(form);
-      formData.append('doXhr', 'saveSiteSettings'); // Debug
+      formData.append('doAsync', 'saveSiteSettings');
+      formData.append('csrfPreventionToken', csrfPreventionToken); // Debug
 
       /*
       for(let input of formData.entries()) {
@@ -58,7 +69,8 @@ window.addEventListener('DOMContentLoaded', function () {
         formData.append('siteKey', siteKey);
         formData.append('cmsProtocol', cmsProtocol);
         formData.append('cmsDomain', cmsDomain);
-        formData.append('doXhr', 'getWpApiInfo');
+        formData.append('doAsync', 'getWpApiInfo');
+        formData.append('csrfPreventionToken', csrfPreventionToken);
         apiGetData(formData).then(function (wpApiInfoJson) {
           if (wpApiInfoJson !== undefined && wpApiInfoJson.name !== undefined) {
             Swal.fire({
@@ -79,12 +91,21 @@ window.addEventListener('DOMContentLoaded', function () {
       }
 
       event.preventDefault();
-    }); //----------------------------------------------------------------------------
+    }); //--------------------------------------------------------------------------
+
+    /**
+     *
+     */
+    //--------------------------------------------------------------------------
+
+    (function initUpdateComponents() {// Check for available updates (but only if Reflect site has already been set up)
+    })(); //----------------------------------------------------------------------------
 
     /**
      *
      */
     //----------------------------------------------------------------------------
+
 
     (function initAddonCheckboxes() {
       for (var i = 0; i < addonCheckboxes.length; i++) {

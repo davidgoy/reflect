@@ -5,7 +5,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.3
+ * @version 1.0.0-beta.4
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -13,6 +13,8 @@
 window.addEventListener('DOMContentLoaded', function() {
 
   (function reflectAuthentication() {
+
+    const csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken;
 
     const siteKeyInput = document.querySelector('#siteKey');
     siteKeyInput.value = '';
@@ -34,7 +36,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
         const formData = new FormData(form);
 
-        formData.append('doXhr', 'authenticateSiteKey');
+        formData.append('doAsync', 'authenticateSiteKey');
+        formData.append('csrfPreventionToken', csrfPreventionToken);
 
         // Debug
         /*
@@ -44,69 +47,83 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         */
 
-        const xhr = new XMLHttpRequest();
-        const xhrHandlerUrl = '/index.php';
+        apiGetData(formData).then(function(response) {
 
-        xhr.open('POST', xhrHandlerUrl);
+          if(response !== 'false') {
 
-        xhr.responseType = 'text';
+            Swal.fire({
+              title: 'SITE KEY AUTHENTICATED',
+              text: 'Access granted.',
+              icon: 'success',
+              confirmButtonText: 'PROCEED'
+            })
+            .then(function(userConfirmation) {
 
-        xhr.onload = function() {
+              if(userConfirmation.value) {
 
-          if(xhr.readyState === XMLHttpRequest.DONE) {
+                const documentHtml = response;
 
-            if(xhr.status === 200) {
+                // Debug
+                //console.log(documentHtml);
 
-              // Process response from server
-              if(xhr.responseText !== 'false') {
-
-                Swal.fire({
-                  title: 'SITE KEY AUTHENTICATED',
-                  text: 'Access granted.',
-                  icon: 'success',
-                  confirmButtonText: 'PROCEED'
-                })
-                .then(function(userConfirmation) {
-
-                  if(userConfirmation.value) {
-
-                    const documentHtml = xhr.responseText;
-
-                    // Debug
-                    //console.log(documentHtml);
-
-                    document.open();
-                    document.write(documentHtml);
-                    document.close();
-                  }
-
-                });
+                document.open();
+                document.write(documentHtml);
+                document.close();
               }
-              else {
 
-                Swal.fire({
-                  title: 'SITE KEY INCORRECT',
-                  text: 'Access denied.',
-                  icon: 'error',
-                  confirmButtonText: 'OK'
-                });
-              }
-            }
+            });
           }
-        }
+          else {
 
-        xhr.onerror = function() {
-
-          reject(xhr.statusText);
-        }
-
-        // Send form data to the server
-        xhr.send(formData);
+            Swal.fire({
+              title: 'SITE KEY INCORRECT',
+              text: 'Access denied.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+          }
+        });
 
         event.preventDefault();
       });
 
     })();
+
+    //--------------------------------------------------------------------------
+    /**
+     * @param FormData formData
+     * @return object data
+     */
+    //--------------------------------------------------------------------------
+    function apiGetData(formData) {
+
+      return fetch('/index.php', {
+        method: 'POST',
+        cache: 'no-cache',
+        body: formData
+      })
+      .then(function(response) {
+
+        if(response.ok) {
+
+          return response.json();
+        }
+        else {
+
+          // Do nothing
+        }
+
+      }).then(function(data) {
+
+        return data;
+      }).catch(function(error) {
+
+        // Debug
+        //console.log('Error: ' + error);
+
+      });
+
+    }
 
   })();
 });

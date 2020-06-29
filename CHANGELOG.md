@@ -22,6 +22,7 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 ### Changed
 
 - Update SweetAlert2 (dependency).
+- Update WordPress block library CSS (dependency).
 
 ## [1.0.0-beta.3] - 2020-06-16
 

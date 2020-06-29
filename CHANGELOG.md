@@ -19,10 +19,7 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 - Add CSRF prevention safeguard.
 
-### Changed
-
-- Update SweetAlert2 (dependency).
-- Update WordPress block library CSS (dependency).
+# 
 
 <br><br> 
 

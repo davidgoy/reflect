@@ -17,11 +17,9 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 ### Added
 
-- Add CSRF prevention safeguard.
+- Add CSRF prevention safeguard. 
 
-# 
-
-<br><br> 
+<br><br>
 
 ## [1.0.0-beta.3] - 2020-06-16
 

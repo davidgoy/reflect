@@ -2,9 +2,7 @@
 
 A record of notable changes to the Reflect project since v1.0.0-beta.1 (released on the 2020-06-08):
 
-<br>
-
-<br>
+<br><br>
 
 ## [Unreleased]
 
@@ -45,7 +43,7 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 - Change app folder structure.
 
-- Update all CSS and JS dependencies.
+- 
 
 - Compile all JS files to be transpiled using Babel.
 

@@ -1,31 +1,13 @@
 {
   "1.0.0-beta.5": {
-    "foldersAdded": {
+    "folders": {
 
     },
-    "foldersRemoved": {
+    "files": {
 
     },
-    "foldersChanged": {
-
-    },
-    "filesAdded": {
-
-    },
-    "filesRemoved": {
-
-    },
-    "filesChanged": {
-
-    },
-    "configPropertiesAdded": {
-
-    },
-    "configPropertiesRemoved": {
-
-    },
-    "configPropertiesChanged": {
-
+    "config": {
+      
     }
   }
 }

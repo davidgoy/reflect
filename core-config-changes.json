@@ -1,0 +1,20 @@
+{
+  "1.0.0-beta.5": {
+    "added": {
+      "a1": "Some default value for a1",
+      "a2": "Some default value for a2",
+      "a3": "Some default value for a3",
+      "a4": ""
+    },
+    "removed": {
+      "b1": "",
+      "b2": "",
+      "b3"
+    },
+    "replaced": {
+      "c1": "d1",
+      "c2": "d2",
+      "c3": "d3"
+    }
+  }
+}

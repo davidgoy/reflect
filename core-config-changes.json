@@ -1,47 +1,48 @@
 {
-  "1.0.0-beta.5": {
-    "added": {
-      "a1": "Some default value for a1",
-      "a2": "Some default value for a2",
-      "a3": "Some default value for a3",
-      "a4": ""
+  [
+    "1.0.0-beta.5": {
+      "added": {
+        "a1": "Some default value for a1",
+        "a2": "Some default value for a2",
+        "a3": "Some default value for a3",
+        "a4": ""
+      },
+      "removed": {
+        "b1": "",
+        "b2": "",
+        "b3": ""
+      },
+      "replaced": {
+        "c1": "d1",
+        "c2": "d2",
+        "c3": "d3"
+      }
     },
-    "removed": {
-      "b1": "",
-      "b2": "",
-      "b3": ""
-    },
-    "replaced": {
-      "c1": "d1",
-      "c2": "d2",
-      "c3": "d3"
-    }
-  },
-  "1.0.0-beta.6": {
-    "added": {
-      "d4": "Some default value for d4"
-    },
-    "removed": {
+    "1.0.0-beta.6": {
+      "added": {
+        "d4": "Some default value for d4"
+      },
+      "removed": {
 
+      },
+      "replaced": {
+        "a1": "d5",
+        "d2": "e1",
+        "d3": "e2"
+      }
     },
-    "replaced": {
-      "a1": "d5",
-      "d2": "e1",
-      "d3": "e2"
+    "1.0.0": {
+      "added": {
+        "f1": "Some default value for f1",
+        "f2": "Some default value for f2"
+      },
+      "removed": {
+        "e1": ""
+      },
+      "replaced": {
+        "e2": "f3",
+        "d4": "f4"
+      }
     }
-  },
-  "1.0.0": {
-    "added": {
-      "f1": "Some default value for f1",
-      "f2": "Some default value for f2"
-    },
-    "removed": {
-      "e1": ""
-    },
-    "replaced": {
-      "e2": "f3",
-      "d4": "f4"
-    }
-  }
-
+  ]
 }

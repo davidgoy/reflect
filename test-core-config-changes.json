@@ -2,7 +2,7 @@
   "changes": [
     {
       "version": "1.0.0-beta.5",
-      "released": "1598918400",
+      "released": "2020-08-01 00:00",
       "configProperties": {
         "added": {
           "a1": "Some default value for a1",
@@ -24,7 +24,7 @@
     },
     {
       "version": "1.0.0-beta.6",
-      "released": "1601510400",
+      "released": "2020-09-01 00:00",
       "configProperties": {
         "added": {
           "d4": "Some default value for d4"
@@ -41,7 +41,7 @@
     },
     {
       "version": "1.0.0",
-      "released": "1604188800",
+      "released": "2020-09-01 01:00",
       "configProperties": {
         "added": {
           "f1": "Some default value for f1",

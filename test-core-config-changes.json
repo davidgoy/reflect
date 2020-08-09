@@ -2,7 +2,7 @@
   "changes": [
     {
       "version": "1.0.0-beta.5",
-      "released": "2020-12-01 00:00:00",
+      "released": "2020-08-01 00:00:00",
       "configProperties": {
         "added": {
           "a1": "Some default value for a1",

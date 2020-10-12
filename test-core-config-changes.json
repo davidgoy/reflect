@@ -1,8 +1,8 @@
 {
   "changes": [
     {
-      "version": "1.0.0-beta.5",
-      "released": "2020-08-01 00:00:00",
+      "version": "1.0.0",
+      "released": "2020-10-12 00:00:00",
       "configProperties": {
         "added": {
           "a1": "Some default value for a1",
@@ -40,8 +40,8 @@
       }
     },
     {
-      "version": "1.0.0",
-      "released": "2020-09-01 01:00:00",
+      "version": "1.0.0-beta.5",
+      "released": "2020-08-01 00:00:00",
       "configProperties": {
         "added": {
           "f1": "Some default value for f1",

@@ -1,56 +1,44 @@
 {
   "changes": [
     {
-      "version": "1.0.0",
       "released": "2020-10-12 00:00:00",
       "configProperties": {
         "added": {
-          "c1": "Some default value for c1",
-          "c2": "Some default value for c2"
+          "version": "1.0.0"
         },
         "removed": {
-          "b2": ""
+          "version": ""
         },
         "replaced": {
-          "a3": "b3"
+
         }
       }
     },
     {
-      "version": "1.0.0-beta.6",
       "released": "2020-09-01 00:00:00",
       "configProperties": {
         "added": {
-          "a5": "Some default value for a5"
+          "version": "1.0.0-beta.6"
         },
         "removed": {
-
+          "version": ""
         },
         "replaced": {
-          "a1": "b1",
-          "a2": "b2"
+          "oldPropertyName": "newPropertyName"
         }
       }
     },
     {
-      "version": "1.0.0-beta.5",
       "released": "2020-08-01 00:00:00",
       "configProperties": {
         "added": {
-          "a1": "Some default value for a1",
-          "a2": "Some default value for a2",
-          "a3": "Some default value for a3",
-          "a4": ""
+          "version": "1.0.0-beta.5"
         },
         "removed": {
-          "x1": "",
-          "x2": "",
-          "x3": ""
+          "version": ""
         },
         "replaced": {
-          "y1": "b1",
-          "y2": "b2",
-          "y3": "b3"
+
         }
       }
     }

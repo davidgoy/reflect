@@ -4,14 +4,14 @@
       "version": "1.0.0",
       "released": "2020-10-12 00:00:00",
       "configProperties": {
-        "added": {
-          "version": "1.0.0"
-        },
         "removed": {
           "version": ""
         },
         "replaced": {
 
+        },
+        "added": {
+          "version": "1.0.0"
         }
       }
     },
@@ -19,14 +19,14 @@
       "version": "1.0.0-beta.6",
       "released": "2020-09-01 00:00:00",
       "configProperties": {
-        "added": {
-          "version": "1.0.0-beta.6"
-        },
         "removed": {
           "version": ""
         },
         "replaced": {
           "oldPropertyName": "newPropertyName"
+        },
+        "added": {
+          "version": "1.0.0-beta.6"
         }
       }
     },
@@ -34,14 +34,14 @@
       "version": "1.0.0-beta.5",
       "released": "2020-08-01 00:00:00",
       "configProperties": {
-        "added": {
-          "version": "1.0.0-beta.5"
-        },
         "removed": {
           "version": ""
         },
         "replaced": {
 
+        },
+        "added": {
+          "version": "1.0.0-beta.5"
         }
       }
     }

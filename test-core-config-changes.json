@@ -23,7 +23,7 @@
 
         },
         "replaced": {
-          "oldPropertyName": "newPropertyName"
+          
         },
         "added": {
 
@@ -41,7 +41,7 @@
 
         },
         "added": {
-          
+
         }
       }
     }

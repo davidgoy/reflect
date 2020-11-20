@@ -252,6 +252,8 @@ The following are used in the Reflect project:
 
 - [core-js](https://github.com/zloirock/core-js)
 
+- [PclZip](https://www.phpconcept.net/)
+
 - [RandomLib](https://github.com/ircmaxell/RandomLib)
 
 - [regenerator-runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js)

@@ -13,8 +13,38 @@
         "added": {
 
         }
-      }
+      },
+      "themes": [
+        {
+          "name": "default",
+          "removed": {
+
+          },
+          "replaced": {
+
+          },
+          "added": {
+
+          }
+        }
+      ],
+      "addons": [
+        {
+          "name": "reflect-form-mailer",
+          "removed": {
+
+          },
+          "replaced": {
+
+          },
+          "added": {
+
+          }
+        }
+      ]
     },
+
+
     {
       "version": "1.0.0-beta.6",
       "released": "2020-09-01 00:00:00",
@@ -28,8 +58,38 @@
         "added": {
 
         }
-      }
+      },
+      "themes": [
+        {
+          "name": "default",
+          "removed": {
+
+          },
+          "replaced": {
+
+          },
+          "added": {
+
+          }
+        }
+      ],
+      "addons": [
+        {
+          "name": "reflect-form-mailer",
+          "removed": {
+
+          },
+          "replaced": {
+
+          },
+          "added": {
+
+          }
+        }
+      ]
     },
+
+    
     {
       "version": "1.0.0-beta.5",
       "released": "2020-08-01 00:00:00",
@@ -43,7 +103,35 @@
         "added": {
 
         }
-      }
+      },
+      "themes": [
+        {
+          "name": "default",
+          "removed": {
+
+          },
+          "replaced": {
+
+          },
+          "added": {
+
+          }
+        }
+      ],
+      "addons": [
+        {
+          "name": "reflect-form-mailer",
+          "removed": {
+
+          },
+          "replaced": {
+
+          },
+          "added": {
+
+          }
+        }
+      ]
     }
   ]
 }

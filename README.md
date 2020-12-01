@@ -4,7 +4,7 @@
 </p>
 <br>
 <h3 align="center">INSTANT STATIC SITE FOR HEADLESS WORDPRESS</h3>
-<p align="center"><small>v1.0.0-beta.4</small></p>
+<p align="center"><small>Latest version 1.0.0-beta.5</small></p>
 <p align="center">
   The ultimate fusion of <i>static site generator</i> and <i>server-side renderer</i>, Reflect is the perfect front-end for those wishing to use WordPress as a headless CMS.<br><b>Deploy in minutes!</b>
 </p>
@@ -253,6 +253,8 @@ The following are used in the Reflect project:
 - [core-js](https://github.com/zloirock/core-js)
 
 - [PclZip](https://www.phpconcept.net/)
+
+- [Pickr](https://github.com/Simonwep/pickr)
 
 - [RandomLib](https://github.com/ircmaxell/RandomLib)
 

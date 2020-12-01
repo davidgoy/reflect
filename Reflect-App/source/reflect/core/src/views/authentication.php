@@ -25,9 +25,13 @@
 
           <div class="text-center my-5">
             <a class="btn btn-secondary" href="//<?php echo $_SERVER['SERVER_NAME']; ?>">CANCEL</a>
-            <button type="submit" class="btn btn-primary">AUTHENTICATE</button>
+            <button id="authenticateButton" type="submit" class="btn btn-primary">
+              <span id="authenticateButtonSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+              <span class="sr-only">Authenticating...</span>
+              <span id="authenticateButtonText">AUTHENTICATE</span>
+            </button>
           </div>
-          
+
         </form>
 
       </div>

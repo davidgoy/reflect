@@ -11,12 +11,14 @@
         <h2 class="text-center m-5">SETTINGS</h2>
 
         <div class="text-center">
-          <div id="updateSpinner" class="d-none spinner-border spinner-border-sm text-secondary" role="status"><span class="sr-only">Processing...</span></div>
-          <span id="checkingForUpdate" class="d-none">Checking for available update...</span>
-          <p id="upToDate" class="d-none">Reflect v<span id="currentVersion"><?php echo $config['version']; ?></span></p>
-          <p id="updateAvailable" class="d-none">Newer version of Reflect is available (v<span id="newerVersion"></span>) <a id="updateNow" class="btn btn-sm btn-primary" href="#">UPDATE NOW</a></p>
-          <span id="updating" class="d-none">Updating...</span>
-          <p id="updateCompleted" class="d-none">Update completed! Please <a href="//<?php echo $_SERVER['SERVER_NAME'] . '/' . $config['settingsPageSlug']; ?>">refresh this page now.</a></p>
+          <p id="updateSpinner" class="d-none spinner-border spinner-border-sm text-secondary text-center" role="status"><span class="sr-only">Processing...</span></p>
+          <p id="checkForUpdateText" class="">Reflect v<?php echo $config['version']; ?><br><a id="checkForUpdateButton" class="btn btn-sm btn-secondary" href="#">CHECK FOR UPDATE</a></p>
+          <p id="checkingInProgressText" class="d-none">Checking for available update...</p>
+          <p id="upToDateText" class="d-none">You have the latest version of Reflect (v<?php echo $config['version']; ?>).</p>
+          <p id="updateAvailableText" class="d-none">Newer version of Reflect is available: <b>v<span id="newerVersionText"></span></b><br><a id="updateNowButton" class="btn btn-sm btn-primary" href="#">UPDATE NOW</a></p>
+          <p id="updateInProgressText" class="d-none">Updating Reflect and all officially bundled themes and addons...</p>
+          <p id="updateCompletedText" class="d-none">Update completed! Please <a href="//<?php echo $_SERVER['SERVER_NAME'] . '/' . $config['settingsPageSlug']; ?>">refresh this page now.</a></p>
+          <p id="updateFailedText" class="d-none">Update failed. Reason: <span id="updateFailedReasonText"></span> If the problem persists, you could try updating manually. <a href="https://github.com/davidgoy/reflect" target="_blank">View instructions here</a>.</p>
         </div>
 
       </div>
@@ -54,7 +56,10 @@
               <small id="cmsDomainHelp" class="form-text text-muted">Domain of WordPress site to fetch content from.</small>
             </div>
             <div class="col-sm-4">
-              <a id="checkWpConnectionButton" class="btn btn-secondary" href="#">CHECK CONNECTION</a>
+              <button id="checkWpConnectionButton" class="btn btn-secondary">
+                <span id="checkWpConnectionButtonSpinner" class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span id="checkWpConnectionButtonText">CHECK CONNECTION</span>
+              </button>
             </div>
           </div>
 
@@ -206,7 +211,7 @@
 
           <div class="text-center">
             <a class="btn btn-secondary" href="//<?php echo $_SERVER['SERVER_NAME']; ?>">HOME</a>
-            <button type="submit" class="btn btn-primary">SAVE</button>
+            <button id="saveSettingsButton" type="submit" class="btn btn-primary">SAVE</button>
           </div>
 
         </form>

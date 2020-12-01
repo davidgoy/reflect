@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.4
+ * @version 1.0.0-beta.5
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -32,6 +32,38 @@ class Model {
   public function __construct() {
 
     $this->config = new Config();
+  }
+
+
+  //----------------------------------------------------------------------------
+  /**
+   * @param array $config
+   * @return string $configChanges
+   */
+  //----------------------------------------------------------------------------
+  public function getConfigChanges($config) {
+
+    $url = $config['configChangesFileUrl'];
+
+    $json = file_get_contents($url); // Perform GET request
+
+    if($json !== false) {
+
+      $data = json_decode($json, true);
+
+      if(is_array($data) === true) {
+
+        return $data;
+      }
+      else {
+
+        return false;
+      }
+    }
+    else {
+
+      return false;
+    }
   }
 
 

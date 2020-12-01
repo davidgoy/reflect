@@ -5,7 +5,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.4
+ * @version 1.0.0-beta.5
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -16,14 +16,18 @@ window.addEventListener('DOMContentLoaded', function() {
 
     const csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken;
 
-    // Update related
-    const checkingForUpdateText = document.querySelector('#checkingForUpdate');
-    const upToDateText = document.querySelector('#upToDate');
-    const updateAvailableText = document.querySelector('#updateAvailable');
-    const updatingText = document.querySelector('#updating');
-    const updateCompletedText = document.querySelector('#updateCompleted');
-    const currentVersion = document.querySelector('#currentVersion').innerHTML;
-    const newerVersion = document.querySelector('#newerVersion').innerHTML;
+    // Update related elements
+    const checkForUpdateText = document.querySelector('#checkForUpdateText');
+    const checkForUpdateButton = document.querySelector('#checkForUpdateButton');
+    const checkingInProgressText = document.querySelector('#checkingInProgressText');
+    const upToDateText = document.querySelector('#upToDateText');
+    const updateAvailableText = document.querySelector('#updateAvailableText');
+    const updateInProgressText = document.querySelector('#updateInProgressText');
+    const updateNowButton = document.querySelector('#updateNowButton');
+    const updateCompletedText = document.querySelector('#updateCompletedText');
+    const updateFailedText = document.querySelector('#updateFailedText');
+    const updateFailedReasonText = document.querySelector('#updateFailedReasonText');
+    const newerVersionText = document.querySelector('#newerVersionText');
     const updateSpinner = document.querySelector('#updateSpinner');
 
     // Hidden inputs
@@ -32,7 +36,9 @@ window.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('#settings');
     const addonCheckboxes = form.querySelectorAll('input[name="addonsToLoad[]"]');
     const checkWpConnectionButton = document.querySelector('#checkWpConnectionButton');
-
+    const checkWpConnectionButtonText = document.querySelector('#checkWpConnectionButtonText');
+    const checkWpConnectionButtonSpinner = document.querySelector('#checkWpConnectionButtonSpinner');
+    const saveSettingsButton = document.querySelector('#saveSettingsButton');
 
     /* ---------------------------------------------------------------------- */
     form.addEventListener('submit', function(event) {
@@ -82,36 +88,56 @@ window.addEventListener('DOMContentLoaded', function() {
       const cmsProtocol = document.querySelector('#cmsProtocol').value;
       const cmsDomain = document.querySelector('#cmsDomain').value;
 
-      if(cmsProtocol !== '' && cmsDomain !== '') {
+      if(cmsDomain !== '') {
 
-        const formData = new FormData();
+        checkWpConnectionButton.setAttribute('disabled', 'disabled');
+        checkWpConnectionButtonText.innerHTML = 'CONNECTING...';
+        checkWpConnectionButtonSpinner.classList.remove('d-none');
 
-        formData.append('siteKey', siteKey);
-        formData.append('cmsProtocol', cmsProtocol);
-        formData.append('cmsDomain', cmsDomain);
-        formData.append('doAsync', 'getWpApiInfo');
-        formData.append('csrfPreventionToken', csrfPreventionToken);
+        if(cmsProtocol !== '' && cmsDomain !== '') {
 
-        apiGetData(formData).then(function(wpApiInfoJson) {
+          const formData = new FormData();
 
-          if(wpApiInfoJson !== undefined && wpApiInfoJson.name !== undefined) {
+          formData.append('siteKey', siteKey);
+          formData.append('cmsProtocol', cmsProtocol);
+          formData.append('cmsDomain', cmsDomain);
+          formData.append('doAsync', 'getWpApiInfo');
+          formData.append('csrfPreventionToken', csrfPreventionToken);
 
-            Swal.fire({
-              title: 'CONNECTION SUCCESSFUL',
-              text: wpApiInfoJson.name,
-              icon: 'success',
-              confirmButtonText: 'OK'
-            });
-          }
-          else {
+          apiGetData(formData).then(function(wpApiInfoJson) {
 
-            Swal.fire({
-              title: 'CONNECTION FAILED',
-              text: 'Check that the URL is correct and that your WordPress API is accessible by this Reflect site.',
-              icon: 'error',
-              confirmButtonText: 'OK'
-            });
-          }
+            checkWpConnectionButton.removeAttribute('disabled');
+            checkWpConnectionButtonText.innerHTML = 'CHECK CONNECTION';
+            checkWpConnectionButtonSpinner.classList.add('d-none');
+
+            if(wpApiInfoJson !== undefined && wpApiInfoJson.name !== undefined) {
+
+              Swal.fire({
+                title: 'CONNECTION SUCCESSFUL',
+                text: wpApiInfoJson.name,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              });
+            }
+            else {
+
+              Swal.fire({
+                title: 'CONNECTION FAILED',
+                text: 'Check that the URL is correct and that your WordPress API is accessible by this Reflect site.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          });
+        }
+      }
+      else {
+
+        Swal.fire({
+          title: 'NO DOMAIN NAME ENTERED',
+          text: 'Please enter the domain name of your WordPress CMS.',
+          icon: 'error',
+          confirmButtonText: 'OK'
         });
       }
 
@@ -119,18 +145,75 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    //--------------------------------------------------------------------------
-    /**
-     *
-     */
-    //--------------------------------------------------------------------------
-    (function initUpdateComponents() {
+    /* ---------------------------------------------------------------------- */
+    checkForUpdateButton.addEventListener('click', function(event) {
 
-      // Check for available updates (but only if Reflect site has already been set up)
+      const formData = new FormData();
+
+      formData.append('doAsync', 'checkAvailableUpdate');
+      formData.append('csrfPreventionToken', csrfPreventionToken);
+
+      checkForUpdateText.classList.add('d-none');
+      checkingInProgressText.classList.remove('d-none');
+      updateSpinner.classList.remove('d-none');
+
+      apiGetData(formData).then(function(latestAvailableVersion) {
+
+        checkingInProgressText.classList.add('d-none');
+
+        if(latestAvailableVersion !== 'false') {
+
+          newerVersionText.innerHTML = latestAvailableVersion;
+          updateAvailableText.classList.remove('d-none');
+          updateSpinner.classList.add('d-none');
+        }
+        else {
+
+          upToDateText.classList.remove('d-none');
+          updateSpinner.classList.add('d-none');
+        }
+
+      });
+
+      event.preventDefault();
+    });
 
 
+    /* ---------------------------------------------------------------------- */
+    updateNowButton.addEventListener('click', function(event) {
 
-    })();
+      const formData = new FormData();
+
+      formData.append('doAsync', 'installUpdate');
+      formData.append('csrfPreventionToken', csrfPreventionToken);
+
+      updateAvailableText.classList.add('d-none');
+      updateInProgressText.classList.remove('d-none');
+      updateSpinner.classList.remove('d-none');
+
+      saveSettingsButton.setAttribute('disabled', 'disabled');
+
+      apiGetData(formData).then(function(response) {
+
+        updateSpinner.classList.add('d-none');
+        updateInProgressText.classList.add('d-none');
+
+        if(response === 'true') {
+
+          updateCompletedText.classList.remove('d-none');
+        }
+        else {
+
+          updateFailedReasonText.innerHTML = response;
+          updateFailedText.classList.remove('d-none');
+
+          saveSettingsButton.removeAttribute('disabled');
+        }
+
+      });
+
+      event.preventDefault();
+    });
 
 
     //----------------------------------------------------------------------------

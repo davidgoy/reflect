@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.4
+ * @version 1.0.0-beta.5
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -49,23 +49,28 @@ class Utils {
       foreach ($items as $key => $item) {
 
         // If the item is a valid folder (e.g. not dots or symbolic links)
-        if(is_dir($source . $item) === true && $item !== '.' && $item !== '..' && is_link($source . $item) === false) {
+        if(is_dir($source . '/' . $item) === true && $item !== '.' && $item !== '..' && is_link($source . '/' . $item) === false) {
 
           // Create the folder
-          mkdir($destination . $item, $folderPermission, true);
+          mkdir($destination . '/' . $item, $folderPermission, true);
 
-          $this->copyFilesAndFolders($source . $item . '/', $destination . $item . '/', $folderPermission);
+          $this->copyFilesAndFolders($source . '/' . $item, $destination . '/' . $item, $folderPermission);
         }
         else {
 
           // If the item is a valid file
-          if(is_file($source . $item) && $item !== '.DS_Store') {
+          if(is_file($source . '/' . $item) === true && $item !== '.DS_Store') {
 
-            // Copy the file
-            copy($source . $item, $destination . $item);
+            // Before we copy the file, make sure the destination folder already exists. If not, we need to create it first.
+            if(file_exists(dirname($destination . '/' . $item)) === false) {
+
+              mkdir(dirname($destination . '/' . $item), $folderPermission, true);
+            }
+
+            // Copy the file to the destination folder
+            copy($source . '/' . $item, $destination . '/' . $item);
           }
         }
-
       }
       unset($item);
     }

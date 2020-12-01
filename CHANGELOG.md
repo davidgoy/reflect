@@ -6,8 +6,20 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 ## [Unreleased]
 
-- Add updater for Reflect (core, themes, addons).
 - Add ability to download media from WordPress and serve the media directly from Reflect site.
+
+<br><br>
+
+## [1.0.0-beta.5] - 2020-12-01
+
+### Added
+
+- Add auto update feature for Reflect core and all bundled, official addons and themes.
+- Improve *Settings* page and *Authentication* page UI
+
+### Fixed
+
+- Fix *Skip Config Check* feature.
 
 <br><br>
 
@@ -42,8 +54,6 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 ### Changed
 
 - Change app folder structure.
-
-- 
 
 - Compile all JS files to be transpiled using Babel.
 

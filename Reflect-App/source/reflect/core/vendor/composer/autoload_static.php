@@ -37,12 +37,18 @@ class ComposerStaticInit79d8de3b6a6c5fe651c9e01d602e95d6
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'PclZip' => __DIR__ . '/..' . '/pclzip/pclzip/pclzip.lib.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit79d8de3b6a6c5fe651c9e01d602e95d6::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit79d8de3b6a6c5fe651c9e01d602e95d6::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit79d8de3b6a6c5fe651c9e01d602e95d6::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit79d8de3b6a6c5fe651c9e01d602e95d6::$classMap;
 
         }, null, ClassLoader::class);
     }

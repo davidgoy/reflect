@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.4
+ * @version 1.0.0-beta.5
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -17,6 +17,7 @@ require_once __DIR__ . '/../vendor/autoload.php'; // Do "composer dump-autoload"
 
 use Reflect\Config;
 use Reflect\Model;
+use Reflect\Utils;
 use RandomLib\Factory;
 
 /**
@@ -27,6 +28,7 @@ class Controller {
 
   private $config;
   private $model;
+  private $utils;
 
 
   //----------------------------------------------------------------------------
@@ -38,6 +40,7 @@ class Controller {
 
     $this->config = new Config();
     $this->model = new Model();
+    $this->utils = new Utils();
   }
 
 
@@ -48,9 +51,15 @@ class Controller {
   //----------------------------------------------------------------------------
   public function run() {
 
-    if($this->config->reflectConfig['skipConfigCheck'] === false) {
+    if($this->config->reflectConfig['skipConfigCheck'] === 'false') {
 
       $this->checkSiteConfig();
+    }
+
+    // If site key is not set, it is likely that this is a new install
+    if(!isset($this->config->reflectConfig['siteKey']) || empty($this->config->reflectConfig['siteKey'])) {
+
+      $this->loadSetupPage();
     }
 
     $this->checkSpecialPageInvocation(); // Load special page if it is invoked via url
@@ -87,6 +96,18 @@ class Controller {
       case 'authenticateSiteKey':
 
         $this->asyncAuthenticateSiteKey();
+
+        break;
+
+      case 'checkAvailableUpdate':
+
+        $this->asyncCheckAvailableUpdate();
+
+        break;
+
+      case 'installUpdate':
+
+        $this->asyncInstallUpdate();
 
         break;
 
@@ -189,7 +210,7 @@ class Controller {
 
   //----------------------------------------------------------------------------
   /**
-   * 
+   *
    */
   //----------------------------------------------------------------------------
   private function authenticateCsrfPreventionToken() {
@@ -214,7 +235,7 @@ class Controller {
   //----------------------------------------------------------------------------
   private function checkSpecialPageInvocation() {
 
-    if($this->config->reflectConfig['skipSpecialPageInvocationCheck'] === false) {
+    if($this->config->reflectConfig['skipSpecialPageInvocationCheck'] === 'false') {
 
       // For site...
 
@@ -330,6 +351,229 @@ class Controller {
    *
    */
   //----------------------------------------------------------------------------
+  private function asyncCheckAvailableUpdate() {
+
+    $config = $this->config->reflectConfig;
+    $currentReleasedDate = $config['released'];
+    $currentReleasedDate = strtotime($currentReleasedDate); // Convert date to UNIX timestamp
+
+    $configChanges = $this->model->getConfigChanges($config);
+
+    $numOfChanges = count($configChanges['updates']); // Number of version changes recorded in the config changes JSON file
+
+    if($numOfChanges > 0) {
+
+      $releasedDates = [];
+
+      for($i = 0; $i < $numOfChanges; $i++) {
+
+        array_push($releasedDates, $configChanges['updates'][$i]['released']);
+      }
+
+      // Now get the latest released date
+      $latestReleasedDate = max(array_map('strtotime', $releasedDates)); // This will be in UNIX timestamp
+
+      // If the latest release is newer than the current release
+      if($latestReleasedDate - $currentReleasedDate > 0) {
+
+        $latestAvailableVersion = 'false';
+
+        $latestReleasedDate = date('Y-m-d H:i:s', $latestReleasedDate);
+
+        for($j = 0; $j < $numOfChanges; $j++) {
+
+          if($configChanges['updates'][$j]['released'] == $latestReleasedDate) {
+
+            $latestAvailableVersion = $configChanges['updates'][$j]['version'];
+          }
+        }
+
+        echo json_encode($latestAvailableVersion);
+      }
+      // No updates available
+      else {
+
+        echo json_encode('false');
+      }
+    }
+    else {
+
+      echo json_encode('false');
+    }
+
+    exit();
+  }
+
+
+  //----------------------------------------------------------------------------
+  /**
+   *
+   */
+  //----------------------------------------------------------------------------
+  private function asyncInstallUpdate() {
+
+    // Download ZIP and unpack files into temp folder
+
+    $config = $this->config->reflectConfig;
+
+    $tempFolderPath = __DIR__ . '/../../reflect-temp';
+    $reflectDownloadUrl = $config['latestVersionDownloadUrl'];
+
+    $path = parse_url($reflectDownloadUrl, PHP_URL_PATH);
+    $pathParts = pathinfo($path);
+    $zipFileName = $pathParts['basename'];
+    $zipFilePath = $tempFolderPath . '/' . $zipFileName;
+
+    $downloadAndExtractZipFileSuccess = $this->downloadAndExtractZipFile($reflectDownloadUrl, $zipFilePath, $tempFolderPath);
+
+    if($downloadAndExtractZipFileSuccess === true) {
+
+      // First, let's update the core config file...
+
+      $newConfigFilePath = $tempFolderPath . '/source/reflect/core/config.json';
+
+      $configFileUpdated = $this->updateConfigFile($config, $newConfigFilePath);
+
+      if($configFileUpdated === true) {
+
+        // Then let's update the config file of each officially bundled themes...
+
+        $bundledThemes = explode(',', str_replace(' ', '', trim($config['bundledThemes'])));
+
+        for($i = 0; $i < count($bundledThemes); $i++) {
+
+          $currentThemeConfigFilePath = __DIR__ . '/../../themes/' . $bundledThemes[$i] . '/config.json';
+
+          // Make sure that the theme exists on the server (just in case the user manually deleted it)
+          if(file_exists($currentThemeConfigFilePath)) {
+
+            $currentThemeConfig = file_get_contents($currentThemeConfigFilePath);
+            $currentThemeConfig = json_decode($currentThemeConfig, true);
+
+            $newThemeConfigFilePath = $tempFolderPath . '/source/reflect/themes/' . $bundledThemes[$i] . '/config.json';
+
+            $themeConfigFileUpdated = $this->updateConfigFile($currentThemeConfig, $newThemeConfigFilePath);
+          }
+        }
+
+        // Finally let's update the config file of each officially bundled addons...
+
+        $bundledAddons = explode(',', str_replace(' ', '', trim($config['bundledAddons'])));
+
+        for($j = 0; $j < count($bundledAddons); $j++) {
+
+          $currentAddonConfigFilePath = __DIR__ . '/../../addons/' . $bundledAddons[$j] . '/config.json';
+
+          // Make sure that the addon exists on the server (just in case the user manually deleted it)
+          if(file_exists($currentAddonConfigFilePath)) {
+
+            $currentAddonConfig = file_get_contents($currentAddonConfigFilePath);
+            $currentAddonConfig = json_decode($currentAddonConfig, true);
+
+            $newAddonConfigFilePath = $tempFolderPath . '/source/reflect/addons/' . $bundledAddons[$j] . '/config.json';
+
+            $addonConfigFileUpdated = $this->updateConfigFile($currentAddonConfig, $newAddonConfigFilePath);
+          }
+        }
+
+
+          // Copy the folders in place (temporarily appending "new" to the folder names)...
+
+          // Document root CSS
+          $this->utils->copyFilesAndFolders($tempFolderPath . '/source/public_html/css', __DIR__ . '/../../../' . $config['documentRoot'] . '/css_new', 0755);
+
+          // Document root JS
+          $this->utils->copyFilesAndFolders($tempFolderPath . '/source/public_html/js', __DIR__ . '/../../../' . $config['documentRoot'] . '/js_new', 0755);
+
+          // Document root index.php
+          copy($tempFolderPath . '/source/public_html/index.php', __DIR__ . '/../../../' . $config['documentRoot'] . '/index.new');
+
+          // Core
+          $this->utils->copyFilesAndFolders($tempFolderPath . '/source/reflect/core', __DIR__ . '/../../core_new', 0755);
+          // Themes
+          $this->utils->copyFilesAndFolders($tempFolderPath . '/source/reflect/themes', __DIR__ . '/../../themes_new', 0755);
+          // Addons
+          $this->utils->copyFilesAndFolders($tempFolderPath . '/source/reflect/addons', __DIR__ . '/../../addons_new', 0755);
+
+          // Delete downloaded temporary files
+          $this->utils->deleteFilesAndFolders($tempFolderPath);
+
+          $documentRootFolderPath = __DIR__ . '/../../../' . $config['documentRoot'];
+          $reflectFolderPath = __DIR__ . '/../../';
+
+          // Debug 1/2
+          //ob_start();
+
+          // Change PHP's working directory in preparation for folder and/or file renaming.
+          // Note: This is because we cannot use relative path (e.g. '/../../') since we are renaming the folder containing this controller!
+
+          chdir($documentRootFolderPath);
+
+          rename('css', 'css_bak');
+          rename('css_new', 'css');
+
+          rename('js', 'js_bak');
+          rename('js_new', 'js');
+
+          rename('index.php', 'index.bak');
+          rename('index.new', 'index.php');
+
+
+          chdir($reflectFolderPath);
+
+          rename('core', 'core_bak');
+          rename('core_new', 'core');
+
+          rename('addons', 'addons_bak');
+          rename('addons_new', 'addons');
+
+          rename('themes', 'themes_bak');
+          rename('themes_new', 'themes');
+
+
+          chdir(__DIR__); // Restore the default PHP working directory. This may not be necessary, but we do it just to be safe.
+
+          // // Debug 2/2
+          // $outputBuffer = ob_get_contents();
+          // ob_end_clean();
+          // echo json_encode($outputBuffer);
+          // exit();
+
+          echo json_encode('true');
+
+      }
+      else {
+
+        if(file_exists($tempFolderPath)) {
+
+          // Delete downloaded temporary files
+          $this->utils->deleteFilesAndFolders($tempFolderPath);
+        }
+
+        echo json_encode('Config file(s) update failed.');
+      }
+
+    }
+    else {
+
+      if(file_exists($tempFolderPath)) {
+
+        // Delete downloaded temporary files
+        $this->utils->deleteFilesAndFolders($tempFolderPath);
+      }
+
+      echo json_encode('Download and/or extraction failed.');
+    }
+
+    exit();
+  }
+
+
+  //----------------------------------------------------------------------------
+  /**
+   *
+   */
+  //----------------------------------------------------------------------------
   private function asyncSaveSiteKey() {
 
     // For security, only allow site key to be saved if there is currently none (such as when setting up a new Reflect site)
@@ -414,6 +658,8 @@ class Controller {
         }
       }
       unset($value);
+
+      ksort($updatedConfig);
 
       $updatedConfig = json_encode($updatedConfig, JSON_PRETTY_PRINT);
 
@@ -986,6 +1232,351 @@ class Controller {
     }
 
     exit();
+  }
+
+
+  //----------------------------------------------------------------------------
+  /**
+   * @param string $downloadUrl
+   * @param string $zipFilePath
+   * @param string $destinationFolderPath
+   * @return bool
+   */
+  //----------------------------------------------------------------------------
+  private function downloadAndExtractZipFile($downloadUrl, $zipFilePath, $destinationFolderPath) {
+
+    $config = $this->config->reflectConfig;
+
+    // If the folder exists, we will delete it (and all its content) before re-creating
+    if(file_exists($destinationFolderPath)) {
+
+      $this->utils->deleteFilesAndFolders($destinationFolderPath);
+
+      mkdir($destinationFolderPath, 0755);
+    }
+    else {
+
+      mkdir($destinationFolderPath, 0755);
+    }
+
+    // Determine http protocol...
+    // Secure (https)
+    if(!empty($_SERVER['HTTPS']) || $_SERVER['SERVER_PORT'] === 443) {
+
+      $zipFileContent = fopen($downloadUrl, 'r'); // Read ZIP file
+    }
+    // Not secure (e.g. http on localhost)
+    else {
+
+      // Allow non-secure (http) site/host to download from secure (https) site
+      $sslParams = [
+        'ssl' => [
+          'verify_peer' => false,
+          'verify_peer_name' => false
+        ]
+      ];
+
+      $zipFileContent = fopen($downloadUrl, 'r', false, stream_context_create($sslParams)); // Read ZIP file
+    }
+
+    // If ZIP file read successfully
+    if($zipFileContent !== false) {
+
+      $fileCopied = file_put_contents($zipFilePath, $zipFileContent);
+
+      if($fileCopied !== false) {
+
+        // Confirm that the ZIP file we downloaded actually exists
+        if(file_exists($zipFilePath)) {
+
+          // Check if the user's server has the PHP ZipArchive extension installed
+          if(class_exists('ZipArchive')) {
+
+            $zipFile = new \ZipArchive; // Remember: The preceeding "\" is used to load a global class when namespace is used
+
+            $zipFileReadSuccess = $zipFile->open($zipFilePath); // Open ZIP file for reading
+
+            if($zipFileReadSuccess === true) {
+
+              $zipFileExtractSuccess = $zipFile->extractTo($destinationFolderPath . '/'); // Extract ZIP file
+
+              if($zipFileExtractSuccess === true) {
+
+                $zipFile->close();
+
+                unlink($zipFilePath); // Delete ZIP file
+
+                return true;
+              }
+              else {
+
+                return false;
+              }
+            }
+            else {
+
+              return false;
+            }
+          }
+          // Use PclZip instead
+          else {
+
+            require_once __DIR__ . '/../vendor/pclzip/pclzip/pclzip.lib.php'; // For some reason I cannot get Composer's autoload to work, so I have to resort to using require_once :-(
+
+            $zipFile = new \PclZip($zipFilePath);
+
+            error_reporting(E_ALL & ~E_NOTICE); // Temporarily turn off PHP notice (but turn on all other error reportings) before running the below because the PclZip library currently triggers it (Notice: A non well formed numeric value encountered in ......./pclzip.lib.php on line 1797)
+            $zipFileExtractSuccess = $zipFile->extract(PCLZIP_OPT_PATH, $destinationFolderPath);
+            error_reporting(); // Turn error reporting back to default
+
+            if($zipFileExtractSuccess === 0 || $zipFileExtractSuccess < 0) {
+
+              return false;
+            }
+            else {
+
+              unlink($zipFilePath); // Delete ZIP file
+
+              return true;
+            }
+          }
+        }
+        else {
+
+          return false;
+        }
+      }
+      else {
+
+        return false;
+      }
+    }
+    else {
+
+      return false;
+    }
+  }
+
+
+  //----------------------------------------------------------------------------
+  /**
+   * @param array $currentConfig
+   * @param string $newConfigFilePath
+   * @return bool
+   */
+  //----------------------------------------------------------------------------
+  private function updateConfigFile($currentConfig, $newConfigFilePath) {
+
+    $currentReleasedDate = $currentConfig['released'];
+    $currentReleasedDate = strtotime($currentReleasedDate); // Convert date to UNIX timestamp
+
+    $configChanges = $this->model->getConfigChanges($currentConfig); // Get config changes from GitHub
+
+    $numOfChanges = count($configChanges['updates']); // Number of version changes recorded in the config changes JSON file hosted on GitHub
+
+    if($numOfChanges > 0) {
+
+      $updates = [];
+
+      // Now get all available changes (i.e. updates that are later than our current existing version)
+
+      $releasedDatesAsc = [];
+
+      for($i = 0; $i < $numOfChanges; $i++) {
+
+        $releasedTimestamp = strtotime($configChanges['updates'][$i]['released']); // Convert date to UNIX timestamp
+
+        // If the update is newer than the user's current version
+        if($releasedTimestamp > $currentReleasedDate) {
+
+          array_push($releasedDatesAsc, $configChanges['updates'][$i]['released']);
+        }
+      }
+
+      // As a precaution, we need to make sure that the changes are in ascending chronological order
+
+      sort($releasedDatesAsc);
+
+      for($i = 0; $i < count($releasedDatesAsc); $i++) {
+
+        for($j = 0; $j < $numOfChanges; $j++) {
+
+          if($releasedDatesAsc[$i] === $configChanges['updates'][$j]['released']) {
+
+            array_push($updates, $configChanges['updates'][$j]);
+          }
+        }
+      }
+
+      // Now let's run through each version change...
+
+      for($i = 0; $i < count($updates); $i++) {
+
+        // First, check for removed properties and remove them accordingly...
+
+        $propertiesRemoved = $updates[$i]['changes']['removed'];
+
+        if(count($propertiesRemoved) > 0) {
+
+          // See if the property we want to remove matches the existing property name...
+
+          foreach($propertiesRemoved as $nameOfPropertyToRemove => $arbitraryValue) {
+
+            foreach($currentConfig as $existingName => $existingValue) {
+
+              // Matches
+              if($nameOfPropertyToRemove === $existingName) {
+
+                unset($currentConfig[$existingName]);
+              }
+            }
+            unset($existingValue);
+          }
+          unset($arbitraryValue);
+        }
+
+        // Next, check for replaced property names and and rename accordingly...
+
+        $propertiesReplaced = $updates[$i]['changes']['replaced'];
+
+        if(count($propertiesReplaced) > 0) {
+
+          // See if the property name we want to replace matches the existing name...
+
+          foreach($propertiesReplaced as $nameToReplace => $replacementName) {
+
+            foreach($currentConfig as $existingName => $existingValue) {
+
+              // Matches
+              if($nameToReplace === $existingName) {
+
+                // Replace the property name but preserve its value
+
+                $currentConfig[$replacementName] = $existingValue;
+                unset($currentConfig[$existingName]);
+              }
+            }
+            unset($existingValue);
+          }
+          unset($replacementName);
+        }
+
+        // Finally, check for added properties and add them accordingly...
+
+        $propertiesAdded = $updates[$i]['changes']['added'];
+
+        if(count($propertiesAdded) > 0) {
+
+          foreach($propertiesAdded as $newPropertyName => $newPropertyDefaultValue) {
+
+            // Make sure that the property does not already exist!
+            if(!isset($currentConfig[$newPropertyName])) {
+
+              $currentConfig[$newPropertyName] = $newPropertyDefaultValue;
+            }
+          }
+          unset($newPropertyDefaultValue);
+        }
+      }
+
+
+      // Now we need the new config file to mirror the updated config file
+
+      $newConfigJson = file_get_contents($newConfigFilePath);
+
+      if($newConfigJson !== false) {
+
+        $newConfig = json_decode($newConfigJson, true);
+
+        if(is_array($newConfig) === true) {
+
+          foreach ($newConfig as $newConfigPropertyName => $newConfigPropertyValue) {
+
+            foreach ($currentConfig as $currentConfigPropertyName => $currentConfigPropertyValue) {
+
+              if($currentConfigPropertyName === $newConfigPropertyName) {
+
+                $newConfig[$newConfigPropertyName] = $currentConfigPropertyValue;
+              }
+            }
+            unset($currentConfigPropertyValue);
+          }
+          unset($newConfigPropertyValue);
+
+
+          $latestVersionNumber = $configChanges['updates'][(0)]['version'];
+          $newConfig['version'] = $latestVersionNumber; // Update the version number to the last update we applied
+
+          $latestReleasedDate = $configChanges['updates'][(0)]['released'];
+          $newConfig['released'] = $latestReleasedDate; // Update the release date to that of the last update we applied
+
+          ksort($newConfig); // Sort associative array alphabetically by its keys (so that the properties in the config file will be ordered nicely in an ascending order)
+
+          $newConfig = json_encode($newConfig, JSON_PRETTY_PRINT);
+
+          $newConfigFileUpdated = file_put_contents($newConfigFilePath, $newConfig);
+
+          // New config.json successfully updated
+          if($newConfigFileUpdated !== false) {
+
+            return true;
+          }
+          else {
+
+            return false;
+          }
+        }
+        else {
+
+          return false;
+        }
+      }
+      else {
+
+        return false;
+      }
+    }
+    else {
+
+      return false;
+    }
+  }
+
+
+  //----------------------------------------------------------------------------
+  /**
+   * @param string $version
+   * @return array $versionParts
+   */
+  //----------------------------------------------------------------------------
+  private function getSemVerParts($version) {
+
+
+    $version = str_replace('-', '.', $version);
+    $versionParts = explode('.', $version);
+
+    // If it's a pre-release version
+    if(count($versionParts) === 5) {
+
+      $versionParts['majorVersion'] = (int)$versionParts[0];
+      $versionParts['minorVersion'] = (int)$versionParts[1];
+      $versionParts['patchVersion'] = (int)$versionParts[2];
+      $versionParts['preReleaseLabel'] = $versionParts[3];
+      $versionParts['preReleaseVersion'] = (int)$versionParts[4];
+    }
+    // If it's a production version
+    else if(count($versionParts) === 3) {
+
+      $versionParts['majorVersion'] = (int)$versionParts[0];
+      $versionParts['minorVersion'] = (int)$versionParts[1];
+      $versionParts['patchVersion'] = (int)$versionParts[2];
+    }
+    else {
+
+      $versionParts = [];
+    }
+
+    return $versionParts;
   }
 
 

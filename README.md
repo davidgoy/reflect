@@ -85,7 +85,7 @@ On your WordPress site...
 
 For illustration purpose, let's pretend that your Reflect site will be using the domain name `example.com`.
 
-1. Download and extract the [Reflect App package](https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip). You will find two folders:
+1. Download and extract the [Reflect App ZIP file](https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip). You will find two folders:
    
    - `reflect`
    

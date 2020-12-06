@@ -19,7 +19,7 @@
 
   RewriteBase /
 
-  # Grant access if the request comes from the IP address of your Reflect site's server
+  # Grant access if the request comes from the primary IP address of the server hosting your Reflect instance
   RewriteCond %{REMOTE_ADDR} !^000.000.000.000
 
   # Grant access if the request comes from the IP address of the user who will be managing your WordPress site (e.g. you)

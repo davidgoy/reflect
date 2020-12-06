@@ -23,21 +23,21 @@
 #  # (to determine this IP address, simply ping your server's hostname)
 #  RewriteCond %{REMOTE_ADDR} !^000.000.000.000
 
-  # Grant access if the request comes from the IP address of the user who will be managing your WordPress site (e.g. you)
+#  # Grant access if the request comes from the IP address of the user who will be managing your WordPress site (e.g. you)
 #  RewriteCond %{REMOTE_ADDR} !^000.000.000.000
 
 #  # Optional: Grant access if the request comes from the IP address of the following approved user(s)
 #  # (duplicate the below line for each user that you want to allow access to your WordPress site)
 #  RewriteCond %{REMOTE_ADDR} !^000.000.000.000
 
-  # Grant access if the request is for your WordPress site's API
+#  # Grant access if the request is for your WordPress site's API
 #  RewriteCond %{REQUEST_URI} !^(.*)?wp-json/wp/v2/
 
-  # Grant access if the request is for images, icons or videos
-  # (add more media formats as you wish)
+#  # Grant access if the request is for images, icons or videos
+#  # (add more media formats as you wish)
 #  RewriteCond %{REQUEST_URI} !\.(?:jpg|jpeg|png|gif|ico|webm|ogg|ogv|avi|mov|wmv|mp4|m4v|mpg|mpeg)$ [NC]
 
-  # Show 403 error for all other requests
+#  # Show 403 error for all other requests
 #  RewriteRule .* - [F,L]
 
 #</IfModule>

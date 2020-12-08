@@ -7,26 +7,33 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.4
+ * @version 1.0.0-beta.6
  * @since File available since v1.0.0-alpha.1
  */
 window.addEventListener('DOMContentLoaded', function () {
   (function reflectSettings() {
-    var csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken; // Update related
+    var csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken; // Update related elements
 
-    var checkingForUpdateText = document.querySelector('#checkingForUpdate');
-    var upToDateText = document.querySelector('#upToDate');
-    var updateAvailableText = document.querySelector('#updateAvailable');
-    var updatingText = document.querySelector('#updating');
-    var updateCompletedText = document.querySelector('#updateCompleted');
-    var currentVersion = document.querySelector('#currentVersion').innerHTML;
-    var newerVersion = document.querySelector('#newerVersion').innerHTML;
+    var checkForUpdateText = document.querySelector('#checkForUpdateText');
+    var checkForUpdateButton = document.querySelector('#checkForUpdateButton');
+    var checkingInProgressText = document.querySelector('#checkingInProgressText');
+    var upToDateText = document.querySelector('#upToDateText');
+    var updateAvailableText = document.querySelector('#updateAvailableText');
+    var updateInProgressText = document.querySelector('#updateInProgressText');
+    var updateNowButton = document.querySelector('#updateNowButton');
+    var updateCompletedText = document.querySelector('#updateCompletedText');
+    var updateFailedText = document.querySelector('#updateFailedText');
+    var updateFailedReasonText = document.querySelector('#updateFailedReasonText');
+    var newerVersionText = document.querySelector('#newerVersionText');
     var updateSpinner = document.querySelector('#updateSpinner'); // Hidden inputs
 
     var siteKey = document.querySelector('#siteKey').value;
     var form = document.querySelector('#settings');
     var addonCheckboxes = form.querySelectorAll('input[name="addonsToLoad[]"]');
     var checkWpConnectionButton = document.querySelector('#checkWpConnectionButton');
+    var checkWpConnectionButtonText = document.querySelector('#checkWpConnectionButtonText');
+    var checkWpConnectionButtonSpinner = document.querySelector('#checkWpConnectionButtonSpinner');
+    var saveSettingsButton = document.querySelector('#saveSettingsButton');
     /* ---------------------------------------------------------------------- */
 
     form.addEventListener('submit', function (event) {
@@ -64,48 +71,103 @@ window.addEventListener('DOMContentLoaded', function () {
       var cmsProtocol = document.querySelector('#cmsProtocol').value;
       var cmsDomain = document.querySelector('#cmsDomain').value;
 
-      if (cmsProtocol !== '' && cmsDomain !== '') {
-        var formData = new FormData();
-        formData.append('siteKey', siteKey);
-        formData.append('cmsProtocol', cmsProtocol);
-        formData.append('cmsDomain', cmsDomain);
-        formData.append('doAsync', 'getWpApiInfo');
-        formData.append('csrfPreventionToken', csrfPreventionToken);
-        apiGetData(formData).then(function (wpApiInfoJson) {
-          if (wpApiInfoJson !== undefined && wpApiInfoJson.name !== undefined) {
-            Swal.fire({
-              title: 'CONNECTION SUCCESSFUL',
-              text: wpApiInfoJson.name,
-              icon: 'success',
-              confirmButtonText: 'OK'
-            });
-          } else {
-            Swal.fire({
-              title: 'CONNECTION FAILED',
-              text: 'Check that the URL is correct and that your WordPress API is accessible by this Reflect site.',
-              icon: 'error',
-              confirmButtonText: 'OK'
-            });
-          }
+      if (cmsDomain !== '') {
+        checkWpConnectionButton.setAttribute('disabled', 'disabled');
+        checkWpConnectionButtonText.innerHTML = 'CONNECTING...';
+        checkWpConnectionButtonSpinner.classList.remove('d-none');
+
+        if (cmsProtocol !== '' && cmsDomain !== '') {
+          var formData = new FormData();
+          formData.append('siteKey', siteKey);
+          formData.append('cmsProtocol', cmsProtocol);
+          formData.append('cmsDomain', cmsDomain);
+          formData.append('doAsync', 'getWpApiInfo');
+          formData.append('csrfPreventionToken', csrfPreventionToken);
+          apiGetData(formData).then(function (wpApiInfoJson) {
+            checkWpConnectionButton.removeAttribute('disabled');
+            checkWpConnectionButtonText.innerHTML = 'CHECK CONNECTION';
+            checkWpConnectionButtonSpinner.classList.add('d-none');
+
+            if (wpApiInfoJson !== undefined && wpApiInfoJson.name !== undefined) {
+              Swal.fire({
+                title: 'CONNECTION SUCCESSFUL',
+                text: wpApiInfoJson.name,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              });
+            } else {
+              Swal.fire({
+                title: 'CONNECTION FAILED',
+                text: 'Check that the URL is correct and that your WordPress API is accessible by this Reflect site.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          });
+        }
+      } else {
+        Swal.fire({
+          title: 'NO DOMAIN NAME ENTERED',
+          text: 'Please enter the domain name of your WordPress CMS.',
+          icon: 'error',
+          confirmButtonText: 'OK'
         });
       }
 
       event.preventDefault();
-    }); //--------------------------------------------------------------------------
+    });
+    /* ---------------------------------------------------------------------- */
 
-    /**
-     *
-     */
-    //--------------------------------------------------------------------------
+    checkForUpdateButton.addEventListener('click', function (event) {
+      var formData = new FormData();
+      formData.append('doAsync', 'checkAvailableUpdate');
+      formData.append('csrfPreventionToken', csrfPreventionToken);
+      checkForUpdateText.classList.add('d-none');
+      checkingInProgressText.classList.remove('d-none');
+      updateSpinner.classList.remove('d-none');
+      apiGetData(formData).then(function (latestAvailableVersion) {
+        checkingInProgressText.classList.add('d-none');
 
-    (function initUpdateComponents() {// Check for available updates (but only if Reflect site has already been set up)
-    })(); //----------------------------------------------------------------------------
+        if (latestAvailableVersion !== 'false') {
+          newerVersionText.innerHTML = latestAvailableVersion;
+          updateAvailableText.classList.remove('d-none');
+          updateSpinner.classList.add('d-none');
+        } else {
+          upToDateText.classList.remove('d-none');
+          updateSpinner.classList.add('d-none');
+        }
+      });
+      event.preventDefault();
+    });
+    /* ---------------------------------------------------------------------- */
+
+    updateNowButton.addEventListener('click', function (event) {
+      var formData = new FormData();
+      formData.append('doAsync', 'installUpdate');
+      formData.append('csrfPreventionToken', csrfPreventionToken);
+      updateAvailableText.classList.add('d-none');
+      updateInProgressText.classList.remove('d-none');
+      updateSpinner.classList.remove('d-none');
+      saveSettingsButton.setAttribute('disabled', 'disabled');
+      apiGetData(formData).then(function (response) {
+        updateSpinner.classList.add('d-none');
+        updateInProgressText.classList.add('d-none');
+
+        if (response === 'true') {
+          updateCompletedText.classList.remove('d-none');
+        } else {
+          updateFailedReasonText.innerHTML = response;
+          updateFailedText.classList.remove('d-none');
+          saveSettingsButton.removeAttribute('disabled');
+        }
+      });
+      event.preventDefault();
+    }); //----------------------------------------------------------------------------
 
     /**
      *
      */
     //----------------------------------------------------------------------------
-
 
     (function initAddonCheckboxes() {
       for (var i = 0; i < addonCheckboxes.length; i++) {

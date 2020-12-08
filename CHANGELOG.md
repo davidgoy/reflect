@@ -10,6 +10,16 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 <br><br>
 
+## [1.0.0-beta.6] - 2020-12-08
+
+### Changed
+
+- Allow user to define *From* name and email address in the email header to reduce the chance of emails sent by Reflect Form Mailer addon from triggering spam filter.
+
+- Remove *Reply To* line from email header.
+
+<br><br>
+
 ## [1.0.0-beta.5] - 2020-12-01
 
 ### Added

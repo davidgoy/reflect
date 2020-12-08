@@ -7,14 +7,17 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.4
+ * @version 1.0.0-beta.6
  * @since File available since v1.0.0-alpha.1
  */
 window.addEventListener('DOMContentLoaded', function () {
   (function reflectAuthentication() {
     var csrfPreventionToken = document.querySelector('#csrfPreventionToken').dataset.csrfPreventionToken;
     var siteKeyInput = document.querySelector('#siteKey');
-    siteKeyInput.value = ''; //--------------------------------------------------------------------------
+    siteKeyInput.value = '';
+    var authenticateButton = document.querySelector('#authenticateButton');
+    var authenticateButtonSpinner = document.querySelector('#authenticateButtonSpinner');
+    var authenticateButtonText = document.querySelector('#authenticateButtonText'); //--------------------------------------------------------------------------
 
     /**
      *
@@ -26,6 +29,9 @@ window.addEventListener('DOMContentLoaded', function () {
       var targetActionInput = document.querySelector('#targetAction');
       var targetAction = targetActionInput.value;
       form.addEventListener('submit', function (event) {
+        authenticateButton.setAttribute('disabled', 'disabled');
+        authenticateButtonSpinner.classList.remove('d-none');
+        authenticateButtonText.innerHTML = 'AUTHENTICATING...';
         var formData = new FormData(form);
         formData.append('doAsync', 'authenticateSiteKey');
         formData.append('csrfPreventionToken', csrfPreventionToken); // Debug
@@ -37,6 +43,10 @@ window.addEventListener('DOMContentLoaded', function () {
         */
 
         apiGetData(formData).then(function (response) {
+          authenticateButton.removeAttribute('disabled');
+          authenticateButtonSpinner.classList.add('d-none');
+          authenticateButtonText.innerHTML = 'AUTHENTICATE';
+
           if (response !== 'false') {
             Swal.fire({
               title: 'SITE KEY AUTHENTICATED',

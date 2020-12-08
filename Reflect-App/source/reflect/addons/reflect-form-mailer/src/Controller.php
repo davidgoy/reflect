@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect-form-mailer
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.5
+ * @version 1.0.0-beta.6
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -260,7 +260,6 @@ class Controller {
 
       $mail->isHTML(true);
       $mail->setFrom($this->reflectFormMailerAddonConfig['fromEmailAddress'], $this->reflectFormMailerAddonConfig['fromName']);
-      $mail->addReplyTo($this->reflectFormMailerAddonConfig['replyToEmailAddress'], $this->reflectFormMailerAddonConfig['replyToName']);
       $mail->addAddress($this->reflectFormMailerAddonConfig['recipientEmailAddress'], $this->reflectFormMailerAddonConfig['recipientName']);
 
       // Attach form data to email

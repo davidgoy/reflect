@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.5
+ * @version 1.0.0-beta.6
  * @since File available since v1.0.0-alpha.1
  */
 

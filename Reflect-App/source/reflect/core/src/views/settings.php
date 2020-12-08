@@ -17,7 +17,7 @@
           <p id="upToDateText" class="d-none">You have the latest version of Reflect (v<?php echo $config['version']; ?>).</p>
           <p id="updateAvailableText" class="d-none">Newer version of Reflect is available: <b>v<span id="newerVersionText"></span></b><br><a id="updateNowButton" class="btn btn-sm btn-primary" href="#">UPDATE NOW</a></p>
           <p id="updateInProgressText" class="d-none">Updating Reflect and all officially bundled themes and addons...</p>
-          <p id="updateCompletedText" class="d-none">Update completed! Please <a href="//<?php echo $_SERVER['SERVER_NAME'] . '/' . $config['settingsPageSlug']; ?>">refresh this page now.</a></p>
+          <p id="updateCompletedText" class="d-none">Update completed. Don't forget to download the <a href="https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip" target="_blank">latest WP Reflect Support plugin</a> and upload it to your WordPress instance. Now please <a href="//<?php echo $_SERVER['SERVER_NAME'] . '/' . $config['settingsPageSlug']; ?>">refresh this page.</a></p>
           <p id="updateFailedText" class="d-none">Update failed. Reason: <span id="updateFailedReasonText"></span> If the problem persists, you could try updating manually. <a href="https://github.com/davidgoy/reflect" target="_blank">View instructions here</a>.</p>
         </div>
 

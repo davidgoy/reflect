@@ -49,7 +49,7 @@
 
             <form id="reflectFormMailerAddonSettings">
 
-              <h5 class="mt-5">GENERAL</h5>
+              <h5 class="mt-5">GENERAL OPTIONS</h5>
 
               <hr class="mb-5">
 
@@ -85,44 +85,32 @@
                 <small id="formNamesToExcludeHelp" class="form-text text-muted">Enter the name of each form you DON'T want to target. <b>Separate each name by comma.</b> Leave blank if you have already entered any form names in the <i>FORMS TO TARGET</i> option above or if you wish to target all forms.</small>
               </div>
 
-              <h5 class="mt-5">EMAIL</h5>
+              <h5 class="mt-5">EMAIL HEADER SETTINGS</h5>
 
               <hr class="mb-5">
 
               <div class="form-group">
-                <label for="recipientName">RECIPIENT NAME</label>
+                <label for="recipientName"><i>TO</i> NAME</label>
                 <input type="text" class="form-control" id="recipientName" name="recipientName" aria-describedby="recipientNameHelp" value="<?php if(isset($addonConfig['recipientName'])) { echo $addonConfig['recipientName']; } ?>" required>
-                <small id="recipientNameHelp" class="form-text text-muted">Name of the entity that will be receiving user submitted data.</small>
+                <small id="recipientNameHelp" class="form-text text-muted"></small>
               </div>
 
               <div class="form-group">
-                <label for="recipientEmailAddress">RECIPIENT EMAIL</label>
+                <label for="recipientEmailAddress"><i>TO</i> EMAIL ADDRESS</label>
                 <input type="email" class="form-control" id="recipientEmailAddress" name="recipientEmailAddress" aria-describedby="recipientEmailAddressHelp" value="<?php if(isset($addonConfig['recipientEmailAddress'])) { echo $addonConfig['recipientEmailAddress']; } ?>" required>
-                <small id="recipientEmailAddressHelp" class="form-text text-muted">Email address of the entity that will be receiving user submitted data.</small>
+                <small id="recipientEmailAddressHelp" class="form-text text-muted">The email address that will be receiving user submitted form data.</small>
               </div>
 
-              <div class="form-group" style="display: none;">
-                <label for="fromName">FROM NAME</label>
+              <div class="form-group">
+                <label for="fromName"><i>FROM</i> NAME</label>
                 <input type="text" class="form-control" id="fromName" name="fromName" aria-describedby="fromNameHelp" value="<?php if(isset($addonConfig['fromName']) && !empty($addonConfig['fromName'])) { echo $addonConfig['fromName']; } else { echo $config['siteName']; } ?>" required>
-                <small id="fromNameHelp" class="form-text text-muted">The name that will appear in the <i>From</i> field of the email.</small>
+                <small id="fromNameHelp" class="form-text text-muted"></small>
               </div>
 
-              <div class="form-group" style="display: none;">
-                <label for="fromEmailAddress">FROM EMAIL</label>
-                <input type="email" class="form-control" id="fromEmailAddress" name="fromEmailAddress" aria-describedby="fromEmailAddressHelp" value="<?php if(isset($addonConfig['fromEmailAddress']) && !empty($addonConfig['fromEmailAddress'])) { echo $addonConfig['fromEmailAddress']; } else { echo 'no-reply@' . $_SERVER['SERVER_NAME']; } ?>" required>
-                <small id="fromEmailAddressHelp" class="form-text text-muted">The email address that will appear in the <i>From</i> field of the email that will be sent to you when a user submits a form.</small>
-              </div>
-
-              <div class="form-group" style="display: none;">
-                <label for="replyToName">REPLY-TO NAME</label>
-                <input type="text" class="form-control" id="replyToName" name="replyToName" aria-describedby="replyToNameHelp" value="<?php if(isset($addonConfig['replyToName']) && !empty($addonConfig['replyToName'])) { echo $addonConfig['replyToName']; } else { echo $config['siteName']; } ?>" required>
-                <small id="replyToNameHelp" class="form-text text-muted">The name that will be appended in the <i>To</i> field of the email when you reply to the email sent to you by the Reflect site.</small>
-              </div>
-
-              <div class="form-group" style="display: none;">
-                <label for="replyToEmailAddress">REPLY-TO EMAIL</label>
-                <input type="email" class="form-control" id="replyToEmailAddress" name="replyToEmailAddress" aria-describedby="replyToEmailAddressHelp" value="<?php if(isset($addonConfig['replyToEmailAddress']) && !empty($addonConfig['replyToEmailAddress'])) { echo $addonConfig['replyToEmailAddress']; } else { echo 'no-reply@' . $_SERVER['SERVER_NAME']; } ?>" required>
-                <small id="replyToEmailAddressHelp" class="form-text text-muted">The email that will be appended in the <i>To</i> field of the email when you reply to the email sent to you by the Reflect site.</small>
+              <div class="form-group">
+                <label for="fromEmailAddress"><i>FROM</i> EMAIL ADDRESS</label>
+                <input type="email" class="form-control" id="fromEmailAddress" name="fromEmailAddress" aria-describedby="fromEmailAddressHelp" value="<?php if(isset($addonConfig['fromEmailAddress']) && !empty($addonConfig['fromEmailAddress'])) { echo $addonConfig['fromEmailAddress']; } ?>" required>
+                <small id="fromEmailAddressHelp" class="form-text text-muted"><span class="badge bg-warning text-dark">Warning</span> To avoid triggering your email server's spam filter, please use a real email address.</small>
               </div>
 
               <div class="form-group">

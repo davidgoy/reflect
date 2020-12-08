@@ -10,8 +10,9 @@
 <br>
 <br>
 <br>
-<br>
 <p align="center"><small>Latest version 1.0.0-beta.6. Tested with WordPress v5.5.3</small></p>
+
+<br>
 
 ## TABLE OF CONTENTS
 
@@ -276,5 +277,3 @@ The following are used in the Reflect project:
 ## FEEDBACK
 
 Got questions, suggestions or feature requests? [Get in touch with me](https://davidgoy.github.io/).
-
-

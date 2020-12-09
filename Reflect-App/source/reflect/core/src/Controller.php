@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.6
+ * @version 1.0.0-beta.7
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -503,6 +503,34 @@ class Controller {
 
           // Debug 1/2
           //ob_start();
+
+
+          // Delete all previous backup folders/files if they exists...
+
+          if(file_exists($documentRootFolderPath . '/css_bak') === true) {
+            $this->utils->deleteFilesAndFolders($documentRootFolderPath . '/css_bak');
+          }
+
+          if(file_exists($documentRootFolderPath . '/js_bak') === true) {
+            $this->utils->deleteFilesAndFolders($documentRootFolderPath . '/js_bak');
+          }
+
+          if(file_exists($documentRootFolderPath . '/index.bak') === true) {
+            $this->utils->deleteFilesAndFolders($documentRootFolderPath . '/index.bak');
+          }
+
+          if(file_exists($reflectFolderPath . 'core_bak') === true) {
+            $this->utils->deleteFilesAndFolders($reflectFolderPath . 'core_bak');
+          }
+
+          if(file_exists($reflectFolderPath . 'addons_bak') === true) {
+            $this->utils->deleteFilesAndFolders($reflectFolderPath . 'addons_bak');
+          }
+
+          if(file_exists($reflectFolderPath . 'themes_bak') === true) {
+            $this->utils->deleteFilesAndFolders($reflectFolderPath . 'themes_bak');
+          }
+
 
           // Change PHP's working directory in preparation for folder and/or file renaming.
           // Note: This is because we cannot use relative path (e.g. '/../../') since we are renaming the folder containing this controller!

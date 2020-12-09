@@ -10,7 +10,7 @@
 <br>
 <br>
 <br>
-<p align="center"><small>Latest version 1.0.0-beta.6. Tested with WordPress v5.5.3</small></p>
+<p align="center"><small>Latest version 1.0.0-beta.7. Tested with WordPress v5.5.3</small></p>
 <br>
 <br>
 
@@ -242,7 +242,7 @@ Don't forget to turn on ***Static Mode***!
 
 ## UPDATING
 
-Starting from version 1.0.0-beta.5, Reflect has an auto-update feature. This feature allows you to update to the latest version of Reflect (including the latest version of all officially bundled addons and themes).
+Starting from version 1.0.0-beta.7, Reflect has an auto-update feature. This feature allows you to update to the latest version of Reflect (including the latest version of all officially bundled addons and themes).
 
 Simply navigate to your Reflect site's *Settings* page; you can find the update button at the top of the page.
 

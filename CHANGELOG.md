@@ -10,6 +10,14 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 <br><br>
 
+## [1.0.0-beta.7] - 2020-12-09
+
+### Fixed
+
+- Delete backup files and folders created by the previous Reflect update process before renaming files and folders during the current update process.
+
+<br><br>
+
 ## [1.0.0-beta.6] - 2020-12-08
 
 ### Changed

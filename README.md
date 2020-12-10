@@ -16,7 +16,7 @@
 <br>
 <br>
 <br>
-<p align="center">Latest version 1.0.0-beta.7. Tested with WordPress v5.5.3</p>
+<p align="center">Latest version 1.0.0-beta.7.<br>Tested to WordPress v5.5.3</p>
 <br>
 <br>
 

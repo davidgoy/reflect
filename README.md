@@ -13,7 +13,7 @@
 <br>
 <br>
 <p align="center">
- <a href="https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip" target="_blank"><img src="https://github.com/davidgoy/reflect/blob/master/download.png" width="300" alt="Download Reflect"></a>
+ <a href="https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip" target="_blank"><img src="https://github.com/davidgoy/reflect/blob/master/download.png" width="150" alt="Download Reflect"></a>
 </p>
 <p align="center">Remember to also download and install the <a href="https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip" target="_blank">WP Reflect Support plugin</a>.</p>
 <br>

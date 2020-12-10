@@ -6,7 +6,7 @@
 <br>
 <br>
 <p align="center">
-  2-in-1 frontend with combined <i>static site generator</i> and <i>server-side renderer</i><br>for headless WordPress.<br><br><b>NO BUILD. JUST INSTALL.</b>
+  2-in-1 <i>static site generator</i> and <i>server-side renderer</i><br>frontend for headless WordPress.<br><br><b>NO BUILD. JUST INSTALL.</b>
 </p>
 <br>
 <p align="center">

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/davidgoy/reflect/blob/master/logo.png" width="350" alt="Reflect logo">
+  <img src="https://github.com/davidgoy/reflect/blob/master/logo.png" width="500" alt="Reflect logo">
 </p>
 
 <br>

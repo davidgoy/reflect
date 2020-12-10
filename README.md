@@ -2,11 +2,8 @@
   <img src="https://github.com/davidgoy/reflect/blob/master/logo.png" width="500" alt="Reflect logo">
 </p>
 
-<h3 align="center">THE INSTANT STATIC SITE FOR HEADLESS WORDPRESS</h3>
-<br>
-<br>
 <p align="center">
-  2-in-1 frontend with <u>server-side renderer</u> and <u>static page generator</u><br>for headless WordPress.<br><br><b>NO BUILD. JUST INSTALL.</b>
+  2-in-1 frontend with <u>server-side renderer</u> and <u>static page generator</u>.<br>For headless WordPress.<br><br><b>NO BUILD. JUST INSTALL.</b>
 </p>
 <br>
 <p align="center">

@@ -1,15 +1,13 @@
-
-
 <p align="center">
   <img src="https://github.com/davidgoy/reflect/blob/master/logo.png" width="350" alt="Reflect logo">
-</p>  
+</p>
+
 
 <br>
 <br>
 <p align="center">
   Combined <i>static site generator</i> and <i>server-side renderer</i><br>front-end for headless WordPress.<br><br><b>FORGET BUILDING. INSTALLED IN MINUTES.</b>
 </p>
-<h3 align="center">THE INSTANT STATIC SITE FOR HEADLESS WORDPRESS</h3>
 <br>
 <br>
 <p align="center">

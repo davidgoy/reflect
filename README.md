@@ -16,7 +16,8 @@
 <p align="center">(Don't forget to also download the <a href="https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip" target="_blank">WordPress Reflect Support plugin</a> and install it!)</p>
 <br>
 <br>
-<p align="center" style="font-size: 4pt;">Latest version 1.0.0-beta.7. Tested with WordPress v5.5.3</p>
+<br>
+<p align="center">Latest version 1.0.0-beta.7. Tested with WordPress v5.5.3</p>
 <br>
 <br>
 

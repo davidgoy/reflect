@@ -10,11 +10,10 @@
   Combined <i>static site generator</i> and <i>server-side renderer</i><br>front-end for headless WordPress.<br><br><b>FORGET BUILDING. INSTALLED IN MINUTES.</b>
 </p>
 <br>
-
 <p align="center">
  <a href="https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip" target="_blank"><img src="https://github.com/davidgoy/reflect/blob/master/download.png" width="150" alt="Download Reflect"></a>
 </p>
-<p align="center">Remember to also download and install the <a href="https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip" target="_blank">WP Reflect Support plugin</a>.</p>
+<p align="center">(Remember to also install the <a href="https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip" target="_blank">WP Reflect Support plugin</a>.)</p>
 <br>
 <br>
 <p align="center"><small>Latest version 1.0.0-beta.7. Tested with WordPress v5.5.3</small></p>

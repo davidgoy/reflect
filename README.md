@@ -10,7 +10,7 @@
   Combined <i>static site generator</i> and <i>server-side renderer</i><br>front-end for headless WordPress.<br><br><b>FORGET BUILDING. INSTALLED IN MINUTES.</b>
 </p>
 <br>
-<br>
+
 <p align="center">
  <a href="https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip" target="_blank"><img src="https://github.com/davidgoy/reflect/blob/master/download.png" width="150" alt="Download Reflect"></a>
 </p>

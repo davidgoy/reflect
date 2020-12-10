@@ -7,7 +7,7 @@
 <br>
 <br>
 <p align="center">
-  Combined <i>static site generator</i> and <i>server-side renderer</i><br>frontend for headless WordPress.<br><br><b>FORGET BUILDING. INSTALLED IN MINUTES.</b>
+  Combined <i>static site generator</i> and <i>server-side renderer</i><br>front-end for headless WordPress.<br><br><b>FORGET BUILDING. INSTALLED IN MINUTES.</b>
 </p>
 <h3 align="center">THE INSTANT STATIC SITE FOR HEADLESS WORDPRESS</h3>
 <br>

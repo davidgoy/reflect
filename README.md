@@ -112,8 +112,7 @@ On your WordPress site...
    └─ (document root)/ 
    ```
 
-4. On your web browser, navigate to the URL of your Reflect site (e.g. `https://(your domain name)`) to begin the setup process. 
-   **Don't forget to save the settings!**
+4. On your web browser, navigate to the URL of your Reflect site `https://(your domain name)` to begin the setup process.  **Don't forget to save the settings!**
    
    > **Note:** 
    > 

@@ -64,19 +64,21 @@ On your WordPress site...
    ![](https://github.com/davidgoy/reflect/blob/master/installation-1.png)
 
 2. Create a blank ***Home* page** (i.e. front page) and a blank ***Posts* page** (i.e. blog page) and immediately publish them (you can add the content later). Note down the page slugs.
-
-> **Optional:** Create a blank ***Privacy Policy* page** and a blank ***Terms of Use* page**. Then immediately publish the pages (you can add the content later). Note down the page slugs.
+   
+   > **Optional:** 
+   > 
+   > Create a blank ***Privacy Policy* page** and a blank ***Terms of Use* page**. Then immediately publish the pages (you can add the content later).     Note down the page slugs.
 
 3. Go to ***Reading Settings***. Under the heading titled ***Your homepage displays***, select the ***A static page*** option. Then assign the ***Home* page** to ***Homepage***. Also assign the ***Posts* page** to ***Posts page***.
    ![](https://github.com/davidgoy/reflect/blob/master/installation-2.png)
 
 4. Reflect currently supports two menu locations: a primary menu and a footer menu. So go to ***Menus*** and proceed to create a new menu and name it ***Primary Menu*** and another menu named ***Footer Menu***.
-
->  **Optional:**
-> 
-> - Assign the ***Home*** and ***Posts*** pages to the ***Primary Menu***.
-> 
-> - Assign the ***Privacy Policy*** and the ***Terms of Use*** pages (if you created them earlier) to the ***Footer Menu***.
+   
+   >  **Optional:** 
+   > 
+   > - Assign the ***Home*** and ***Posts*** pages to the ***Primary Menu***.
+   > 
+   > - Assign the ***Privacy Policy*** and the ***Terms of Use*** pages (if you created them earlier) to the ***Footer Menu***.
 
 5. Download the [WP Reflect Support plugin file](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip). Then install the plugin by uploading the file using WordPress'  ***Upload Plugin*** button. Proceed to activate the plugin on WordPress.
 
@@ -92,7 +94,9 @@ On your WordPress site...
 
 2. Upload everything inside `public_html` into your server's document root (i.e. web root) folder.
    
-   > **Tip:** It may be a good idea to ensure that your Reflect site content is served... 
+   > **Tip:** 
+   > 
+   > It may be a good idea to ensure that your Reflect site content is served... 
    > 
    > - only from *https* rather than *http*
    > 
@@ -111,7 +115,9 @@ On your WordPress site...
 4. On your web browser, navigate to the URL of your Reflect site (e.g. `https://(your domain name)`) to begin the setup process. 
    **Don't forget to save the settings!**
    
-   > **Note:** Reflect will only mirror WordPress page/post content as well as primary and footer menu items. Widget components (e.g. Archives, RSS, Tag Cloud, etc.) and theme-specific layout sections (e.g. Sidebar) will not be mirrored.
+   > **Note:** 
+   > 
+   > Reflect will only mirror WordPress page/post content as well as primary and footer menu items. Widget components (e.g. Archives, RSS, Tag Cloud, etc.) and theme-specific layout sections (e.g. Sidebar) will not be mirrored.
 
 <br>
 
@@ -135,7 +141,9 @@ You can easily accomplish this with a basic understanding of *htaccess*. You wil
 
 [Download this sample *htaccess* file](https://raw.githubusercontent.com/davidgoy/reflect/master/WP-Reflect-Support-Plugin/deploy/sample-wordpress.htaccess) and replace the dummy IP addresses with the real ones as per above. Rename the file to *.htaccess*, then upload it to the directory where your WordPress site is installed. 
 
-> **Warning:** This will replace the original *htaccess* file created by WordPress, so back up the original file first!
+> **Warning:** 
+> 
+> This will replace the original *htaccess* file created by WordPress, so back up the original file first!
 
 <span><br><br></span>
 
@@ -206,7 +214,9 @@ Of course, don't forget to go to Reflect's *Settings* page and set your site to 
 
 Reflect comes with an addon called *Reflect Form Mailer* which you can enable on Reflect's ***Settings* page** (accessible by navigating to `(your domain name)/reflect-settings`).
 
-> **Note:** With this addon enabled, simply drop a plain Bootstrap form into a page or post on your WordPress site, and the form will become automatically submitable when it is rendered on your Reflect site.
+> **Note:** 
+> 
+> With this addon enabled, simply drop a plain Bootstrap form into a page or post on your WordPress site, and the form will become automatically submitable when it is rendered on your Reflect site.
 > 
 > So when a user submits the form on your Reflect site, the form data will be emailed to you. 
 
@@ -214,7 +224,9 @@ Assuming that you have already enabled the addon, you should now configure it by
 
 `(your domain name)/reflect-settings/addons/reflect-form-mailer`
 
-> **Tips:** You can use Chris Youderian's drag-and-drop [Bootstrap Form Builder](https://bootstrapformbuilder.com/) which allows you to visually put together a Bootstrap form and then generate the corresponding HTML code. You can then simply chuck the HTML code into your WordPress page or post.
+> **Tips:** 
+> 
+> You can use Chris Youderian's drag-and-drop [Bootstrap Form Builder](https://bootstrapformbuilder.com/) which allows you to visually put together a Bootstrap form and then generate the corresponding HTML code. You can then simply chuck the HTML code into your WordPress page or post.
 
 <br>
 

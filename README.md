@@ -39,7 +39,7 @@ Reflect is a front-end app developed to specifically pair with WordPress (which 
 
 Like WordPress, you can simply install Reflect on your server. No coding or building required. 
 
-Once installed, Reflect will fetch content from your WordPress site, render them on the server-side, and serve them upon http requests. 
+Once installed, your Reflect site will mirror content from your WordPress site. 
 
 You can also use Reflect to pre-fetch and pre-generate the content into static HTML files. Then simply turn on *static mode*, and your Reflect site will function like a static site.
 
@@ -47,17 +47,12 @@ You can also use Reflect to pre-fetch and pre-generate the content into static H
 
 ## INSTALLATION
 
-> #### Minimum requirements
-> 
-> - Two domain (or subdomain) names available for use... one for your WordPress site (i.e. the back-end), and the other for your Reflect site (i.e. the front-end).
-> 
-> - Apache HTTP web server (or a compatible alternative such as LiteSpeed) with PHP 7.0 or later installed. 
->   
->   **Optional:** For maximum security, host your WordPress site and your Reflect site on separate servers.
-> 
-> - WordPress v5.0 or later installed. 
-> 
-> - WordPress content should be created using either the standard Classic or Gutenberg editor.
+### Requirements
+
+- Your Reflect site should be hosted on one domain and your WordPress site should be hosted on another domain or subdomain. 
+- The server hosting your Reflect site must support the use of *.htaccess* and have PHP 7.0 or later installed.
+- For your WordPress site, WordPress 5.0 or later is required.  
+- WordPress content should be created using either the standard *Classic* or *Gutenberg* editor.
 
 <br>
 
@@ -72,20 +67,16 @@ On your WordPress site...
 
 > **Optional:** Create a blank ***Privacy Policy* page** and a blank ***Terms of Use* page**. Then immediately publish the pages (you can add the content later). Note down the page slugs.
 
-> **Optional:** Create a blank ***Under Maintenance* page**. Then immediately publish the page (you can add the content later). Note down the page slug.
-
 3. Go to ***Reading Settings***. Under the heading titled ***Your homepage displays***, select the ***A static page*** option. Then assign the ***Home* page** to ***Homepage***. Also assign the ***Posts* page** to ***Posts page***.
    ![](https://github.com/davidgoy/reflect/blob/master/installation-2.png)
 
 4. Reflect currently supports two menu locations: a primary menu and a footer menu. So go to ***Menus*** and proceed to create a new menu and name it ***Primary Menu*** and another menu named ***Footer Menu***.
-   
-   >  **Optional:**
-   > 
-   > - Assign the ***Home*** and ***Posts*** pages to the ***Primary Menu***.
-   > 
-   > - Assign the ***Privacy Policy*** and the ***Terms of Use*** pages (if you created them earlier) to the ***Footer Menu***.
-   > 
-   > **Note:** Do not assign the ***Under Maintenance*** page to any menu.
+
+>  **Optional:**
+> 
+> - Assign the ***Home*** and ***Posts*** pages to the ***Primary Menu***.
+> 
+> - Assign the ***Privacy Policy*** and the ***Terms of Use*** pages (if you created them earlier) to the ***Footer Menu***.
 
 5. Download the [WP Reflect Support plugin file](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip). Then install the plugin by uploading the file using WordPress'  ***Upload Plugin*** button. Proceed to activate the plugin on WordPress.
 
@@ -99,9 +90,7 @@ On your WordPress site...
    
    - `public_html`
 
-2. Upload the content of `public_html` into the root directory of your server (also known as the *document root*).
-   
-   > **Note:** This may sound obvious, but please upload the folder's CONTENT ONLY, and not the entire `public_html`folder itself! 
+2. Upload everything inside `public_html` into your server's document root (i.e. web root) folder.
    
    > **Tip:** It may be a good idea to ensure that your Reflect site content is served... 
    > 
@@ -110,8 +99,8 @@ On your WordPress site...
    > - either with or without the *www* prefix (and not both) 
    > 
    > If you know a bit of *htaccess*, you can edit this [sample *htaccess* file](https://raw.githubusercontent.com/davidgoy/reflect/master/Reflect-App/deploy/sample-reflect.htaccess). Then simply replace the existing *htaccess* file in the `public_html` folder with the new one. 
-   
-   Next, upload the `reflect` folder to your server so that it sits outside of the document root. Your web server's directory structure should look something like this:
+
+3. Upload the `reflect` folder to your server so that it sits outside of the document root. Your web server's directory structure should look something like this:
    
    ```text
    (your domain name)/
@@ -119,7 +108,7 @@ On your WordPress site...
    └─ (document root)/ 
    ```
 
-3. On your web browser, navigate to the URL of your Reflect site (e.g. `https://(your domain name)`) to begin the setup process. 
+4. On your web browser, navigate to the URL of your Reflect site (e.g. `https://(your domain name)`) to begin the setup process. 
    **Don't forget to save the settings!**
    
    > **Note:** Reflect will only mirror WordPress page/post content as well as primary and footer menu items. Widget components (e.g. Archives, RSS, Tag Cloud, etc.) and theme-specific layout sections (e.g. Sidebar) will not be mirrored.

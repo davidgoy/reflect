@@ -60,18 +60,15 @@ Your Reflect site can also pre-generate the mirrored content into static HTML fi
 1. WordPress 5.0 or later is required. 
 
 2. ***Post name*** should be selected as the permalink structure:
-   
-   <br>
-       ![](https://github.com/davidgoy/reflect/blob/master/installation-1.png)
-    <br>
+
+  ![](https://github.com/davidgoy/reflect/blob/master/installation-1.png)
+
 
 3. At least two pages created - a ***Home* page** (i.e. front page) and a ***Posts* page** (i.e. blog page).
 
 4. For the ***Reading Settings***, ensure that ***A static page*** option is selected:
-   
-   <br>
-    ![](https://github.com/davidgoy/reflect/blob/master/installation-2.png)
-    <br>
+
+  ![](https://github.com/davidgoy/reflect/blob/master/installation-2.png)
 
 5. A primary and footer menu created and named ***Primary Menu*** and ***Footer Menu*** respectively.
 

@@ -35,7 +35,7 @@
 
 ## WHAT IS REFLECT
 
-Reflect is a front-end app developed to pair with WordPress (which functions as the back-end) to create the ultimate decoupled architecture. 
+Reflect is a front-end app designed to pair with WordPress (which functions as the back-end) to create the ultimate decoupled architecture. 
 
 Simply install Reflect on your server. No coding or building required. 
 

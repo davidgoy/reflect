@@ -19,11 +19,13 @@
 
 ## TABLE OF CONTENTS
 
-- [What is Reflect](#what-is-reflect)
+- [About](#about)
+
+- [Requirements](#requirements)
 
 - [Installation](#installation)
 
-- [Security hardening](#security-hardening)
+- [Hardening](#hardening)
 
 - [Usage](#usage)
 
@@ -35,7 +37,9 @@
 
 <span><br><br></span>
 
-## WHAT IS REFLECT
+## ABOUT
+
+## What is Reflect
 
 Reflect is a front-end app designed to pair with WordPress (which functions as the back-end) to create the ultimate decoupled architecture. 
 
@@ -47,9 +51,9 @@ Your Reflect site can also pre-generate the mirrored content into static HTML fi
 
 <span><br><br></span>
 
-## INSTALLATION
+## REQUIREMENTS
 
-### Reflect site hosting requirements
+### Reflect site
 
 1. Your Reflect site should be hosted on a separate domain to your WordPress site. 
 2. Your web server must support the use of ***.htaccess*** 
@@ -57,7 +61,7 @@ Your Reflect site can also pre-generate the mirrored content into static HTML fi
 
 <br>
 
-### WordPress site requirements
+### WordPress site
 
 1. WordPress 5.0 or later is required. 
 
@@ -81,7 +85,9 @@ Your Reflect site can also pre-generate the mirrored content into static HTML fi
    > 
    > Reflect does not support third party page builders.
 
-<br>
+<span><br><br></span>
+
+## INSTALLATION
 
 ### How to install and setup your Reflect site
 
@@ -119,7 +125,7 @@ Your Reflect site can also pre-generate the mirrored content into static HTML fi
 
 <br>
 
-## SECURITY HARDENING
+## HARDENING
 
 ### How to deny public access to your WordPress site
 

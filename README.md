@@ -35,52 +35,37 @@
 
 ## WHAT IS REFLECT
 
-Reflect is a front-end app developed to specifically pair with WordPress (which functions as the back-end) to create the ultimate decoupled architecture. 
+Reflect is a front-end app developed to pair with WordPress (which functions as the back-end) to create the ultimate decoupled architecture. 
 
-Like WordPress, you can simply install Reflect on your server. No coding or building required. 
+Simply install Reflect on your server. No coding or building required. 
 
 Once installed, your Reflect site will mirror content from your WordPress site. 
 
-You can also use Reflect to pre-fetch and pre-generate the content into static HTML files. Then simply turn on *static mode*, and your Reflect site will function like a static site.
+Your Reflect site can also pre-generate the mirrored content into static HTML files and serve them, effectively becoming a static site.
 
 <span><br><br></span>
 
 ## INSTALLATION
 
-### Requirements
+### What are the hosting requirements
 
-- Your Reflect site should be hosted on one domain and your WordPress site should be hosted on another domain or subdomain. 
-- The server hosting your Reflect site must support the use of *.htaccess* and have PHP 7.0 or later installed.
-- For your WordPress site, WordPress 5.0 or later is required.  
-- WordPress content should be created using either the standard *Classic* or *Gutenberg* editor.
+1. Your Reflect site should be hosted on one domain and your WordPress site should be hosted on another domain or subdomain. 
+2. The server hosting your Reflect site must support the use of ***.htaccess*** 
+3. PHP 7.0 or later is required.
 
 <br>
 
-### How to prepare your WordPress site for use with Reflect
+### What are the WordPress requirements
 
-On your WordPress site...
-
-1. Go to ***Permalink Settings***, then select ***Post name*** as the permalink structure.
+1. For your WordPress site, WordPress 5.0 or later is required. 
+2. ***Post name*** should be selected as the permalink structure.
    ![](https://github.com/davidgoy/reflect/blob/master/installation-1.png)
-
-2. Create a blank ***Home* page** (i.e. front page) and a blank ***Posts* page** (i.e. blog page) and immediately publish them (you can add the content later). Note down the page slugs.
-   
-   > **Optional:** 
-   > 
-   > Create a blank ***Privacy Policy* page** and a blank ***Terms of Use* page**. Then immediately publish the pages (you can add the content later).     Note down the page slugs.
-
-3. Go to ***Reading Settings***. Under the heading titled ***Your homepage displays***, select the ***A static page*** option. Then assign the ***Home* page** to ***Homepage***. Also assign the ***Posts* page** to ***Posts page***.
-   ![](https://github.com/davidgoy/reflect/blob/master/installation-2.png)
-
-4. Reflect currently supports two menu locations: a primary menu and a footer menu. So go to ***Menus*** and proceed to create a new menu and name it ***Primary Menu*** and another menu named ***Footer Menu***.
-   
-   >  **Optional:** 
-   > 
-   > - Assign the ***Home*** and ***Posts*** pages to the ***Primary Menu***.
-   > 
-   > - Assign the ***Privacy Policy*** and the ***Terms of Use*** pages (if you created them earlier) to the ***Footer Menu***.
-
-5. Download the [WP Reflect Support plugin file](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip). Then install the plugin by uploading the file using WordPress'  ***Upload Plugin*** button. Proceed to activate the plugin on WordPress.
+3. At least two pages created - a ***Home* page** (i.e. front page) and a ***Posts* page** (i.e. blog page).
+4. For the ***Reading Settings***, ensure that ***A static page*** option is selected.
+	![](https://github.com/davidgoy/reflect/blob/master/installation-2.png)
+5. A primary and footer menu created and named ***Primary Menu*** and ***Footer Menu*** respectively.
+6. WordPress content should be created using either the standard *Classic* or *Gutenberg* editor.
+7. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated.
 
 <br>
 

@@ -47,17 +47,17 @@ Your Reflect site can also pre-generate the mirrored content into static HTML fi
 
 ## INSTALLATION
 
-### Hosting requirements
+### Reflect site hosting requirements
 
-1. Your Reflect site should be hosted on one domain and your WordPress site should be hosted on another domain or subdomain. 
-2. The server hosting your Reflect site must support the use of ***.htaccess*** 
-3. PHP 7.0 or later is required.
+1. Your Reflect site should be hosted on a separate domain to your WordPress site. 
+2. Your web server must support the use of ***.htaccess*** 
+3. PHP 7.0 or later must be installed.
 
 <br>
 
-### WordPress requirements
+### WordPress site requirements
 
-1. For your WordPress site, WordPress 5.0 or later is required. 
+1. WordPress 5.0 or later is required. 
 2. ***Post name*** should be selected as the permalink structure.
    ![](https://github.com/davidgoy/reflect/blob/master/installation-1.png)
 3. At least two pages created - a ***Home* page** (i.e. front page) and a ***Posts* page** (i.e. blog page).

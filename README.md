@@ -64,8 +64,12 @@ Your Reflect site can also pre-generate the mirrored content into static HTML fi
 4. For the ***Reading Settings***, ensure that ***A static page*** option is selected.
     ![](https://github.com/davidgoy/reflect/blob/master/installation-2.png)
 5. A primary and footer menu created and named ***Primary Menu*** and ***Footer Menu*** respectively.
-6. WordPress content should be created using either the *Classic* or *Gutenberg* editor.
-7. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated.
+6. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated.
+7. When creating page or post content, you should use the *Classic* or *Guttenberg* editor that comes with WordPress. 
+   
+   > **Note:**
+   > 
+   > Reflect does not support third party page builders.
 
 <br>
 

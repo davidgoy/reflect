@@ -3,8 +3,10 @@
 </p>
 
 <p align="center">
-  2-in-1 frontend with <u>server-side rendering</u> and <u>static page generator</u>.<br>For headless WordPress CMS.<br><br><b>MIRROR ANY WORDPRESS SITE.</b>
+  2-in-1 frontend with <u>server-side rendering</u> and <u>static page generator</u>.<br>For headless WordPress CMS.
 </p>
+<br>
+<h3 align="center">MIRROR ANY WORDPRESS SITE.</h3>
 <br>
 <p align="center">
  <a href="https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip" target="_blank"><img src="https://github.com/davidgoy/reflect/blob/master/download.png" width="150" alt="Download Reflect"></a>

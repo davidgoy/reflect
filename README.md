@@ -51,7 +51,7 @@ Once installed, your Reflect site will mirror content from your WordPress site.
 
 Your Reflect site can also pre-generate the mirrored content into static HTML files and serve them, effectively becoming a static site.
 
-### Why Reflect
+### Why use Reflect
 
 #### Unparalleled security
 

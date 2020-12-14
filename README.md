@@ -67,7 +67,7 @@ Consequently Reflect has a tiny attack surface, not to mention there's no valuab
 
 #### Much faster page load
 
-Your Reflect site can fetch content from your WordPress site dynamically. Or it can pre-fetch and pre-generate the content into static files to serve on page request. This effectively turns it into a fast loading, static site.
+Your Reflect site can fetch content from your WordPress site dynamically. Or it can pre-fetch and pre-generate the content into static files to serve on page request. This effectively turns it into a fast-loading, static site.
 
 <span><br><br></span>
 

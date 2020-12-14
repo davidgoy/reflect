@@ -51,6 +51,22 @@ Once installed, your Reflect site will mirror content from your WordPress site.
 
 Your Reflect site can also pre-generate the mirrored content into static HTML files and serve them, effectively becoming a static site.
 
+### Why Reflect
+
+#### Unparalleled security
+
+Reflect enables the content you create on your WordPress site to be accessible to the public while completely preventing their access to the site itself.
+
+This means you can utilise WordPress as a pure backend to create and publish content. The content is then made available for public consumption strictly via your Reflect site.
+
+Your Reflect site contains no database or user accounts. It simply mirrors content from your WordPress site. 
+
+Consequently Reflect has a tiny attack surface, not to mention there's also no valuable loot to tempt hackers.
+
+#### Faster page load
+
+Your Reflect site can fetch content from your WordPress site dynamically. Or it can pre-fetch and pre-generate the content into static files to serve on page request. This effectively turns it into a fast loading, static site.
+
 <span><br><br></span>
 
 ## REQUIREMENTS
@@ -135,7 +151,7 @@ One of the key advantages of a decoupled architecture is that it allows the fron
 
 Since the general public only interacts with the front-end app (i.e. your Reflect site) and never directly with the back-end app (i.e. your WordPress site), you should **deny all access to your WordPress site except requests coming from**:
 
-- Your Reflect site
+- The server hosting your Reflect site
 
 - Main admin users (e.g. you)
 
@@ -152,6 +168,12 @@ You can easily accomplish this with a basic understanding of *htaccess*. You wil
 > **Warning:** 
 > 
 > This will replace the original *htaccess* file created by WordPress, so back up the original file first!
+
+### How to enhance security even further
+
+You can also host your WordPress site and your Reflect site on a separate server.
+
+This means in the extremely, unlikely event that a hacker manages to compromise your Reflect site and break into the server, your WordPress site is not in danger.
 
 <span><br><br></span>
 

@@ -63,7 +63,7 @@ This means you can utilise WordPress as a pure backend to create and publish con
 
 Your Reflect site contains no database or user accounts. It simply mirrors content from your WordPress site. 
 
-Consequently Reflect has a tiny attack surface, not to mention there's also no valuable loot to tempt hackers.
+Consequently Reflect has a tiny attack surface, not to mention there's also no valuable loot to steal.
 
 #### Faster page load
 

@@ -107,7 +107,7 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
 
 ### How to install and setup your Reflect site
 
-1. Download and extract the [Reflect App ZIP file](https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip). You will find two folders:
+1. [Download the Reflect App ZIP file here](https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip). Extract the ZIP file and you will find two folders:
    
    - `reflect`
    

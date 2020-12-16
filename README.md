@@ -85,7 +85,7 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
 
 1. WordPress 5.0 or later is required. 
 
-2. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated.
+2. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
 
 3. ***Post name*** should be selected as the permalink structure:
    

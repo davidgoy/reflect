@@ -77,13 +77,19 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
 
 1. Your Reflect site should be hosted on a separate domain to your WordPress site. 
 2. Your web server must support the use of ***.htaccess*** 
-3. PHP 7.0 or later must be installed.
+3. PHP 7.0 or later installed
+
+	> **Note:**
+    > Reflect has not yet been tested on PHP 8.
 
 <br>
 
 ### WordPress site
 
-1. WordPress 5.0 or later is required. 
+1. WordPress 5.0 or later.
+
+	> **Note:**
+    > Reflect has not yet been tested on WordPress 5.6 and later.
 
 2. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
 
@@ -130,7 +136,7 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
    ```text
    (your domain name)/
    ├─ reflect/
-   └─ (document root)/ 
+   └─ (your document root)/ 
    ```
 
 4. On your web browser, navigate to the URL of your Reflect site `https://(your domain name)` to begin the setup process.  **Don't forget to save the settings!**
@@ -181,7 +187,7 @@ This means in the extremely, unlikely event that a hacker manages to compromise 
 
 This may be obvious to some, but for the sake of those who are unfamiliar with using a decoupled system, content creation and publishing is done on the back-end app. In this case, this is your WordPress site.
 
-After you have set up both your Reflect site and WordPress site, you can now use WordPress' Gutenberg or classic editors as per normal to create and publish content.
+After you have set up both your Reflect site and WordPress site, you can now use WordPress' *Gutenberg* or *Classic* editors as per normal to create and publish content.
 
 Your Reflect site will automatically mirror the content of any published pages or posts.
 

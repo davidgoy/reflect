@@ -77,7 +77,7 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
 
 1. Your Reflect site should be hosted on a separate domain to your WordPress site. 
 2. Your web server must support the use of ***.htaccess*** 
-3. PHP 7.0 or later installed
+3. PHP 7.x installed
 
 	> **Note:**
     > Reflect has not yet been tested on PHP 8.

@@ -41,7 +41,11 @@
 
 ## ABOUT
 
-### What is Reflect
+### What is Reflect and how it works
+
+<p align="center">
+  <img src="https://github.com/davidgoy/reflect/blob/master/about-reflect.png" width="1000" alt="How Reflect works">
+</p>
 
 Reflect is a front-end app designed to pair with WordPress (which functions as the back-end) to create the ultimate decoupled architecture. 
 

@@ -41,7 +41,7 @@
 
 ## ABOUT
 
-### What is Reflect and how it works
+### What is Reflect
 
 <p align="center">
   <img src="https://github.com/davidgoy/reflect/blob/master/about-reflect.png" width="700" alt="How Reflect works">
@@ -51,9 +51,9 @@ Reflect is a front-end app designed to pair with WordPress (which functions as t
 
 Simply install Reflect on your server. No coding or building required. 
 
-Once installed, your Reflect site will mirror content from your WordPress site. 
+Once installed, your Reflect site will mirror content from your WordPress site. You can then firewall your WordPress site (e.g. using *.htaccess*) to make it inaccessible to the general public. 
 
-Your Reflect site can also pre-generate the mirrored content into static HTML files and serve them, effectively becoming a static site.
+Your Reflect site can also pre-generate the mirrored content into static pages and serve them, effectively becoming a static site.
 
 <br>
 
@@ -80,20 +80,22 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
 ### Reflect site
 
 1. Your Reflect site should be hosted on a separate domain to your WordPress site. 
-2. Your web server must support the use of ***.htaccess*** 
-3. PHP 7.x installed
 
-	> **Note:**
-    > Reflect has not yet been tested on PHP 8.
+2. Your web server must support the use of ***.htaccess*** 
+
+3. PHP 7.x installed
+   
+   > **Note:**
+   > Reflect has not yet been tested on PHP 8.
 
 <br>
 
 ### WordPress site
 
 1. WordPress 5.0 or later.
-
-	> **Note:**
-    > Reflect has not yet been tested on WordPress 5.6 and later.
+   
+   > **Note:**
+   > Reflect has not yet been tested on WordPress 5.6 and later.
 
 2. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
 
@@ -287,7 +289,7 @@ Don't forget to turn on ***Static Mode*** so that your Reflect site will serve t
 Starting from version 1.0.0-beta.7, Reflect has an auto-update feature. This feature allows you to update to the latest version of Reflect at the click of a button (located in Reflect's *Settings* page).
 
 > **Note:**
->
+> 
 > Updating Reflect will also automatically update all the themes and addons that are officially bundled with Reflect.
 
 <span><br><br></span>

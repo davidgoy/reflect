@@ -280,9 +280,11 @@ Don't forget to turn on ***Static Mode*** so that your Reflect site will serve t
 
 ## UPDATING
 
-Starting from version 1.0.0-beta.7, Reflect has an auto-update feature. This feature allows you to update to the latest version of Reflect (including the latest version of all officially bundled addons and themes).
+Starting from version 1.0.0-beta.7, Reflect has an auto-update feature. This feature allows you to update to the latest version of Reflect at the click of a button (located in Reflect's *Settings* page).
 
-Simply navigate to your Reflect site's *Settings* page; you can find the update button at the top of the page.
+> **Note:**
+>
+> Updating Reflect will also automatically update all the themes and addons that are officially bundled with Reflect.
 
 <span><br><br></span>
 

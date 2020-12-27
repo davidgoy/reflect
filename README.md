@@ -274,7 +274,7 @@ To access the ***Static Files Manager* page**, navigate to:
 
 `(your domain name)/reflect-sfm`
 
-Don't forget to turn on ***Static Mode*** in the *Settings* page so that your Reflect site will serve the pre-generated static pages instead of fetching content dynamically from your WordPress site.
+Don't forget to turn on ***Static Mode*** in the Reflect *Settings* page so that your Reflect site will serve the pre-generated static pages instead of fetching content dynamically from your WordPress site.
 
 <span><br><br></span>
 

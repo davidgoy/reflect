@@ -3,7 +3,9 @@
 </p>
 
 <p align="center">
-  2-in-1 frontend with <u>server-side rendering</u> and <u>static page generator</u>.<br>For headless WordPress CMS.
+  Decoupled architecture website using WordPress as headless CMS.
+  <br>
+  Complete with <u>server-side rendering</u> and <u>static page generator</u>.
 </p>
 <br>
 <h3 align="center">MIRROR CONTENT FROM ANY WORDPRESS SITE.</h3>
@@ -43,11 +45,13 @@
 
 ### What is Reflect
 
+#### Decoupled architecture website using WordPress as headless CMS
+
 <p align="center">
   <img src="https://github.com/davidgoy/reflect/blob/master/about-reflect.png" width="700" alt="How Reflect works">
 </p>
 
-Reflect is a front-end app designed to pair with WordPress (which functions as the back-end) to create the ultimate decoupled architecture. 
+Reflect is a front-end app designed to pair with WordPress (which functions as the back-end) to create the ultimate decoupled architecture website. 
 
 Simply install Reflect on your server. No coding or building required. 
 

@@ -65,7 +65,7 @@ Your Reflect site can also pre-generate the mirrored content into static pages a
 
 ### Why use Reflect
 
-#### Significantly enhanced security
+#### Enhanced security
 
 Reflect enables the content you create on your WordPress site to be accessible to the public while completely preventing their access to the site itself.
 
@@ -75,7 +75,7 @@ Your Reflect site contains no database or user accounts. It simply mirrors conte
 
 Consequently Reflect has a tiny attack surface, not to mention there's no valuable loot to steal.
 
-#### Much faster page load
+#### Faster page load
 
 Your Reflect site can fetch content from your WordPress site dynamically. Or it can pre-fetch and pre-generate the content into static files to serve on page request. This effectively turns it into a fast-loading, static site.
 

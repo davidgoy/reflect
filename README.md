@@ -89,19 +89,15 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
 
 2. Your web server must support the use of ***.htaccess*** 
 
-3. PHP 7.x installed
-   
-   > **Note:**
-   > Reflect has not yet been tested on PHP 8.
+3. PHP 7.x or later.
 
 <br>
 
 ### WordPress site
 
-1. WordPress 5.0 or later.
+1. WordPress 5.x or later.
    
-   > **Note:**
-   > Reflect has not yet been tested on WordPress 5.6 and later.
+   > 
 
 2. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
 

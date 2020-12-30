@@ -2,10 +2,10 @@
   "updates": [
     {
       "version": "1.0.0-beta.7",
-      "released": "2020-12-09 00:00:00",
+      "released": "2020-12-08 00:00:00",
       "changes": {
         "removed": {
-          
+
         },
         "replaced": {
 
@@ -17,7 +17,7 @@
     },
     {
       "version": "1.0.0-beta.6",
-      "released": "2020-12-08 00:00:00",
+      "released": "2020-12-07 00:00:00",
       "changes": {
         "removed": {
           "replyToEmailAddress": "",

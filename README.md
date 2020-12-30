@@ -96,8 +96,6 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
 ### WordPress site
 
 1. WordPress 5.x or later.
-   
-   > 
 
 2. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
 
@@ -201,7 +199,7 @@ Your Reflect site will automatically mirror the content of any published pages o
 
 <br>
 
-### How to accessing Reflect site settings
+### How to access Reflect site settings
 
 You can access your Reflect site's ***Settings* page** anytime by navigating to the following URL:
 

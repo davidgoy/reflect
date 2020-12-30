@@ -203,7 +203,7 @@ Your Reflect site will automatically mirror the content of any published pages o
 
 You can access your Reflect site's ***Settings* page** anytime by navigating to the following URL:
 
-`(your domain name)/reflect-settings`
+`https://(your domain name)/reflect-settings`
 
 <br>
 
@@ -213,11 +213,11 @@ The look and feel of your Reflect site is controled by its theme. Each theme als
 
 Although you may have multiple themes, only one theme can be active at a time. You can access the settings of an active theme by navigating to:
 
-`(your domain name)/reflect-settings/themes/(name of theme)`
+`https://(your domain name)/reflect-settings/themes/(name of theme)`
 
 Reflect comes with a default theme which is creatively named... *Default*. Therefore to access its settings, go to:
 
-`(your domain name)/reflect-settings/themes/default`
+`https://(your domain name)/reflect-settings/themes/default`
 
 <br>
 
@@ -242,7 +242,7 @@ If this is what you wish to do, then it is recommended that you duplicate the *D
 
 You can then access your custom theme's settings page by navigating to:
 
-`(your domain name)/reflect-settings/themes/(name of your custom theme)`
+`https://(your domain name)/reflect-settings/themes/(name of your custom theme)`
 
 Of course, don't forget to go to Reflect's *Settings* page and set your site to use the new theme.
 
@@ -252,7 +252,7 @@ Of course, don't forget to go to Reflect's *Settings* page and set your site to 
 
 #### Using *Reflect Form Mailer* addon
 
-Reflect comes with an addon called *Reflect Form Mailer* which you can enable on Reflect's ***Settings* page** (accessible by navigating to `(your domain name)/reflect-settings`).
+Reflect comes with an addon called *Reflect Form Mailer* which you can enable on Reflect's ***Settings* page** (accessible by navigating to `https://(your domain name)/reflect-settings`).
 
 > **Note:** 
 > 
@@ -262,7 +262,7 @@ Reflect comes with an addon called *Reflect Form Mailer* which you can enable on
 
 Assuming that you have already enabled the addon, you should now configure it by going to: 
 
-`(your domain name)/reflect-settings/addons/reflect-form-mailer`
+`https://(your domain name)/reflect-settings/addons/reflect-form-mailer`
 
 > **Tips:** 
 > 
@@ -278,7 +278,7 @@ However, Reflect can also be set to behave like a static site. You can use Refle
 
 To access the ***Static Files Manager* page**, navigate to:
 
-`(your domain name)/reflect-sfm`
+`https://(your domain name)/reflect-sfm`
 
 Don't forget to turn on ***Static Mode*** so that your Reflect site will serve the pre-generated static pages instead of fetching content dynamically from your WordPress site.
 

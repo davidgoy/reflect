@@ -58,7 +58,7 @@ Reflect is a front-end app designed to pair with WordPress (which functions as t
 
 Simply install a Reflect site on your server, and it will mirror content from your WordPress site. 
 
-You can then firewall the entire WordPress site (e.g. using [this sample *.htaccess*](https://raw.githubusercontent.com/davidgoy/reflect/master/WP-Reflect-Support-Plugin/deploy/sample-wordpress.htaccess)) to shield it from public access while exposing only your Reflect site as the public facing front. 
+You can then firewall the entire WordPress site (e.g. using [this sample *.htaccess*](https://raw.githubusercontent.com/davidgoy/reflect/master/WP-Reflect-Support-Plugin/deploy/sample-wordpress.htaccess)) to shield it from public view while exposing the Reflect site as the public facing front. 
 
 Your Reflect site can also pre-generate the mirrored content into static pages and serve them, effectively becoming a static site.
 

@@ -48,6 +48,7 @@
 #### Decoupled architecture website using WordPress as headless CMS
 
 <br><br>
+
 <p align="center">
   <img src="https://github.com/davidgoy/reflect/blob/master/about-reflect.png" width="700" alt="How Reflect works">
 </p>
@@ -207,7 +208,7 @@ You can access your Reflect site's ***Settings* page** anytime by navigating to 
 
 <br>
 
-### How to access Reflect theme settings
+### How to change the look and feel of your Reflect site's theme
 
 The look and feel of your Reflect site is controled by its theme. Each theme also has its own settings separate from the core app. 
 
@@ -221,7 +222,7 @@ Reflect comes with a default theme which is creatively named... *Default*. There
 
 <br>
 
-### How to customise the look and feel of your Reflect site
+### How to further customise the design of your Reflect site
 
 The *Default* theme has a few properties which you can change via its settings page. 
 
@@ -270,7 +271,7 @@ Assuming that you have already enabled the addon, you should now configure it by
 
 <br>
 
-### How to turn Reflect into a static site
+### How to activate Reflect's static site mode
 
 By default, your Reflect site will dynamically render (on the server-side) the content it fetches from your WordPress site.
 

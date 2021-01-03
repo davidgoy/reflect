@@ -10,7 +10,7 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 <br><br>
 
-## [1.0.0-beta.7] - 2020-12-09
+## [1.0.0-beta.7] - 2020-12-08
 
 ### Fixed
 
@@ -18,7 +18,7 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 <br><br>
 
-## [1.0.0-beta.6] - 2020-12-08
+## [1.0.0-beta.6] - 2020-12-07
 
 ### Changed
 

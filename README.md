@@ -13,11 +13,11 @@
 <p align="center">
  <a href="https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip" target="_blank"><img src="https://github.com/davidgoy/reflect/blob/master/download.png" width="150" alt="Download Reflect"></a>
 </p>
-<p align="center">(Don't forget to also download the <a href="https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip" target="_blank">WordPress Reflect Support plugin</a> and install it!)</p>
+<p align="center">(And don't forget to also download the <a href="https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip" target="_blank">WordPress Reflect Support plugin</a> and install it!)</p>
 <br>
 <br>
 <br>
-<p align="center">Latest version 1.0.0-beta.7</p>
+<p align="center">Latest version 1.0.0-beta.8</p>
 <br>
 <br>
 

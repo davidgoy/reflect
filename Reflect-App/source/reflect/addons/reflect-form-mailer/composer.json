@@ -9,8 +9,8 @@
         }
     ],
     "require": {
-        "phpmailer/phpmailer": "^6.1",
-        "ircmaxell/random-lib": "^1.2"
+        "phpmailer/phpmailer": "~6.2",
+        "ircmaxell/random-lib": "~1.2"
     },
     "autoload": {
       "psr-4": {

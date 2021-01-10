@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?version=1.0.0-beta.8">
 
     <!-- Pickr -->
-    <link rel="stylesheet" href="/css/pickr/classic.min.css">
+    <link rel="stylesheet" href="/css/pickr/classic.min.css?version=1.0.0-beta.8">
 
     <title><?php if(isset($themeConfig['themeName']) && !empty($themeConfig['themeName'])) { echo $themeConfig['themeName'];} ?> Theme Settings</title>
 
@@ -214,7 +214,7 @@
 
 
     <span id="csrfPreventionToken" data-csrf-prevention-token="<?php if(isset($_SESSION['csrfPreventionToken'])) { echo $_SESSION['csrfPreventionToken']; } ?>"></span>
-    
+
 
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>
 
@@ -226,15 +226,15 @@
     <?php endif; ?>
 
     <!-- Bootstrap -->
-    <script src="/js/bootstrap/jquery-3.5.1.slim.min.js"></script>
-    <script src="/js/bootstrap/popper.min.js"></script>
-    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/bootstrap/jquery-3.5.1.slim.min.js?version=1.0.0-beta.8"></script>
+    <script src="/js/bootstrap/popper.min.js?version=1.0.0-beta.8"></script>
+    <script src="/js/bootstrap/bootstrap.min.js?version=1.0.0-beta.8"></script>
 
     <!-- SweetAlert2 -->
-    <script src="/js/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="/js/sweetalert2/sweetalert2.all.min.js?version=1.0.0-beta.8"></script>
 
     <!-- Pickr -->
-    <script src="/js/pickr/pickr.min.js"></script>
+    <script src="/js/pickr/pickr.min.js?version=1.0.0-beta.8"></script>
 
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>
 

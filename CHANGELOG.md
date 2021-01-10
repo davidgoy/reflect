@@ -10,6 +10,14 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 <br><br>
 
+## [1.0.0-beta.8] - 2021-01-10
+
+### Added
+
+- Append Reflect version number to the end of all JS and CSS dependency link tags 
+
+<br><br>
+
 ## [1.0.0-beta.7] - 2020-12-08
 
 ### Fixed

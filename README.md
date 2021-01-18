@@ -54,7 +54,7 @@
 </p>
 <br><br>
 
-Reflect is a front-end app designed to pair with WordPress (which functions as the back-end) to create the ultimate decoupled architecture website. 
+Reflect is a front-end app that you can pair with a standard WordPress installation (which functions as the back-end) to instantly create decoupled architecture website. 
 
 Simply install a Reflect site on your server, and it will mirror content from your WordPress site. 
 

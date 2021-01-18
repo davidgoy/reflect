@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  Decoupled architecture website using WordPress as headless CMS.
+  Pair with WordPress to create an instant decoupled architecture website.
   <br>
   Complete with <i>server-side rendering</i> and <i>static page generator</i>.
 </p>

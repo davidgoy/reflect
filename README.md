@@ -5,7 +5,7 @@
 <p align="center">
   Pair with WordPress to create an instant decoupled architecture website.
   <br>
-  Complete with <i>server-side rendering</i> and <i>static page generator</i>.
+  Comes with <i>server-side rendering</i> capability and <i>static page generator</i>.
 </p>
 <br>
 <h3 align="center">MIRROR CONTENT FROM ANY WORDPRESS SITE.</h3>

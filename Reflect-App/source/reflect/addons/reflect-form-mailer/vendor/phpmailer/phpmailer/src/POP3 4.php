@@ -1,5 +1,4 @@
 <?php
-
 /**
  * PHPMailer POP-Before-SMTP Authentication Class.
  * PHP Version 5.5.
@@ -10,7 +9,7 @@
  * @author    Jim Jagielski (jimjag) <jimjag@gmail.com>
  * @author    Andy Prevost (codeworxtech) <codeworxtech@users.sourceforge.net>
  * @author    Brent R. Matzelle (original founder)
- * @copyright 2012 - 2020 Marcus Bointon
+ * @copyright 2012 - 2019 Marcus Bointon
  * @copyright 2010 - 2012 Jim Jagielski
  * @copyright 2004 - 2009 Andy Prevost
  * @license   http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
@@ -46,7 +45,7 @@ class POP3
      *
      * @var string
      */
-    const VERSION = '6.2.0';
+    const VERSION = '6.1.6';
 
     /**
      * Default POP3 port number.
@@ -63,16 +62,12 @@ class POP3
     const DEFAULT_TIMEOUT = 30;
 
     /**
-     * POP3 class debug output mode.
-     * Debug output level.
-     * Options:
-     * @see POP3::DEBUG_OFF: No output
-     * @see POP3::DEBUG_SERVER: Server messages, connection/server errors
-     * @see POP3::DEBUG_CLIENT: Client and Server messages, connection/server errors
+     * Debug display level.
+     * Options: 0 = no, 1+ = yes.
      *
      * @var int
      */
-    public $do_debug = self::DEBUG_OFF;
+    public $do_debug = 0;
 
     /**
      * POP3 mail server hostname.
@@ -134,28 +129,6 @@ class POP3
      * Line break constant.
      */
     const LE = "\r\n";
-
-    /**
-     * Debug level for no output.
-     *
-     * @var int
-     */
-    const DEBUG_OFF = 0;
-
-    /**
-     * Debug level to show server -> client messages
-     * also shows clients connection errors or errors from server
-     *
-     * @var int
-     */
-    const DEBUG_SERVER = 1;
-
-    /**
-     * Debug level to show client -> server and server -> client messages.
-     *
-     * @var int
-     */
-    const DEBUG_CLIENT = 2;
 
     /**
      * Simple static wrapper for all-in-one POP before SMTP.
@@ -356,7 +329,7 @@ class POP3
     protected function getResponse($size = 128)
     {
         $response = fgets($this->pop_conn, $size);
-        if ($this->do_debug >= self::DEBUG_SERVER) {
+        if ($this->do_debug >= 1) {
             echo 'Server -> Client: ', $response;
         }
 
@@ -373,7 +346,7 @@ class POP3
     protected function sendString($string)
     {
         if ($this->pop_conn) {
-            if ($this->do_debug >= self::DEBUG_CLIENT) { //Show client messages when debug >= 2
+            if ($this->do_debug >= 2) { //Show client messages when debug >= 2
                 echo 'Client -> Server: ', $string;
             }
 
@@ -411,7 +384,7 @@ class POP3
     protected function setError($error)
     {
         $this->errors[] = $error;
-        if ($this->do_debug >= self::DEBUG_SERVER) {
+        if ($this->do_debug >= 1) {
             echo '<pre>';
             foreach ($this->errors as $e) {
                 print_r($e);

@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  Pair with WordPress to create an instant decoupled architecture website.
+  Pair with WordPress to create an instant, decoupled architecture website.
   <br>
   Comes with <i>server-side rendering</i> capability and <i>static page generator</i>.
 </p>
@@ -17,7 +17,7 @@
 <br>
 <br>
 <br>
-<p align="center">Latest version 1.0.0-beta.8<br>(released 10th Jan 2021)</p>
+<p align="center">Latest version 1.0.0-beta.9<br>(released 17th Mar 2021)</p>
 <br>
 <br>
 

@@ -17,7 +17,7 @@
 <br>
 <br>
 <br>
-<p align="center">Latest version 1.0.0-beta.9<br>(released 17th Mar 2021)</p>
+<p align="center">Latest version 1.0.0-beta.10<br>(released 18th Mar 2021)</p>
 <br>
 <br>
 

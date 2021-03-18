@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.9
+ * @version 1.0.0-beta.10
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -323,6 +323,7 @@ class Model {
     }
 
     $content = file_get_contents($url); // Perform GET request
+    $content = $this->removeCmsReferenceFromAnchorLinks($content);
     $content = json_decode($content, true); // Decode JSON and convert to array
 
     return $content;
@@ -396,6 +397,7 @@ class Model {
     $url = $this->config->cmsPageContentApiRoute . $config['cmsHomePageSlug'];
 
     $content = file_get_contents($url); // Perform GET request
+    $content = $this->removeCmsReferenceFromAnchorLinks($content);
     $content = json_decode($content, true); // Decode JSON and convert to array
 
     // If featured image was set
@@ -409,6 +411,7 @@ class Model {
     }
 
     if(count($content) > 0) {
+
       return [
         'title' => $content[0]['title']['rendered'],
         'body' => $content[0]['content']['rendered'],
@@ -460,6 +463,7 @@ class Model {
     }
 
     $posts = file_get_contents($url); // Perform GET request
+    $posts = $this->removeCmsReferenceFromAnchorLinks($posts);
     $posts = json_decode($posts, true); // Decode JSON and convert to array
 
     return $posts;
@@ -479,6 +483,7 @@ class Model {
     $url = $this->config->cmsPageContentApiRoute . $slug;
 
     $content = file_get_contents($url); // Perform GET request
+    $content = $this->removeCmsReferenceFromAnchorLinks($content);
     $content = json_decode($content, true); // Decode JSON and convert to array
 
     // If featured image was set
@@ -519,6 +524,7 @@ class Model {
     $url = $this->config->cmsPostContentApiRoute . $slug;
 
     $content = file_get_contents($url); // Perform GET request
+    $content = $this->removeCmsReferenceFromAnchorLinks($content);
     $content = json_decode($content, true); // Decode JSON and convert to array
 
     // If featured image was set
@@ -603,6 +609,25 @@ class Model {
 
     return $nestedMenu;
 
+  }
+
+
+  //----------------------------------------------------------------------------
+  /**
+   * @param string $content
+   * @return string $content
+   */
+  //----------------------------------------------------------------------------
+  private function removeCmsReferenceFromAnchorLinks($content) {
+
+    $config = $this->config->reflectConfig;
+
+    $searchString = 'href=\"' . $config['cmsProtocol'] . ':\\/\\/' . $config['cmsDomain'];
+    $replacementString = 'href=\"';
+
+    $content = str_replace($searchString, $replacementString, $content);
+
+    return $content;
   }
 
 }

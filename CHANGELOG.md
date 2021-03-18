@@ -10,6 +10,14 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 <br><br>
 
+## [1.0.0-beta.10] - 2021-03-18
+
+### Fixed
+
+- Automatically remove any reference to CMS in anchor links when rendering pages.
+
+<br><br>
+
 ## [1.0.0-beta.9] - 2021-03-17
 
 ### Changed

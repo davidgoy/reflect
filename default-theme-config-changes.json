@@ -1,6 +1,21 @@
 {
   "updates": [
     {
+      "version": "1.0.0-beta.10",
+      "released": "2021-03-18 00:00:00",
+      "changes": {
+        "removed": {
+
+        },
+        "replaced": {
+
+        },
+        "added": {
+
+        }
+      }
+    },
+    {
       "version": "1.0.0-beta.9",
       "released": "2021-03-17 00:00:00",
       "changes": {

@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.10
+ * @version 1.0.0-beta.11
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -78,7 +78,15 @@ class Model {
 
     $url = $cmsProtocol . '://' . $cmsDomain . '/wp-json/';
 
-    $wpApiJson = file_get_contents($url); // Perform GET request
+    // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+    $sslParams = [
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+      ]
+    ];
+
+    $wpApiJson = file_get_contents($url, false, stream_context_create($sslParams)); // Perform GET request
 
     if($wpApiJson !== false) {
 

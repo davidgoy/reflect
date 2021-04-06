@@ -10,14 +10,14 @@
     <link rel="shortcut icon" href="<?php if(isset($themeConfig['faviconUrl']) && !empty($themeConfig['faviconUrl'])) { echo $themeConfig['faviconUrl']; } ?>">
 
     <!-- WordPress -->
-    <link rel="stylesheet" href="/css/wordpress/block-library/style.min.css?version=1.0.0-beta.10">
-    <link rel="stylesheet" href="/css/wordpress/block-library/theme.min.css?version=1.0.0-beta.10">
+    <link rel="stylesheet" href="/css/wordpress/block-library/style.min.css?version=1.0.0-beta.11">
+    <link rel="stylesheet" href="/css/wordpress/block-library/theme.min.css?version=1.0.0-beta.11">
 
     <!-- Underscores -->
-    <link rel="stylesheet" href="/css/underscores/style.css?version=1.0.0-beta.10">
+    <link rel="stylesheet" href="/css/underscores/style.css?version=1.0.0-beta.11">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?version=1.0.0-beta.10">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?version=1.0.0-beta.11">
 
     <!-- Addons -->
     <?php if(count($addons) > 0): ?>
@@ -193,18 +193,18 @@
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>
 
       <!-- Polyfill (will be removed in the future) -->
-      <script src="/js/polyfill/core-js/minified.js?version=1.0.0-beta.10"></script>
-      <script src="/js/polyfill/regenerator-runtime/runtime.js?version=1.0.0-beta.10"></script>
-      <script src="/js/polyfill/unfetch/index.js?version=1.0.0-beta.10"></script>
+      <script src="/js/polyfill/core-js/minified.js?version=1.0.0-beta.11"></script>
+      <script src="/js/polyfill/regenerator-runtime/runtime.js?version=1.0.0-beta.11"></script>
+      <script src="/js/polyfill/unfetch/index.js?version=1.0.0-beta.11"></script>
 
     <?php endif; ?>
 
     <!-- Bootstrap -->
-    <script src="/js/bootstrap/jquery-3.5.1.slim.min.js?version=1.0.0-beta.10"></script>
-    <script src="/js/bootstrap/bootstrap.bundle.min.js?version=1.0.0-beta.10"></script>
+    <script src="/js/bootstrap/jquery-3.5.1.slim.min.js?version=1.0.0-beta.11"></script>
+    <script src="/js/bootstrap/bootstrap.bundle.min.js?version=1.0.0-beta.11"></script>
 
     <!-- SweetAlert2 -->
-    <script src="/js/sweetalert2/sweetalert2.all.min.js?version=1.0.0-beta.10"></script>
+    <script src="/js/sweetalert2/sweetalert2.all.min.js?version=1.0.0-beta.11"></script>
 
     <!-- Theme -->
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>

@@ -10,6 +10,14 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 <br><br>
 
+## [1.0.0-beta.11] - 2021-04-06
+
+### Added
+
+- Allow data to be retrieved from a WordPress site that uses self-signed SSL certificate.
+
+<br><br>
+
 ## [1.0.0-beta.10] - 2021-03-18
 
 ### Fixed

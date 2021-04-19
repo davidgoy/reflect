@@ -7,7 +7,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.11
+ * @version 1.0.0-beta.12
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -128,23 +128,15 @@ class Model {
       $url = $url . '&after=' . $params['after'];
     }
 
-    /*
-    if(isset($params['authorSlug'])) {
+    // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+    $sslParams = [
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+      ]
+    ];
 
-      // Get the author ID based on its slug
-      $author = file_get_contents($this->config->cmsUsersApiRoute . '&slug=' . $params['authorSlug']);
-      $author = json_decode($author, true);
-
-      if(!empty($author)) {
-
-        $authorId = $author[0]['id'];
-
-        $url = $url . '&author=' . $authorId;
-      }
-    }
-    */
-
-    $httpResponseHeader = get_headers($url . '&per_page=1', 1);
+    $httpResponseHeader = get_headers($url . '&per_page=1', 1, stream_context_create($sslParams));
     $totalPages = $httpResponseHeader['X-WP-TotalPages'];
 
     return $totalPages;
@@ -171,23 +163,15 @@ class Model {
       $url = $url . '&after=' . $params['after'];
     }
 
-    /*
-    if(isset($params['authorSlug'])) {
+    // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+    $sslParams = [
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+      ]
+    ];
 
-      // Get the author ID based on its slug
-      $author = file_get_contents($this->config->cmsUsersApiRoute . '&slug=' . $params['authorSlug']);
-      $author = json_decode($author, true);
-
-      if(!empty($author)) {
-
-        $authorId = $author[0]['id'];
-
-        $url = $url . '&author=' . $authorId;
-      }
-    }
-    */
-
-    $httpResponseHeader = get_headers($url . '&per_page=1', 1);
+    $httpResponseHeader = get_headers($url . '&per_page=1', 1, stream_context_create($sslParams));
     $totalPosts = $httpResponseHeader['X-WP-Total'];
 
     return $totalPosts;
@@ -206,7 +190,15 @@ class Model {
 
     $url = $this->config->cmsPrimaryMenuApiRoute;
 
-    $menuItems = file_get_contents($url); // Perform GET request
+    // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+    $sslParams = [
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+      ]
+    ];
+
+    $menuItems = file_get_contents($url, false, stream_context_create($sslParams)); // Perform GET request
 
     if($unmodified === true) {
 
@@ -249,7 +241,15 @@ class Model {
 
     $url = $this->config->cmsFooterMenuApiRoute;
 
-    $menuItems = file_get_contents($url); // Perform GET request
+    // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+    $sslParams = [
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+      ]
+    ];
+
+    $menuItems = file_get_contents($url, false, stream_context_create($sslParams)); // Perform GET request
 
     if($unmodified === true) {
 
@@ -330,7 +330,15 @@ class Model {
       }
     }
 
-    $content = file_get_contents($url); // Perform GET request
+    // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+    $sslParams = [
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+      ]
+    ];
+
+    $content = file_get_contents($url, false, stream_context_create($sslParams)); // Perform GET request
     $content = $this->removeCmsReferenceFromAnchorLinks($content);
     $content = json_decode($content, true); // Decode JSON and convert to array
 
@@ -361,7 +369,15 @@ class Model {
 
       $url = $this->config->cmsSearchApiRoute . $sanitisedSearchTerms;
 
-      $results = file_get_contents($url); // Perform GET request
+      // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+      $sslParams = [
+        'ssl' => [
+          'verify_peer' => false,
+          'verify_peer_name' => false
+        ]
+      ];
+
+      $results = file_get_contents($url, false, stream_context_create($sslParams)); // Perform GET request
       $results = json_decode($results, true); // Decode JSON and convert to array
 
       // Debug
@@ -404,7 +420,15 @@ class Model {
 
     $url = $this->config->cmsPageContentApiRoute . $config['cmsHomePageSlug'];
 
-    $content = file_get_contents($url); // Perform GET request
+    // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+    $sslParams = [
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+      ]
+    ];
+
+    $content = file_get_contents($url, false, stream_context_create($sslParams)); // Perform GET request
     $content = $this->removeCmsReferenceFromAnchorLinks($content);
     $content = json_decode($content, true); // Decode JSON and convert to array
 
@@ -470,7 +494,15 @@ class Model {
       }
     }
 
-    $posts = file_get_contents($url); // Perform GET request
+    // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+    $sslParams = [
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+      ]
+    ];
+
+    $posts = file_get_contents($url, false, stream_context_create($sslParams)); // Perform GET request
     $posts = $this->removeCmsReferenceFromAnchorLinks($posts);
     $posts = json_decode($posts, true); // Decode JSON and convert to array
 
@@ -490,7 +522,15 @@ class Model {
 
     $url = $this->config->cmsPageContentApiRoute . $slug;
 
-    $content = file_get_contents($url); // Perform GET request
+    // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+    $sslParams = [
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+      ]
+    ];
+
+    $content = file_get_contents($url, false, stream_context_create($sslParams)); // Perform GET request
     $content = $this->removeCmsReferenceFromAnchorLinks($content);
     $content = json_decode($content, true); // Decode JSON and convert to array
 
@@ -531,7 +571,15 @@ class Model {
 
     $url = $this->config->cmsPostContentApiRoute . $slug;
 
-    $content = file_get_contents($url); // Perform GET request
+    // Allow Reflect to fetch data from WP site hosted locally that uses self-signed SSL certificate
+    $sslParams = [
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+      ]
+    ];
+
+    $content = file_get_contents($url, false, stream_context_create($sslParams)); // Perform GET request
     $content = $this->removeCmsReferenceFromAnchorLinks($content);
     $content = json_decode($content, true); // Decode JSON and convert to array
 

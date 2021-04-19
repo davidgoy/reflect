@@ -4,9 +4,11 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 <br><br>
 
-## [Unreleased]
+## [1.0.0-beta.12] - 2021-04-20
 
-- Add ability to download media from WordPress and serve the media directly from Reflect site.
+### Fixed
+
+- Fix bug that prevented data from being retrieved from a WordPress site that uses self-signed SSL certificate.
 
 <br><br>
 

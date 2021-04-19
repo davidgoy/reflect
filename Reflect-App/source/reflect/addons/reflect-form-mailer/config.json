@@ -10,10 +10,10 @@
     "fromName": "",
     "recipientEmailAddress": "",
     "recipientName": "",
-    "released": "2021-04-06 00:00:00",
+    "released": "2021-04-20 00:00:00",
     "requiredProperties": "",
     "runOnHomePage": "false",
     "slugsToExclude": "",
     "slugsToRun": "",
-    "version": "1.0.0-beta.11"
+    "version": "1.0.0-beta.12"
 }

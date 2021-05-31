@@ -5,7 +5,7 @@
  * @link https://github.com/davidgoy/reflect-form-mailer
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.12
+ * @version 1.0.0-beta.13
  * @since File available since v1.0.0-alpha.1
  */
 

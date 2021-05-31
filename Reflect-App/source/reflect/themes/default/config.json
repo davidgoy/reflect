@@ -15,10 +15,10 @@
     "primaryMenuSubItemHoverAndActiveBgColour": "#444444",
     "primaryMenuSubItemHoverAndActiveTextColour": "#FFFFFF",
     "primaryMenuTextColour": "#EEEEEE",
-    "released": "2021-04-20 00:00:00",
+    "released": "2021-05-31 00:00:00",
     "stickyFooter": "true",
     "themeDescription": "The official default Reflect theme.",
     "themeFolderName": "default",
     "themeName": "Default",
-    "version": "1.0.0-beta.12"
+    "version": "1.0.0-beta.13"
 }

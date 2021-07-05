@@ -1,6 +1,6 @@
 "use strict";
 
-function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
+function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
 
 /**
  * Reflect
@@ -9,7 +9,7 @@ function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-on
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.14
+ * @version 1.0.0-beta.12
  * @since File available since v1.0.0-alpha.1
  */
 window.addEventListener('DOMContentLoaded', function () {
@@ -677,11 +677,11 @@ window.addEventListener('DOMContentLoaded', function () {
         var currentLinkNumber = parseInt(sessionStorage.getItem('currentLinkNumber'));
 
         if (params['perPage'] !== undefined) {
-          params['perPage'], _readOnlyError("perPage");
+          perPage = (_readOnlyError("perPage"), params['perPage']);
         }
 
         if (params['pageNumber'] !== undefined) {
-          params['pageNumber'], _readOnlyError("currentLinkNumber");
+          currentLinkNumber = (_readOnlyError("currentLinkNumber"), params['pageNumber']);
         }
 
         var totalLinks = Math.ceil(totalPublishedItems / perPage); // Only display pagination if there are more than one pagination pages

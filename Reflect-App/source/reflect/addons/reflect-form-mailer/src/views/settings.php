@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?version=1.0.0-beta.13">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?version=1.0.0-beta.14">
 
     <title><?php if(isset($addonConfig['addonName']) && !empty($addonConfig['addonName'])) { echo $addonConfig['addonName'];} ?> Addon Settings</title>
 
@@ -163,11 +163,11 @@
     <?php endif; ?>
 
     <!-- Bootstrap -->
-    <script src="/js/bootstrap/jquery-3.5.1.slim.min.js?version=1.0.0-beta.13"></script>
-    <script src="/js/bootstrap/bootstrap.bundle.min.js?version=1.0.0-beta.13"></script>
+    <script src="/js/bootstrap/jquery-3.5.1.slim.min.js?version=1.0.0-beta.14"></script>
+    <script src="/js/bootstrap/bootstrap.bundle.min.js?version=1.0.0-beta.14"></script>
 
     <!-- SweetAlert2 -->
-    <script src="/js/sweetalert2/sweetalert2.all.min.js?version=1.0.0-beta.13"></script>
+    <script src="/js/sweetalert2/sweetalert2.all.min.js?version=1.0.0-beta.14"></script>
 
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>
 

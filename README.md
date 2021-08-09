@@ -2,18 +2,11 @@
   <img src="https://github.com/davidgoy/reflect/blob/master/logo.png" width="500" alt="Reflect logo">
 </p>
 
-<p align="center">
-  Pair with WordPress to create an instant, decoupled architecture website.
-  <br>
-  <i>Server-side rendered</i> with <i>static page generator</i>.
-</p>
-<br>
-<h3 align="center">MIRROR CONTENT FROM ANY WORDPRESS SITE.</h3>
+<h3 align="center">STATIC SITE GENERATOR FOR WORDPRESS</h3>
 <br>
 <p align="center">
  <a href="https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip" target="_blank"><img src="https://github.com/davidgoy/reflect/blob/master/download.png" width="150" alt="Download Reflect"></a>
 </p>
-<p align="center">(And don't forget to also download the <a href="https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip" target="_blank">WordPress Reflect Support plugin</a> and install it!)</p>
 <br>
 <br>
 <br>
@@ -29,9 +22,9 @@
 
 - [Installation](#installation)
 
-- [Hardening](#hardening)
-
 - [Usage](#usage)
+
+- [Hardening](#hardening)
 
 - [Updating](#updating)
 
@@ -45,48 +38,45 @@
 
 ### What is Reflect
 
-#### Decoupled architecture website using WordPress as headless CMS
+Reflect is an app that you can use in conjunction with your WordPress site to create a secure, fast-loading static site.
 
-<br><br>
+Create and publish pages/posts using the popular WordPress CMS. Then have Reflect generate those pages/posts into static pages and served upon HTTP request.
 
-<p align="center">
-  <img src="https://github.com/davidgoy/reflect/blob/master/about-reflect.png" width="700" alt="How Reflect works">
-</p>
-<br><br>
+This setup is known as a decoupled architecture, where WordPress functions as a headless CMS (i.e. backend) and your Reflect static site functions as the frontend. 
 
-Reflect is a front-end app that you can pair with a standard WordPress installation (which functions as the back-end) to instantly create decoupled architecture website. 
+<span><br><br></span>
 
-Simply install a Reflect site on your server, and it will mirror content from your WordPress site. 
+### How does Reflect work
 
-You can then firewall the entire WordPress site (e.g. using [this sample *.htaccess*](https://raw.githubusercontent.com/davidgoy/reflect/master/WP-Reflect-Support-Plugin/deploy/sample-wordpress.htaccess)) to shield it from public view while exposing the Reflect site as the public facing front. 
+For maximum security, you would host your Reflect static site on one domain/server and your WordPress site on another domain/server.
 
-Your Reflect site can also pre-generate the mirrored content into static pages and serve them, effectively becoming a static site.
+You can then use Reflect to fetch content from your WordPress site and convert them into static pages.
 
-<br>
+Reflect will automatically serve those static pages upon HTTP request (i.e. when someone visits your Reflect site).
+
+<span><br><br></span>
 
 ### Why use Reflect
 
-#### Enhanced security
+#### Greatly enhanced security
 
-Reflect enables the content you create on your WordPress site to be accessible to the public while completely preventing their access to the site itself.
+Since you're using WordPress purely for content authoring, you can firewall the entire CMS for internal access only while leaving your Reflect static site publicly accessible.
 
-This means you can utilise WordPress as a pure backend to create and publish content. The content is then made available for public consumption strictly via your Reflect site.
-
-Your Reflect site contains no database or user accounts. It simply mirrors content from your WordPress site. 
-
-Consequently Reflect has a tiny attack surface, not to mention there's no valuable loot to steal.
+Unlike your WordPress site, your static site contains no database or user accounts. Consequently it has a tiny attack surface, not to mention there's no valuable loot to steal even if the server hosting it is compromised.
 
 #### Faster page load
 
-Your Reflect site can fetch content from your WordPress site dynamically. Or it can pre-fetch and pre-generate the content into static files to serve on page request. This effectively turns it into a fast-loading, static site.
+Reflect can serve the generated static pages much faster than a regular WordPress site would using server-side rendering.
 
 <span><br><br></span>
 
 ## REQUIREMENTS
 
-### Reflect site
+### Your Reflect static site
 
-1. Your Reflect site should be hosted on a separate domain to your WordPress site. 
+1. Your Reflect static site should be hosted on a separate domain to your WordPress site.
+   
+   (**Note:** For maximum security, you can even host your Reflect static site on a separate server to your WordPress site).
 
 2. Your web server must support the use of ***.htaccess*** 
 
@@ -94,11 +84,11 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
 
 <br>
 
-### WordPress site
+### Your WordPress site
 
 1. WordPress 5.x or later.
 
-2. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
+2. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated to enable your WordPress site to work with your Reflect site. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
 
 3. ***Post name*** should be selected as the permalink structure:
    
@@ -112,13 +102,13 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
 
 6. Up to two menus are supported - a primary menu and a footer menu.
 
-7. When creating page or post content, you should use the *Classic* or *Guttenberg* editor that comes with WordPress. Reflect does not support third party page builders.
+7. When creating page or post content, you should use the default block editor that comes with WordPress. Reflect does not support third party page builders.
 
 <span><br><br></span>
 
 ## INSTALLATION
 
-### How to install and setup your Reflect site
+### How to install your Reflect static site
 
 1. [Download the Reflect App ZIP file here](https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip). Extract the ZIP file and you will find two folders:
    
@@ -150,7 +140,102 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
    
    > **Note:** 
    > 
-   > Reflect will only mirror WordPress page/post content as well as primary and footer menu items. Widget components (e.g. Archives, RSS, Tag Cloud, etc.) and theme-specific layout sections (e.g. Sidebar) will not be mirrored.
+   > Reflect will only fetch WordPress page/post content as well as primary and footer menu items. Widget components (e.g. Archives, RSS, Tag Cloud, etc.) and theme-specific layout sections (e.g. Sidebar) will not be fetched.
+
+<span><br><br></span>
+
+## USAGE
+
+### How to create and publish content
+
+For the sake of those who are unfamiliar with the concept of decoupled architecture, content creation (i.e. authoring pages/posts and menus) and publishing are done on your WordPress site. 
+
+(**Note:** Please use WordPress' default block editor when creating pages/posts. Reflect does not support third party page builders.)
+
+Your Reflect site can then fetch this content, convert them into static pages and serve them upon HTTP request.
+
+<br>
+
+### How to access Reflect site settings
+
+You can access your Reflect site's ***Settings* page** anytime by navigating to the following URL:
+
+`https://(your domain name)/reflect-settings`
+
+<br>
+
+### How to access Reflect's ***Static Files Manager*** (for static page generation, etc.)
+
+By default, your Reflect site will dynamically render (on the server-side) the content it fetches from your WordPress site.
+
+Once you have published your content on your WordPress site, you can now use Reflect's ***Static Files Manager*** to pre-generate the static pages.
+
+To access the ***Static Files Manager* page**, navigate to:
+
+`https://(your domain name)/reflect-sfm`
+
+Remember to turn on ***Static Mode*** so that your Reflect site will serve the pre-generated static pages instead of fetching content dynamically from your WordPress site.
+
+<span><br><br></span>
+
+### How to change the look and feel of your Reflect site's theme
+
+The look and feel of your Reflect site is controled by its theme. Each theme also has its own settings. You can access the settings of an active theme by navigating to:
+
+`https://(your domain name)/reflect-settings/themes/(name of theme)`
+
+Reflect comes with a default theme built on Bootstrap which is creatively named... *Default*. Therefore to access this theme's settings, go to:
+
+`https://(your domain name)/reflect-settings/themes/default`
+
+(**Note:** Although you may have multiple themes, only one theme can be active at a time.)
+
+<br>
+
+### How to further customise the design of your Reflect site
+
+The *Default* theme has a few properties which you can change via its settings page. 
+
+However, if you need a more extensive design change, then you can customise the theme on the code level.
+
+Some knowledge of HTML and CSS will be required (the *Default* theme is based on Bootstrap). Understanding of PHP is optional but would be advantageous.
+
+If this is what you wish to do, then it is recommended that you duplicate the *Default* theme and give it a custom name. Here's where theme folders are located within Reflect:
+
+```text
+   (your domain name)/
+   ├─ reflect/
+      ├─ themes/
+         ├─ default/
+         └─ (name of your custom theme)/
+   └─ (document root)      
+```
+
+You can then access your custom theme's settings page by navigating to:
+
+`https://(your domain name)/reflect-settings/themes/(name of your custom theme)`
+
+Of course, don't forget to go to Reflect's *Settings* page and set your site to use the new theme.
+
+<br>
+
+### How to make forms automatically submitable on your Reflect site
+
+Reflect comes with an addon called *Reflect Form Mailer*.
+
+With this addon enabled, simply drop a plain Bootstrap form into a page or post on your WordPress site, and the form will become automatically submitable when it is rendered on your Reflect site.
+
+That means when a user submits the form on your Reflect site, the form data will be emailed to you.
+
+You can enable any addons on Reflect's ***Settings* page** (accessible by navigating to `https://(your domain name)/reflect-settings`).
+
+Assuming that you have already enabled the addon, you should now configure it by going to: 
+
+`https://(your domain name)/reflect-settings/addons/reflect-form-mailer`
+
+> **Tips:** 
+> 
+> You can use Chris Youderian's drag-and-drop [Bootstrap Form Builder](https://bootstrapformbuilder.com/) which allows you to visually put together a Bootstrap form and then generate the corresponding HTML code. You can then simply chuck the HTML code into your WordPress page or post.
 
 <br>
 
@@ -160,7 +245,7 @@ Your Reflect site can fetch content from your WordPress site dynamically. Or it 
 
 One of the key advantages of a decoupled architecture is that it allows the front-end of a website to be separated from its back-end.
 
-Since the general public only interacts with the front-end app (i.e. your Reflect site) and never directly with the back-end app (i.e. your WordPress site), you should **deny all access to your WordPress site except requests coming from**:
+Since the general public only interacts with the front-end (i.e. your Reflect site) and never directly with the back-end app (i.e. your WordPress site), you should **deny all access to your WordPress site except requests coming from**:
 
 - The server hosting your Reflect site
 
@@ -184,104 +269,7 @@ You can easily accomplish this with a basic understanding of *htaccess*. You wil
 
 You can also host your WordPress site and your Reflect site on a separate server.
 
-This means in the extremely, unlikely event that a hacker manages to compromise your Reflect site and break into the server, your WordPress site is not in danger.
-
-<span><br><br></span>
-
-## USAGE
-
-### How to create and publish content (*hint...* *use WordPress!*)
-
-This may be obvious to some, but for the sake of those who are unfamiliar with using a decoupled system, content creation and publishing is done on the back-end app. In this case, this is your WordPress site.
-
-After you have set up both your Reflect site and WordPress site, you can now use WordPress' *Gutenberg* or *Classic* editors as per normal to create and publish content.
-
-Your Reflect site will automatically mirror the content of any published pages or posts.
-
-<br>
-
-### How to access Reflect site settings
-
-You can access your Reflect site's ***Settings* page** anytime by navigating to the following URL:
-
-`https://(your domain name)/reflect-settings`
-
-<br>
-
-### How to change the look and feel of your Reflect site's theme
-
-The look and feel of your Reflect site is controled by its theme. Each theme also has its own settings separate from the core app. 
-
-Although you may have multiple themes, only one theme can be active at a time. You can access the settings of an active theme by navigating to:
-
-`https://(your domain name)/reflect-settings/themes/(name of theme)`
-
-Reflect comes with a default theme which is creatively named... *Default*. Therefore to access its settings, go to:
-
-`https://(your domain name)/reflect-settings/themes/default`
-
-<br>
-
-### How to further customise the design of your Reflect site
-
-The *Default* theme has a few properties which you can change via its settings page. 
-
-However, if you need a more extensive design change, then you can customise the theme on the code level.
-
-Some knowledge of HTML and CSS will be required (the *Default* theme is based on Bootstrap). Understanding of PHP is optional but would be advantageous.
-
-If this is what you wish to do, then it is recommended that you duplicate the *Default* theme instead of modifying it directly. Here's where themes are located within Reflect:
-
-```text
-   (your domain name)/
-   ├─ reflect/
-      ├─ themes/
-         ├─ default/
-         └─ (name of your custom theme)/
-   └─ (document root)      
-```
-
-You can then access your custom theme's settings page by navigating to:
-
-`https://(your domain name)/reflect-settings/themes/(name of your custom theme)`
-
-Of course, don't forget to go to Reflect's *Settings* page and set your site to use the new theme.
-
-<br>
-
-### How to make Bootstrap forms automatically submitable on your Reflect site
-
-#### Using *Reflect Form Mailer* addon
-
-Reflect comes with an addon called *Reflect Form Mailer* which you can enable on Reflect's ***Settings* page** (accessible by navigating to `https://(your domain name)/reflect-settings`).
-
-> **Note:** 
-> 
-> With this addon enabled, simply drop a plain Bootstrap form into a page or post on your WordPress site, and the form will become automatically submitable when it is rendered on your Reflect site.
-> 
-> So when a user submits the form on your Reflect site, the form data will be emailed to you. 
-
-Assuming that you have already enabled the addon, you should now configure it by going to: 
-
-`https://(your domain name)/reflect-settings/addons/reflect-form-mailer`
-
-> **Tips:** 
-> 
-> You can use Chris Youderian's drag-and-drop [Bootstrap Form Builder](https://bootstrapformbuilder.com/) which allows you to visually put together a Bootstrap form and then generate the corresponding HTML code. You can then simply chuck the HTML code into your WordPress page or post.
-
-<br>
-
-### How to activate Reflect's static site mode
-
-By default, your Reflect site will dynamically render (on the server-side) the content it fetches from your WordPress site.
-
-However, Reflect can also be set to behave like a static site. You can use Reflect's ***Static Files Manager*** feature to pre-generate the static pages.
-
-To access the ***Static Files Manager* page**, navigate to:
-
-`https://(your domain name)/reflect-sfm`
-
-Don't forget to turn on ***Static Mode*** so that your Reflect site will serve the pre-generated static pages instead of fetching content dynamically from your WordPress site.
+This means in the extremely, unlikely event that a hacker manages to compromise your Reflect site and break into the server, your WordPress site is not affected.
 
 <span><br><br></span>
 
@@ -289,9 +277,7 @@ Don't forget to turn on ***Static Mode*** so that your Reflect site will serve t
 
 Starting from version 1.0.0-beta.7, Reflect has an auto-update feature. This feature allows you to update to the latest version of Reflect at the click of a button (located in Reflect's *Settings* page).
 
-> **Note:**
-> 
-> Updating Reflect will also automatically update all the themes and addons that are officially bundled with Reflect.
+(**Note:** Updating Reflect will also automatically update all the themes and addons that are officially bundled with Reflect.)
 
 <span><br><br></span>
 

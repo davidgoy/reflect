@@ -42,7 +42,7 @@ Reflect is an app that you can use in conjunction with your WordPress site to cr
 
 Create and publish pages/posts using the popular WordPress CMS. Then have Reflect generate those pages/posts into static pages and served upon HTTP request.
 
-This setup is known as a decoupled architecture, where WordPress functions as a headless CMS (i.e. backend) and your Reflect static site functions as the frontend. 
+This setup is known as a decoupled architecture, where WordPress functions as a headless CMS (i.e. back-end) and your Reflect static site functions as the front-end. 
 
 <span><br><br></span>
 

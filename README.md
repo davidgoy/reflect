@@ -42,7 +42,7 @@ Reflect is an app that you can use in conjunction with your WordPress site to cr
 
 Create and publish pages/posts using the popular WordPress CMS. Then have Reflect generate those pages/posts into static pages and served upon HTTP request.
 
-This setup is known as a decoupled architecture, where WordPress functions as a headless CMS (i.e. back-end) and your Reflect static site functions as the front-end. 
+(**Note:** This arrangement is known as a decoupled architecture, where WordPress functions as a headless CMS (i.e. back-end) and your Reflect static site functions as the front-end.) 
 
 <span><br><br></span>
 
@@ -64,7 +64,7 @@ Since you're using WordPress purely for content authoring, you can firewall the 
 
 Unlike your WordPress site, your static site contains no database or user accounts. Consequently it has a tiny attack surface, not to mention there's no valuable loot to steal even if the server hosting it is compromised.
 
-#### Faster page load
+#### Faster page loads
 
 Reflect can serve the generated static pages much faster than a regular WordPress site would using server-side rendering.
 

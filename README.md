@@ -48,9 +48,9 @@ Create and publish pages/posts using the popular WordPress CMS. Then have Reflec
 
 ### How does Reflect work
 
-For maximum security, you would host your Reflect static site on one domain/server and your WordPress site on another domain/server.
+Simply upload and host your Reflect static site on one domain and your WordPress site on another domain.
 
-You can then use Reflect to fetch content from your WordPress site and convert them into static pages.
+Then use Reflect to fetch content from your WordPress site and convert them into static pages.
 
 Reflect will automatically serve those static pages upon HTTP request (i.e. when someone visits your Reflect site).
 

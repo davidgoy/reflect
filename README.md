@@ -66,7 +66,7 @@ Unlike your WordPress site, your static site contains no database or user accoun
 
 #### Faster page loads
 
-Reflect can serve the generated static pages much faster than a regular WordPress site would using server-side rendering.
+Reflect can serve the generated static pages much faster than a regular WordPress site could using server-side rendering.
 
 <span><br><br></span>
 

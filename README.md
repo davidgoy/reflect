@@ -138,7 +138,7 @@ Reflect can serve the generated static pages much faster than a regular WordPres
 
 4. On your web browser, navigate to the URL of your Reflect site `https://(your domain name)` to begin the setup process.  **Don't forget to save the settings!**
    
-   > **Note:** 
+   > **Attention:** 
    > 
    > Reflect will only fetch WordPress page/post content as well as primary and footer menu items. Widget components (e.g. Archives, RSS, Tag Cloud, etc.) and theme-specific layout sections (e.g. Sidebar) will not be fetched.
 

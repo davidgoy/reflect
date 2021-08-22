@@ -1,49 +1,53 @@
-<nav id="primaryMenu" class="navbar navbar-expand-md fixed-top navbar-dark">
+<nav id="primaryMenu" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
 
-  <a class="navbar-brand" href="//<?php echo $_SERVER['SERVER_NAME']; ?>/"><img src="<?php if(isset($themeConfig['logoUrl']) && !empty($themeConfig['logoUrl'])) { echo $themeConfig['logoUrl']; } ?>"></a>
+  <div class="container-fluid">
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" href="//<?php echo $_SERVER['SERVER_NAME']; ?>/"><img src="<?php if(isset($themeConfig['logoUrl']) && !empty($themeConfig['logoUrl'])) { echo $themeConfig['logoUrl']; } ?>"></a>
 
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <?php foreach($primaryMenu as $menuItem): ?>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-      <?php if(count($menuItem['children']) > 0): ?>
+      <?php foreach($primaryMenu as $menuItem): ?>
 
-      <li class="nav-item dropdown">
+        <?php if(count($menuItem['children']) > 0): ?>
 
-        <a class="nav-link dropdown-toggle" href="<?php echo $menuItem['url']; ?>" id="navbarDropdownMenuLink<?php echo $menuItem['ID']; ?>" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?php echo $menuItem['title']; ?>
-        </a>
+        <li class="nav-item dropdown">
 
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink<?php echo $menuItem['ID']; ?>">
+          <a class="nav-link dropdown-toggle" href="<?php echo $menuItem['url']; ?>" id="navbarDropdownMenuLink<?php echo $menuItem['ID']; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <?php echo $menuItem['title']; ?>
+          </a>
 
-          <?php foreach($menuItem['children'] as $subMenuItem): ?>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink<?php echo $menuItem['ID']; ?>">
 
-          <a class="dropdown-item <?php if(parse_url($subMenuItem['url'], PHP_URL_PATH) === parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) { echo 'active'; } ?>" href="<?php echo $subMenuItem['url']; ?>"><?php echo $subMenuItem['title']; ?></a>
+            <?php foreach($menuItem['children'] as $subMenuItem): ?>
 
-          <?php endforeach; unset($subMenuItem); ?>
+            <li><a class="dropdown-item <?php if(parse_url($subMenuItem['url'], PHP_URL_PATH) === parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) { echo 'active'; } ?>" href="<?php echo $subMenuItem['url']; ?>"><?php echo $subMenuItem['title']; ?></a></li>
 
-        </div>
+            <?php endforeach; unset($subMenuItem); ?>
 
-      </li>
+          </ul>
 
-      <?php else: ?>
+        </li>
 
-        <li class="nav-item <?php if(parse_url($menuItem['url'], PHP_URL_PATH) === parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) { echo 'active'; } ?>"><a class="nav-link" href="<?php echo $menuItem['url']; ?>"><?php echo $menuItem['title']; ?></a></li>
+        <?php else: ?>
 
-      <?php endif; ?>
+          <li class="nav-item <?php if(parse_url($menuItem['url'], PHP_URL_PATH) === parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) { echo 'active'; } ?>"><a class="nav-link" href="<?php echo $menuItem['url']; ?>"><?php echo $menuItem['title']; ?></a></li>
 
-    <?php endforeach; unset($menuItem); ?>
-    </ul>
+        <?php endif; ?>
 
-    <form action="//<?php echo $_SERVER['SERVER_NAME']; ?>/" method="get" id="siteSearchForm" name="siteSearchForm" class="form-inline ml-auto">
-      <input id="searchTerms" name="searchTerms" class="form-control mr-sm-2" type="search" aria-label="Search" placeholder="">
-      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><small>SEARCH</small></button>
-    </form>
+      <?php endforeach; unset($menuItem); ?>
+      </ul>
+
+      <form action="//<?php echo $_SERVER['SERVER_NAME']; ?>/" method="get" id="siteSearchForm" name="siteSearchForm" class="d-flex">
+        <input id="searchTerms" name="searchTerms" class="form-control me-2" type="search" aria-label="Search" placeholder="">
+        <button class="btn btn-outline-secondary" type="submit"><small>SEARCH</small></button>
+      </form>
+
+    </div>
 
   </div>
 

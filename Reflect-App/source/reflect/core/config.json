@@ -24,7 +24,7 @@
     "postCategorySlug": "",
     "postsPerPage": "10",
     "primaryMenuSlug": "primary-menu",
-    "released": "2021-07-05 00:00:00",
+    "released": "2021-08-22 00:00:00",
     "requiredProperties": "cmsDomain, cmsHomePageSlug, cmsPostsPageSlug, siteName, settingsPageSlug, sfmPageSlug",
     "settingsPageSlug": "reflect-settings",
     "sfmListItemsPerPage": "10",
@@ -46,5 +46,5 @@
     "underMaintenanceExemptedIp": "",
     "underMaintenanceExemptedSlugs": "",
     "underMaintenanceMode": "false",
-    "version": "1.0.0-beta.14"
+    "version": "1.0.0-beta.15"
 }

@@ -5,7 +5,7 @@
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.14
+ * @version 1.0.0-beta.15
  * @since File available since v1.0.0-alpha.1
  */
 
@@ -503,7 +503,7 @@ window.addEventListener('DOMContentLoaded', function() {
       const listBulkActionFormSubmitButton = document.querySelector('#listBulkActionFormSubmitButton');
       listBulkActionFormSubmitButton.classList.add('disabled'); // Disable button
       const originalButtonText = listBulkActionFormSubmitButton.innerHTML;
-      listBulkActionFormSubmitButton.innerHTML = '<div class="spinner-border spinner-border-sm" role="status"> <span class="sr-only">Working...</span> </div> WORKING...';
+      listBulkActionFormSubmitButton.innerHTML = '<div class="spinner-border spinner-border-sm" role="status"> </div> WORKING...';
 
       const bulkAction = document.querySelector('#listBulkActionSelect').value;
 
@@ -678,7 +678,7 @@ window.addEventListener('DOMContentLoaded', function() {
             // If the menu exists in CMS
             if(menuItems.length > 0) {
 
-              staticFileColumnHtml = `<div class="staticFileColumnContent" id="menuActionsSpinner_${menuSlugs[i]}" style="display: none;"><div class="spinner-border spinner-border-sm text-secondary" role="status"><span class="sr-only">Working...</span></div> Working...</div>
+              staticFileColumnHtml = `<div class="staticFileColumnContent" id="menuActionsSpinner_${menuSlugs[i]}" style="display: none;"><div class="spinner-border spinner-border-sm text-secondary" role="status"></div> Working...</div>
                                       <div class="staticFileColumnContent" id="menuStatusText_${menuSlugs[i]}">Not found</div>
                                       <div class="staticFileColumnContent" id="menuActions_${menuSlugs[i]}"><a class="menuGenerateLink" data-slug="${menuSlugs[i]}" href="#">GENERATE</a></div>`;
 
@@ -689,7 +689,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 // If static file exists for the menu...
                 if(fileSlug === menuSlugs[i]) {
 
-                  staticFileColumnHtml = `<div class="staticFileColumnContent" id="menuActionsSpinner_${menuSlugs[i]}" style="display: none;"><div class="spinner-border spinner-border-sm text-secondary" role="status"><span class="sr-only">Working...</span></div> Working...</div>
+                  staticFileColumnHtml = `<div class="staticFileColumnContent" id="menuActionsSpinner_${menuSlugs[i]}" style="display: none;"><div class="spinner-border spinner-border-sm text-secondary" role="status"></div> Working...</div>
                                           <div class="staticFileColumnContent" id="menuStatusText_${menuSlugs[i]}">Generated ${staticFiles[j].fileModified}</div>
                                           <div class="staticFileColumnContent" id="menuActions_${menuSlugs[i]}"><a class="menuRegenerateLink" data-slug="${menuSlugs[i]}" href="#">REGENERATE</a> | <a class="menuDeleteLink" data-slug="${menuSlugs[i]}" href="#">DELETE</a></div>`;
                   break;
@@ -804,7 +804,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
               const cmsContentModified = new Date(items[i].modified).toLocaleString('en-GB', {timeZone: 'UTC'});
 
-              staticFileColumnHtml = `<div class="staticFileColumnContent" id="listItemActionsSpinner_${items[i].slug}" style="display: none;"><div class="spinner-border spinner-border-sm text-secondary" role="status"><span class="sr-only">Working...</span></div> Working...</div>
+              staticFileColumnHtml = `<div class="staticFileColumnContent" id="listItemActionsSpinner_${items[i].slug}" style="display: none;"><div class="spinner-border spinner-border-sm text-secondary" role="status"></div> Working...</div>
                                       <div class="staticFileColumnContent" id="listItemStatusText_${items[i].slug}">Not found</div>
                                       <div class="staticFileColumnContent" id="listItemActions_${items[i].slug}"><a class="listItemGenerateLink" data-id="${items[i].id}" data-slug="${items[i].slug}" href="#">GENERATE</a></div>`;
 
@@ -818,7 +818,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 // If static file exists for the item...
                 if(fileSlug === items[i].slug || (postsPageSlug !== null && postsPageSlug[0] === items[i].slug)) {
 
-                  staticFileColumnHtml = `<div class="staticFileColumnContent" id="listItemActionsSpinner_${items[i].slug}" style="display: none;"><div class="spinner-border spinner-border-sm text-secondary" role="status"><span class="sr-only">Working...</span></div> Working...</div>
+                  staticFileColumnHtml = `<div class="staticFileColumnContent" id="listItemActionsSpinner_${items[i].slug}" style="display: none;"><div class="spinner-border spinner-border-sm text-secondary" role="status"></div> Working...</div>
                                           <div class="staticFileColumnContent" id="listItemStatusText_${items[i].slug}">Generated ${staticFiles[j].fileModified}</div>
                                           <div class="staticFileColumnContent" id="listItemActions_${items[i].slug}"><a class="listItemViewLink" href="/${items[i].slug}/" target="_blank">VIEW</a> | <a class="listItemRegenerateLink" data-id="${items[i].id}" data-slug="${items[i].slug}" href="#">REGENERATE</a> | <a class="listItemDeleteLink" data-id="${items[i].id}" data-slug="${items[i].slug}" href="#">DELETE</a></div>`;
 
@@ -830,7 +830,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
               <tr>
                 <th scope="row">
-                  <input class="listItemCheckbox" type="checkbox" data-id="${items[i].id}" data-slug="${items[i].slug}">
+                  <input class="form-check-input listItemCheckbox" type="checkbox" data-id="${items[i].id}" data-slug="${items[i].slug}">
                 </th>
                 <td class="small">
                   ${items[i].title.rendered}

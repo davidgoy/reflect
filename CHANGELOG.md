@@ -4,6 +4,15 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 <br><br>
 
+## [1.0.0-beta.15] - 2021-08-22
+
+### Changed
+
+- Update dependencies.
+- Update all views and Default template to use Bootstrap 5
+
+<br><br>
+
 ## [1.0.0-beta.14] - 2021-07-05
 
 ### Changed

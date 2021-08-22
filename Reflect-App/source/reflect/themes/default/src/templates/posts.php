@@ -77,8 +77,8 @@
 
         <p class="text-center">Showing items <?php echo $pageFirstItem; ?> to <?php echo $pageLastItem; ?> of <?php echo $paginationTotalPosts; ?>.</p>
 
-        <nav aria-label="Posts pagination">
-          <ul class="ml-0 pagination justify-content-center">
+        <nav class="d-flex justify-content-center" aria-label="Posts pagination">
+          <ul class="pagination">
 
             <?php if($pageFirstItem != 1): ?>
 
@@ -117,7 +117,7 @@
 
   <div class="row">
 
-    <div class="col mx-auto">
+    <div class="col">
 
       <h5 class="text-center m-5">No posts to display</h5>
 

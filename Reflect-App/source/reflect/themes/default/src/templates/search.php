@@ -2,7 +2,7 @@
 
   <div id="mainContent">
     <div class="row">
-      <div class="col mx-auto">
+      <div class="col">
         <div id="searchResultsContent">
 
           <h2 class="text-center m-5">SEARCH RESULTS</h2>

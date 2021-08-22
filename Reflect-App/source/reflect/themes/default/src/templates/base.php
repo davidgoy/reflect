@@ -5,19 +5,21 @@
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title><?php if(isset($cmsContent['title'])) { echo $cmsContent['title'] . ' - '; } ?><?php echo $config['siteName']; ?></title>
 
     <link rel="shortcut icon" href="<?php if(isset($themeConfig['faviconUrl']) && !empty($themeConfig['faviconUrl'])) { echo $themeConfig['faviconUrl']; } ?>">
 
     <!-- WordPress -->
-    <link rel="stylesheet" href="/css/wordpress/block-library/style.min.css?version=1.0.0-beta.14">
-    <link rel="stylesheet" href="/css/wordpress/block-library/theme.min.css?version=1.0.0-beta.14">
+    <link rel="stylesheet" href="/css/wordpress/block-library/style.min.css?reflect-version=1.0.0-beta.15">
+    <link rel="stylesheet" href="/css/wordpress/block-library/theme.min.css?reflect-version=1.0.0-beta.15">
 
     <!-- Underscores -->
-    <link rel="stylesheet" href="/css/underscores/style.css?version=1.0.0-beta.14">
+    <link rel="stylesheet" href="/css/underscores/style.css?reflect-version=1.0.0-beta.15">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?version=1.0.0-beta.14">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?reflect-version=1.0.0-beta.15">
 
     <!-- Addons -->
     <?php if(count($addons) > 0): ?>
@@ -31,14 +33,12 @@
       <?php endforeach; unset($addon); ?>
     <?php endif; ?>
 
-    <!-- Theme -->
+    <!-- Theme CSS (Note: We put our CSS here rather than on separate .css files in order take advantage of PHP preprocessing)-->
     <style>
 
       /* ------- General ------- */
 
       body {
-
-        padding-top: 1.4rem; /* Compensate for primary menu height */
 
         <?php if($themeConfig['stickyFooter'] === 'true'): ?>
         padding-bottom: 7rem; /* Compensate for footer height. Note that this value should always be greater than the height of the footer */
@@ -85,6 +85,22 @@
       #primaryMenu .dropdown-menu a:hover, #primaryMenu .dropdown-menu .active {
 
         color: <?php echo $themeConfig['primaryMenuSubItemHoverAndActiveTextColour']; ?>;
+      }
+
+      /* On a smaller screen device... */
+      @media only screen and (max-width: 992px) {
+
+        /* Background - item hovered or active */
+        .nav-item:hover, .navbar-nav .active a {
+
+          background-color: transparent;
+        }
+
+        /* Background - sub-item hovered or active */
+        .dropdown-item:hover, .dropdown-menu .active {
+
+          background-color: transparent;
+        }
       }
 
 
@@ -156,8 +172,6 @@
 
     </style>
 
-    <title><?php if(isset($cmsContent['title'])) { echo $cmsContent['title'] . ' - '; } ?><?php echo $config['siteName']; ?></title>
-
   </head>
 
   <body>
@@ -174,7 +188,7 @@
       <?php if(isset($mainContentFile) && file_exists(__DIR__ . '/' . $mainContentFile)) { require_once __DIR__ . '/' . $mainContentFile; } else { echo '<!--{{ main }}-->'; } ?>
 
 
-      <footer class="footer py-2 <?php if($themeConfig['stickyFooter'] === 'true') { echo 'fixed-bottom'; } ?>">
+      <footer class="footer mt-auto py-2 <?php if($themeConfig['stickyFooter'] === 'true') { echo 'fixed-bottom'; } ?>">
 
           <?php if(isset($footerMenu)) { require_once __DIR__ . '/partials/footer-menu.php'; } else { echo '<!--{{ footer-menu }}-->'; } ?>
 
@@ -193,18 +207,17 @@
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>
 
       <!-- Polyfill (will be removed in the future) -->
-      <script src="/js/polyfill/core-js/minified.js?version=1.0.0-beta.14"></script>
-      <script src="/js/polyfill/regenerator-runtime/runtime.js?version=1.0.0-beta.14"></script>
-      <script src="/js/polyfill/unfetch/index.js?version=1.0.0-beta.14"></script>
+      <script src="/js/polyfill/core-js/minified.js?reflect-version=1.0.0-beta.15"></script>
+      <script src="/js/polyfill/regenerator-runtime/runtime.js?reflect-version=1.0.0-beta.15"></script>
+      <script src="/js/polyfill/unfetch/index.js?reflect-version=1.0.0-beta.15"></script>
 
     <?php endif; ?>
 
     <!-- Bootstrap -->
-    <script src="/js/bootstrap/jquery-3.5.1.slim.min.js?version=1.0.0-beta.14"></script>
-    <script src="/js/bootstrap/bootstrap.bundle.min.js?version=1.0.0-beta.14"></script>
+    <script src="/js/bootstrap/bootstrap.bundle.min.js?reflect-version=1.0.0-beta.15"></script>
 
     <!-- SweetAlert2 -->
-    <script src="/js/sweetalert2/sweetalert2.all.min.js?version=1.0.0-beta.14"></script>
+    <script src="/js/sweetalert2/sweetalert2.all.min.js?reflect-version=1.0.0-beta.15"></script>
 
     <!-- Theme -->
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>

@@ -86,23 +86,7 @@ Reflect can serve the generated static pages much faster than a regular WordPres
 
 ### Your WordPress site
 
-1. WordPress 5.x or later.
-
-2. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated to enable your WordPress site to work with your Reflect site. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
-
-3. ***Post name*** should be selected as the permalink structure:
-   
-   ![](https://github.com/davidgoy/reflect/blob/master/installation-1.png)
-
-4. Have at least two pages - a ***Home* page** (i.e. front page) and a ***Posts* page** (i.e. blog page).
-
-5. For the ***Reading Settings***, ensure that ***A static page*** option is selected:
-   
-   ![](https://github.com/davidgoy/reflect/blob/master/installation-2.png)
-
-6. Up to two menus are supported - a primary menu and a footer menu.
-
-7. When creating page or post content, you should use the default block editor that comes with WordPress. Reflect does not support third party page builders.
+WordPress 5.x or later.
 
 <span><br><br></span>
 
@@ -142,6 +126,26 @@ Reflect can serve the generated static pages much faster than a regular WordPres
    > 
    > Reflect will only fetch WordPress page/post content as well as primary and footer menu items. Widget components (e.g. Archives, RSS, Tag Cloud, etc.) and theme-specific layout sections (e.g. Sidebar) will not be fetched.
 
+<br>
+
+### How to set up your WordPress site to work with Reflect
+
+1. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated to enable your WordPress site to work with your Reflect site. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
+
+2. ***Post name*** should be selected as the permalink structure:
+   
+   ![](https://github.com/davidgoy/reflect/blob/master/installation-1.png)
+
+3. Have at least two pages - a ***Home* page** (i.e. front page) and a ***Posts* page** (i.e. blog page).
+
+4. For the ***Reading Settings***, ensure that ***A static page*** option is selected:
+   
+   ![](https://github.com/davidgoy/reflect/blob/master/installation-2.png)
+
+5. Up to two menus are supported - a primary menu and a footer menu.
+
+6. When creating page or post content, you should use the default block editor that comes with WordPress. Reflect does not support third party page builders.
+
 <span><br><br></span>
 
 ## USAGE
@@ -156,7 +160,7 @@ Your Reflect site can then fetch this content, convert them into static pages an
 
 <br>
 
-### How to access Reflect site settings
+### How to change Reflect site settings
 
 You can access your Reflect site's ***Settings* page** anytime by navigating to the following URL:
 

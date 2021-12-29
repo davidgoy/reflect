@@ -1,6 +1,6 @@
 "use strict";
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
 
 /**
  * Reflect
@@ -9,7 +9,7 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
  * @link https://github.com/davidgoy/reflect
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.12
+ * @version 1.0.0-beta.16
  * @since File available since v1.0.0-alpha.1
  */
 window.addEventListener('DOMContentLoaded', function () {
@@ -376,7 +376,7 @@ window.addEventListener('DOMContentLoaded', function () {
       listBulkActionFormSubmitButton.classList.add('disabled'); // Disable button
 
       var originalButtonText = listBulkActionFormSubmitButton.innerHTML;
-      listBulkActionFormSubmitButton.innerHTML = '<div class="spinner-border spinner-border-sm" role="status"> <span class="sr-only">Working...</span> </div> WORKING...';
+      listBulkActionFormSubmitButton.innerHTML = '<div class="spinner-border spinner-border-sm" role="status"> </div> WORKING...';
       var bulkAction = document.querySelector('#listBulkActionSelect').value;
 
       if (bulkAction != '') {
@@ -516,14 +516,14 @@ window.addEventListener('DOMContentLoaded', function () {
             // If the menu exists in CMS
 
             if (menuItems.length > 0) {
-              staticFileColumnHtml = "<div class=\"staticFileColumnContent\" id=\"menuActionsSpinner_".concat(menuSlugs[i], "\" style=\"display: none;\"><div class=\"spinner-border spinner-border-sm text-secondary\" role=\"status\"><span class=\"sr-only\">Working...</span></div> Working...</div>\n                                      <div class=\"staticFileColumnContent\" id=\"menuStatusText_").concat(menuSlugs[i], "\">Not found</div>\n                                      <div class=\"staticFileColumnContent\" id=\"menuActions_").concat(menuSlugs[i], "\"><a class=\"menuGenerateLink\" data-slug=\"").concat(menuSlugs[i], "\" href=\"#\">GENERATE</a></div>");
+              staticFileColumnHtml = "<div class=\"staticFileColumnContent\" id=\"menuActionsSpinner_".concat(menuSlugs[i], "\" style=\"display: none;\"><div class=\"spinner-border spinner-border-sm text-secondary\" role=\"status\"></div> Working...</div>\n                                      <div class=\"staticFileColumnContent\" id=\"menuStatusText_").concat(menuSlugs[i], "\">Not found</div>\n                                      <div class=\"staticFileColumnContent\" id=\"menuActions_").concat(menuSlugs[i], "\"><a class=\"menuGenerateLink\" data-slug=\"").concat(menuSlugs[i], "\" href=\"#\">GENERATE</a></div>");
 
               for (var j = 0; j < staticFiles.length; j++) {
                 var fileSlug = staticFiles[j].fileName.replace('.html', ''); // Remove .html from file name
                 // If static file exists for the menu...
 
                 if (fileSlug === menuSlugs[i]) {
-                  staticFileColumnHtml = "<div class=\"staticFileColumnContent\" id=\"menuActionsSpinner_".concat(menuSlugs[i], "\" style=\"display: none;\"><div class=\"spinner-border spinner-border-sm text-secondary\" role=\"status\"><span class=\"sr-only\">Working...</span></div> Working...</div>\n                                          <div class=\"staticFileColumnContent\" id=\"menuStatusText_").concat(menuSlugs[i], "\">Generated ").concat(staticFiles[j].fileModified, "</div>\n                                          <div class=\"staticFileColumnContent\" id=\"menuActions_").concat(menuSlugs[i], "\"><a class=\"menuRegenerateLink\" data-slug=\"").concat(menuSlugs[i], "\" href=\"#\">REGENERATE</a> | <a class=\"menuDeleteLink\" data-slug=\"").concat(menuSlugs[i], "\" href=\"#\">DELETE</a></div>");
+                  staticFileColumnHtml = "<div class=\"staticFileColumnContent\" id=\"menuActionsSpinner_".concat(menuSlugs[i], "\" style=\"display: none;\"><div class=\"spinner-border spinner-border-sm text-secondary\" role=\"status\"></div> Working...</div>\n                                          <div class=\"staticFileColumnContent\" id=\"menuStatusText_").concat(menuSlugs[i], "\">Generated ").concat(staticFiles[j].fileModified, "</div>\n                                          <div class=\"staticFileColumnContent\" id=\"menuActions_").concat(menuSlugs[i], "\"><a class=\"menuRegenerateLink\" data-slug=\"").concat(menuSlugs[i], "\" href=\"#\">REGENERATE</a> | <a class=\"menuDeleteLink\" data-slug=\"").concat(menuSlugs[i], "\" href=\"#\">DELETE</a></div>");
                   break;
                 }
               }
@@ -619,7 +619,7 @@ window.addEventListener('DOMContentLoaded', function () {
               var cmsContentModified = new Date(items[i].modified).toLocaleString('en-GB', {
                 timeZone: 'UTC'
               });
-              staticFileColumnHtml = "<div class=\"staticFileColumnContent\" id=\"listItemActionsSpinner_".concat(items[i].slug, "\" style=\"display: none;\"><div class=\"spinner-border spinner-border-sm text-secondary\" role=\"status\"><span class=\"sr-only\">Working...</span></div> Working...</div>\n                                      <div class=\"staticFileColumnContent\" id=\"listItemStatusText_").concat(items[i].slug, "\">Not found</div>\n                                      <div class=\"staticFileColumnContent\" id=\"listItemActions_").concat(items[i].slug, "\"><a class=\"listItemGenerateLink\" data-id=\"").concat(items[i].id, "\" data-slug=\"").concat(items[i].slug, "\" href=\"#\">GENERATE</a></div>");
+              staticFileColumnHtml = "<div class=\"staticFileColumnContent\" id=\"listItemActionsSpinner_".concat(items[i].slug, "\" style=\"display: none;\"><div class=\"spinner-border spinner-border-sm text-secondary\" role=\"status\"></div> Working...</div>\n                                      <div class=\"staticFileColumnContent\" id=\"listItemStatusText_").concat(items[i].slug, "\">Not found</div>\n                                      <div class=\"staticFileColumnContent\" id=\"listItemActions_").concat(items[i].slug, "\"><a class=\"listItemGenerateLink\" data-id=\"").concat(items[i].id, "\" data-slug=\"").concat(items[i].slug, "\" href=\"#\">GENERATE</a></div>");
 
               for (var j = 0; j < staticFiles.length; j++) {
                 var fileSlug = staticFiles[j].fileName.replace('.html', ''); // Remove .html from file name
@@ -628,12 +628,12 @@ window.addEventListener('DOMContentLoaded', function () {
                 var postsPageSlug = fileSlug.match(regex); // If static file exists for the item...
 
                 if (fileSlug === items[i].slug || postsPageSlug !== null && postsPageSlug[0] === items[i].slug) {
-                  staticFileColumnHtml = "<div class=\"staticFileColumnContent\" id=\"listItemActionsSpinner_".concat(items[i].slug, "\" style=\"display: none;\"><div class=\"spinner-border spinner-border-sm text-secondary\" role=\"status\"><span class=\"sr-only\">Working...</span></div> Working...</div>\n                                          <div class=\"staticFileColumnContent\" id=\"listItemStatusText_").concat(items[i].slug, "\">Generated ").concat(staticFiles[j].fileModified, "</div>\n                                          <div class=\"staticFileColumnContent\" id=\"listItemActions_").concat(items[i].slug, "\"><a class=\"listItemViewLink\" href=\"/").concat(items[i].slug, "/\" target=\"_blank\">VIEW</a> | <a class=\"listItemRegenerateLink\" data-id=\"").concat(items[i].id, "\" data-slug=\"").concat(items[i].slug, "\" href=\"#\">REGENERATE</a> | <a class=\"listItemDeleteLink\" data-id=\"").concat(items[i].id, "\" data-slug=\"").concat(items[i].slug, "\" href=\"#\">DELETE</a></div>");
+                  staticFileColumnHtml = "<div class=\"staticFileColumnContent\" id=\"listItemActionsSpinner_".concat(items[i].slug, "\" style=\"display: none;\"><div class=\"spinner-border spinner-border-sm text-secondary\" role=\"status\"></div> Working...</div>\n                                          <div class=\"staticFileColumnContent\" id=\"listItemStatusText_").concat(items[i].slug, "\">Generated ").concat(staticFiles[j].fileModified, "</div>\n                                          <div class=\"staticFileColumnContent\" id=\"listItemActions_").concat(items[i].slug, "\"><a class=\"listItemViewLink\" href=\"/").concat(items[i].slug, "/\" target=\"_blank\">VIEW</a> | <a class=\"listItemRegenerateLink\" data-id=\"").concat(items[i].id, "\" data-slug=\"").concat(items[i].slug, "\" href=\"#\">REGENERATE</a> | <a class=\"listItemDeleteLink\" data-id=\"").concat(items[i].id, "\" data-slug=\"").concat(items[i].slug, "\" href=\"#\">DELETE</a></div>");
                   break;
                 }
               }
 
-              rowsHtml = rowsHtml + "\n\n              <tr>\n                <th scope=\"row\">\n                  <input class=\"listItemCheckbox\" type=\"checkbox\" data-id=\"".concat(items[i].id, "\" data-slug=\"").concat(items[i].slug, "\">\n                </th>\n                <td class=\"small\">\n                  ").concat(items[i].title.rendered, "\n                </td>\n                <td class=\"small\">\n                  ").concat(items[i].slug, "\n                </td>\n                <td class=\"small\">\n                  ").concat(cmsContentModified, "<br><a href=\"").concat(cmsBaseUrl).concat(items[i].slug, "\" target=\"_blank\">VIEW ON WP</a>\n                </td>\n                <td class=\"small\">\n                  ").concat(staticFileColumnHtml, "\n                </td>\n              </tr>\n              ");
+              rowsHtml = rowsHtml + "\n\n              <tr>\n                <th scope=\"row\">\n                  <input class=\"form-check-input listItemCheckbox\" type=\"checkbox\" data-id=\"".concat(items[i].id, "\" data-slug=\"").concat(items[i].slug, "\">\n                </th>\n                <td class=\"small\">\n                  ").concat(items[i].title.rendered, "\n                </td>\n                <td class=\"small\">\n                  ").concat(items[i].slug, "\n                </td>\n                <td class=\"small\">\n                  ").concat(cmsContentModified, "<br><a href=\"").concat(cmsBaseUrl).concat(items[i].slug, "\" target=\"_blank\">VIEW ON WP</a>\n                </td>\n                <td class=\"small\">\n                  ").concat(staticFileColumnHtml, "\n                </td>\n              </tr>\n              ");
             } // Debug
             //console.log(rowsHtml);
 
@@ -648,11 +648,11 @@ window.addEventListener('DOMContentLoaded', function () {
           });
         } // No page(s) or post(s) found on CMS
         else {
-            // Set UI
-            loadingSpinner.classList.add('invisible'); // Hide loading spinner
+          // Set UI
+          loadingSpinner.classList.add('invisible'); // Hide loading spinner
 
-            noItemsFoundText.classList.remove('invisible'); // Show text
-          }
+          noItemsFoundText.classList.remove('invisible'); // Show text
+        }
       });
     } //--------------------------------------------------------------------------
 
@@ -677,11 +677,11 @@ window.addEventListener('DOMContentLoaded', function () {
         var currentLinkNumber = parseInt(sessionStorage.getItem('currentLinkNumber'));
 
         if (params['perPage'] !== undefined) {
-          perPage = (_readOnlyError("perPage"), params['perPage']);
+          params['perPage'], _readOnlyError("perPage");
         }
 
         if (params['pageNumber'] !== undefined) {
-          currentLinkNumber = (_readOnlyError("currentLinkNumber"), params['pageNumber']);
+          params['pageNumber'], _readOnlyError("currentLinkNumber");
         }
 
         var totalLinks = Math.ceil(totalPublishedItems / perPage); // Only display pagination if there are more than one pagination pages
@@ -727,9 +727,9 @@ window.addEventListener('DOMContentLoaded', function () {
           _listPaginationInfo.innerHTML = "Showing ".concat(fromPaginationItem, " - ").concat(toPaginationItem, " of ").concat(totalPublishedItems, " items");
         } // Clear out any HTML, if there were previously any
         else {
-            listPagination.innerHTML = '';
-            listPaginationInfo.innerHTML = '';
-          }
+          listPagination.innerHTML = '';
+          listPaginationInfo.innerHTML = '';
+        }
       });
     } //--------------------------------------------------------------------------
 

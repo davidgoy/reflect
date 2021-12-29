@@ -1,6 +1,6 @@
 "use strict";
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
@@ -13,7 +13,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  * @link https://github.com/davidgoy/reflect-form-mailer
  * @copyright 2020 Min Tat Goy
  * @license https://www.gnu.org/licenses/gpl.html   GPLv2 or later
- * @version 1.0.0-beta.12
+ * @version 1.0.0-beta.16
  * @since File available since v1.0.0-alpha.1
  */
 window.addEventListener('DOMContentLoaded', function () {
@@ -63,25 +63,25 @@ window.addEventListener('DOMContentLoaded', function () {
                     makeFormSubmitable(form); // Debug
                     //console.log('Targeted form: ' + form.getAttribute('name'));
                   } else {// Do nothing
-                    }
+                  }
                 } // If forms to exclude is specified
                 else if (formNamesToExclude[0] !== '') {
-                    // If the form name is found in the list of form names to exclude
-                    if (formNamesToExclude.includes(form.getAttribute('name'))) {// Do nothing
-                      // Debug
-                      //console.log('Excluded form: ' + form.getAttribute('name'));
-                    } else {
-                      removeHiddenInputs(form);
-                      addBracketsToMultiValueInputNames(form);
-                      makeFormSubmitable(form);
-                    }
-                  } // Target all forms by default
-                  else {
-                      removeHiddenInputs(form);
-                      addBracketsToMultiValueInputNames(form);
-                      makeFormSubmitable(form); // Debug
-                      //console.log('Form targeted by default: ' + form.getAttribute('name'));
-                    }
+                  // If the form name is found in the list of form names to exclude
+                  if (formNamesToExclude.includes(form.getAttribute('name'))) {// Do nothing
+                    // Debug
+                    //console.log('Excluded form: ' + form.getAttribute('name'));
+                  } else {
+                    removeHiddenInputs(form);
+                    addBracketsToMultiValueInputNames(form);
+                    makeFormSubmitable(form);
+                  }
+                } // Target all forms by default
+                else {
+                  removeHiddenInputs(form);
+                  addBracketsToMultiValueInputNames(form);
+                  makeFormSubmitable(form); // Debug
+                  //console.log('Form targeted by default: ' + form.getAttribute('name'));
+                }
               }
             }
           } catch (err) {
@@ -91,8 +91,8 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         }
       } else {// Debug
-          //console.log(addonFolderName + ' not activated. Empty addon config property: ' + response);
-        }
+        //console.log(addonFolderName + ' not activated. Empty addon config property: ' + response);
+      }
     }); //--------------------------------------------------------------------------
 
     /**

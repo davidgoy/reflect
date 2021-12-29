@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?reflect-version=1.0.0-beta.15">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?reflect-version=1.0.0-beta.16">
 
     <title><?php if(isset($addonConfig['addonName']) && !empty($addonConfig['addonName'])) { echo $addonConfig['addonName'];} ?> Addon Settings</title>
 
@@ -148,10 +148,10 @@
     <?php endif; ?>
 
     <!-- Bootstrap -->
-    <script src="/js/bootstrap/bootstrap.bundle.min.js?reflect-version=1.0.0-beta.15"></script>
+    <script src="/js/bootstrap/bootstrap.bundle.min.js?reflect-version=1.0.0-beta.16"></script>
 
     <!-- SweetAlert2 -->
-    <script src="/js/sweetalert2/sweetalert2.all.min.js?reflect-version=1.0.0-beta.15"></script>
+    <script src="/js/sweetalert2/sweetalert2.all.min.js?reflect-version=1.0.0-beta.16"></script>
 
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>
 

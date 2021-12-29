@@ -12,14 +12,14 @@
     <link rel="shortcut icon" href="<?php if(isset($themeConfig['faviconUrl']) && !empty($themeConfig['faviconUrl'])) { echo $themeConfig['faviconUrl']; } ?>">
 
     <!-- WordPress -->
-    <link rel="stylesheet" href="/css/wordpress/block-library/style.min.css?reflect-version=1.0.0-beta.15">
-    <link rel="stylesheet" href="/css/wordpress/block-library/theme.min.css?reflect-version=1.0.0-beta.15">
+    <link rel="stylesheet" href="/css/wordpress/block-library/style.min.css?reflect-version=1.0.0-beta.16">
+    <link rel="stylesheet" href="/css/wordpress/block-library/theme.min.css?reflect-version=1.0.0-beta.16">
 
     <!-- Underscores -->
-    <link rel="stylesheet" href="/css/underscores/style.css?reflect-version=1.0.0-beta.15">
+    <link rel="stylesheet" href="/css/underscores/style.css?reflect-version=1.0.0-beta.16">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?reflect-version=1.0.0-beta.15">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css?reflect-version=1.0.0-beta.16">
 
     <!-- Addons -->
     <?php if(count($addons) > 0): ?>
@@ -128,6 +128,18 @@
         min-height: 80vh; /* You can control the height of the cover by changing this value */
       }
 
+      /* WP Gutenberg Block - Latest Posts */
+      .wp-block-latest-posts {
+
+        /* Center the post title */
+        text-align: center;
+      }
+      .wp-block-latest-posts li {
+
+        margin: 25px;
+      }
+
+
       /* WP page or post featured media */
       #featuredMedia {
 
@@ -207,17 +219,17 @@
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>
 
       <!-- Polyfill (will be removed in the future) -->
-      <script src="/js/polyfill/core-js/minified.js?reflect-version=1.0.0-beta.15"></script>
-      <script src="/js/polyfill/regenerator-runtime/runtime.js?reflect-version=1.0.0-beta.15"></script>
-      <script src="/js/polyfill/unfetch/index.js?reflect-version=1.0.0-beta.15"></script>
+      <script src="/js/polyfill/core-js/minified.js?reflect-version=1.0.0-beta.16"></script>
+      <script src="/js/polyfill/regenerator-runtime/runtime.js?reflect-version=1.0.0-beta.16"></script>
+      <script src="/js/polyfill/unfetch/index.js?reflect-version=1.0.0-beta.16"></script>
 
     <?php endif; ?>
 
     <!-- Bootstrap -->
-    <script src="/js/bootstrap/bootstrap.bundle.min.js?reflect-version=1.0.0-beta.15"></script>
+    <script src="/js/bootstrap/bootstrap.bundle.min.js?reflect-version=1.0.0-beta.16"></script>
 
     <!-- SweetAlert2 -->
-    <script src="/js/sweetalert2/sweetalert2.all.min.js?reflect-version=1.0.0-beta.15"></script>
+    <script src="/js/sweetalert2/sweetalert2.all.min.js?reflect-version=1.0.0-beta.16"></script>
 
     <!-- Theme -->
     <?php if($config['olderBrowsersSupport'] === 'true'): ?>

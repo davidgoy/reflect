@@ -4,6 +4,14 @@ A record of notable changes to the Reflect project since v1.0.0-beta.1 (released
 
 <br><br>
 
+## [1.0.0-beta.16] - 2021-12-29
+
+### Changed
+
+- Update dependencies.
+  
+<br><br>  
+
 ## [1.0.0-beta.15] - 2021-08-22
 
 ### Changed

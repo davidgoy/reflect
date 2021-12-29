@@ -5,12 +5,12 @@
 <h3 align="center">STATIC SITE GENERATOR FOR WORDPRESS</h3>
 <br>
 <p align="center">
- <a href="https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip" target="_blank"><img src="https://github.com/davidgoy/reflect/blob/master/download.png" width="150" alt="Download Reflect"></a>
+ <a href="https://github.com/davidgoy/reflect/raw/master/reflect-app/deploy/reflect-app.zip" target="_blank"><img src="https://github.com/davidgoy/reflect/blob/master/download.png" width="150" alt="Download Reflect"></a>
 </p>
 <br>
 <br>
 <br>
-<p align="center">Latest version 1.0.0-beta.15<br>(released 22nd August 2021)</p>
+<p align="center">Latest version 1.0.0-beta.16<br>(released 29th December 2021)</p>
 <br>
 <br>
 
@@ -94,7 +94,7 @@ WordPress 5.x or later.
 
 ### How to install your Reflect static site
 
-1. [Download the Reflect App ZIP file here](https://github.com/davidgoy/reflect/raw/master/Reflect-App/deploy/reflect-app.zip). Extract the ZIP file and you will find two folders:
+1. [Download the Reflect App ZIP file here](https://github.com/davidgoy/reflect/raw/master/reflect-app/deploy/reflect-app.zip). Extract the ZIP file and you will find two folders:
    
    - `reflect`
    
@@ -110,7 +110,7 @@ WordPress 5.x or later.
    > 
    > - either with or without the *www* prefix (and not both) 
    > 
-   > If you know a bit of *htaccess*, you can edit this [sample *htaccess* file](https://raw.githubusercontent.com/davidgoy/reflect/master/Reflect-App/deploy/sample-reflect.htaccess). Then simply replace the existing *htaccess* file in the `public_html` folder with the new one. 
+   > If you know a bit of *htaccess*, you can edit this [sample *htaccess* file](https://raw.githubusercontent.com/davidgoy/reflect/master/reflect-app/deploy/sample-reflect.htaccess). Then simply replace the existing *htaccess* file in the `public_html` folder with the new one. 
 
 3. Upload the `reflect` folder to your server so that it sits outside of the document root. Your web server's directory structure should look something like this:
    
@@ -130,7 +130,7 @@ WordPress 5.x or later.
 
 ### How to set up your WordPress site to work with Reflect
 
-1. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) should be installed and activated to enable your WordPress site to work with your Reflect site. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/WP-Reflect-Support-Plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
+1. The [WP Reflect Support plugin](https://github.com/davidgoy/reflect/raw/master/wp-reflect-support-plugin/deploy/wpreflect.zip) should be installed and activated to enable your WordPress site to work with your Reflect site. Please manually [download the plugin here](https://github.com/davidgoy/reflect/raw/master/wp-reflect-support-plugin/deploy/wpreflect.zip) and upload it to your WordPress site.
 
 2. ***Post name*** should be selected as the permalink structure:
    
@@ -263,7 +263,7 @@ You can easily accomplish this with a basic understanding of *htaccess*. You wil
 
 - Your public IP address (ideally you should have a static IP)
 
-[Download this sample *htaccess* file](https://raw.githubusercontent.com/davidgoy/reflect/master/WP-Reflect-Support-Plugin/deploy/sample-wordpress.htaccess) and replace the dummy IP addresses with the real ones as per above. Rename the file to *.htaccess*, then upload it to the directory where your WordPress site is installed. 
+[Download this sample *htaccess* file](https://raw.githubusercontent.com/davidgoy/reflect/master/wp-reflect-support-plugin/deploy/sample-wordpress.htaccess) and replace the dummy IP addresses with the real ones as per above. Rename the file to *.htaccess*, then upload it to the directory where your WordPress site is installed. 
 
 > **Warning:** 
 > 
@@ -323,4 +323,4 @@ The following are used in the Reflect project:
 
 ## FEEDBACK
 
-Got questions, suggestions or feature requests? [Get in touch with me](https://davidgoy.github.io/).
+Got questions, suggestions or feature requests? [Get in touch with me](https://davidgoy.dev).

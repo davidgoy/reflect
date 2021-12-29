@@ -10,7 +10,7 @@
 <br>
 <br>
 <br>
-<p align="center">Latest version 1.0.0-beta.16<br>(released 29th December 2021)</p>
+<p align="center">Latest version 1.0.0-beta.16<br>(released 29 December 2021)</p>
 <br>
 <br>
 

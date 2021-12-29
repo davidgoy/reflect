@@ -1,0 +1,21 @@
+{
+    "name": "mintatgoy/reflect",
+    "description": "Reflect",
+    "type": "project",
+    "license": "GPLv2 or later",
+    "authors": [
+        {
+            "name": "Min Tat Goy",
+            "email": "david@davidgoy.dev"
+        }
+    ],
+    "require": {
+        "ircmaxell/random-lib": "~1.2",
+        "pclzip/pclzip": "~2.8"
+    },
+    "autoload": {
+      "psr-4": {
+        "Reflect\\": "src/"
+      }
+    }
+}
